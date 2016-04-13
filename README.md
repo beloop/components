@@ -13,4 +13,4 @@ in LMS web projects.
 Requirements
 ------------
 
-Elcodi is supported on PHP 5.5.* and up.
+DYB is supported on PHP 5.6.* and up.
