@@ -13,6 +13,8 @@
  * @author Arkaitz Garro <arkaitz.garro@gmail.com>
  */
 
+namespace DYB\Component\Core\Entity\Traits;
+
 /**
  * Trait IdentifiableTrait.
  */

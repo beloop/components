@@ -13,10 +13,14 @@
  * @author Arkaitz Garro <arkaitz.garro@gmail.com>
  */
 
+namespace DYB\Component\Course\Entity;
+
+use DYB\Component\Core\Entity\Traits\IdentifiableTrait;
+
 /**
  * Class Course entity.
  */
 class Course
 {
-
+    use IdentifiableTrait;
 }
