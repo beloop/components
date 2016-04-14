@@ -15,8 +15,23 @@
 
 namespace DYB\Component\Course\Test\Unit\Entity;
 
+use PHPUnit_Framework_TestCase;
 
-class ChapterTest
-{
+use DYB\Component\Course\Entity\Chapter;
 
+/**
+ * Class ChapterTest.
+ */
+class ChapterTest extends PHPUnit_Framework_TestCase {
+    private $chapter;
+
+    public function setUp()
+    {
+        $this->chapter = new Chapter();
+    }
+
+    public function testDefaultValues() {
+        $this->assertEquals(true, $this->chapter->isEnabled());
+        $this->assertEquals(1, $this->chapter->getOrder());
+    }
 }

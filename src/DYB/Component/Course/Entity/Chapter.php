@@ -23,6 +23,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use DYB\Component\Core\Entity\Traits\DateTimeTrait;
 use DYB\Component\Core\Entity\Traits\EnabledTrait;
 use DYB\Component\Core\Entity\Traits\IdentifiableTrait;
+use DYB\Component\Core\Entity\Traits\OrderTrait;
 
 /**
  * Course chapter representation
@@ -31,7 +32,8 @@ class Chapter
 {
     use IdentifiableTrait,
         EnabledTrait,
-        DateTimeTrait;
+        DateTimeTrait,
+        OrderTrait;
 
     protected $name;
     protected $slug;
@@ -46,6 +48,7 @@ class Chapter
     {
         $this->modules = new ArrayCollection();
         $this->startDate = new DateTime();
+        $this->order = 1;
         $this->enable();
     }
 

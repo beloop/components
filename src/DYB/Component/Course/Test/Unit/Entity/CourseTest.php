@@ -18,6 +18,7 @@ namespace DYB\Component\Course\Test\Unit\Entity;
 use PHPUnit_Framework_TestCase;
 
 use DYB\Component\Course\Entity\Course;
+use DYB\Component\Course\Entity\Chapter;
 
 /**
  * Class CourseTest.
@@ -39,6 +40,14 @@ class CourseTest extends PHPUnit_Framework_TestCase
     }
 
     public function testChapterCollection() {
+        $this->assertEquals(0, $this->course->getChapters()->count());
+
+        $chapter = new Chapter();
+        $this->course->addChapter($chapter);
+        $this->assertEquals(1, $this->course->getChapters()->count());
+        $this->course->addChapter($chapter);
+        $this->assertEquals(1, $this->course->getChapters()->count());
+        $this->course->removeChapter($chapter);
         $this->assertEquals(0, $this->course->getChapters()->count());
     }
 }
