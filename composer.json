@@ -1,0 +1,51 @@
+{
+  "name": "DYB/dyb-components",
+  "description": "DYB components for LMS",
+  "keywords": [
+    "DYB",
+    "lms",
+    "component"
+  ],
+  "homepage": "https://github.com/AHDO/dyb-components",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Arkaitz Garro",
+      "email": "arkaitz.garro@gamil.com"
+    }
+  ],
+  "require": {
+    "php": "^5.5|^7.0"
+  },
+    "replace": {
+        "DYB/core": "self.version",
+        "DYB/course": "self.version"
+    },
+    "require-dev": {
+        "fabpot/php-cs-fixer": "1.11",
+        "mmoreram/php-formatter": "1.1.0",
+        "phpunit/phpunit": "4.8.19"
+    },
+    "autoload": {
+        "exclude-from-classmap": [
+            "src/**/Test/"
+        ],
+        "psr-4": {
+            "DYB\\": "src/DYB"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    },
+    "scripts": {
+        "check-style": [
+            "bin/php-cs-fixer fix --config-file=.php_cs || true",
+            "bin/php-formatter f:h:f src || true",
+            "bin/php-formatter f:u:s src || true"
+        ],
+        "test": "phpunit"
+    }
+}
