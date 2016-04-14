@@ -24,7 +24,21 @@ use DYB\Component\Course\Entity\Course;
  */
 class CourseTest extends PHPUnit_Framework_TestCase
 {
-    public function testAddOption() {
-        $course = new Course();
+    private $course;
+
+    public function setUp()
+    {
+        $this->course = new Course();
+    }
+
+    public function testDefaultValues() {
+        $this->assertEquals(true, $this->course->isEnabled());
+
+        $interval = $this->course->getEndDate()->diff($this->course->getStartDate());
+        $this->assertEquals(6, $interval->format('%m'));
+    }
+
+    public function testChapterCollection() {
+        $this->assertEquals(0, $this->course->getChapters()->count());
     }
 }

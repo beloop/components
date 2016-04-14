@@ -16,7 +16,6 @@
 namespace DYB\Component\Course\Entity;
 
 use \DateTime;
-use \DateInterval;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -26,50 +25,28 @@ use DYB\Component\Core\Entity\Traits\EnabledTrait;
 use DYB\Component\Core\Entity\Traits\IdentifiableTrait;
 
 /**
- * Class Course entity.
+ * Course chapter representation
  */
-class Course
+class Chapter
 {
     use IdentifiableTrait,
         EnabledTrait,
         DateTimeTrait;
 
-    protected $code;
     protected $name;
     protected $slug;
     protected $description;
-    protected $chapters;
+    protected $modules;
     protected $startDate;
-    protected $endDate;
 
     /**
      * Course constructor.
      */
     public function __construct()
     {
-        $this->chapters = new ArrayCollection();
+        $this->modules = new ArrayCollection();
         $this->startDate = new DateTime();
-        $this->endDate = new DateTime();
-        $this->endDate->add(DateInterval::createFromDateString("6 months"));
         $this->enable();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCode()
-    {
-        return $this->code;
-    }
-
-    /**
-     * @param mixed $code
-     * @return $this Self object
-     */
-    public function setCode($code)
-    {
-        $this->code = $code;
-        return $this;
     }
 
     /**
@@ -127,45 +104,32 @@ class Course
     }
 
     /**
-     * @return Collection
+     * @return ArrayCollection
      */
-    public function getChapters()
+    public function getModules()
     {
-        return $this->chapters;
+        return $this->modules;
     }
 
     /**
-     * @param Collection $chapters
+     * @param Collection $modules
      * @return $this Self object
      */
-    public function setChapters(Collection $chapters)
+    public function setModules(Collection $modules)
     {
-        $this->chapters = $chapters;
+        $this->modules = $modules;
         return $this;
     }
 
     /**
-     * @param Chapter $chapter
+     * @param Module $module
      * @return $this Self object
      */
-    public function addChapter(Chapter $chapter)
+    public function addModule(Module $module)
     {
-        if (!$this->chapters->contains($chapter)) {
-            $this->chapters->add($chapter);
+        if (!$this->modules->contains($module)) {
+            $this->modules->add($module);
         }
-
-        return $this;
-    }
-
-    /**
-     * @param Chapter $chapter
-     * @return $this Self object
-     */
-    public function removeChapter(Chapter $chapter)
-    {
-        $this
-            ->chapters
-            ->removeElement($chapter);
 
         return $this;
     }
@@ -188,21 +152,5 @@ class Course
         return $this;
     }
 
-    /**
-     * @return DateTime
-     */
-    public function getEndDate()
-    {
-        return $this->endDate;
-    }
 
-    /**
-     * @param DateTime $endDate
-     * @return $this Self object
-     */
-    public function setEndDate($endDate)
-    {
-        $this->endDate = $endDate;
-        return $this;
-    }
 }
