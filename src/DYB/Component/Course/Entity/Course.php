@@ -15,8 +15,7 @@
 
 namespace DYB\Component\Course\Entity;
 
-use \DateTime;
-use \DateInterval;
+use DateTime;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -24,11 +23,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use DYB\Component\Core\Entity\Traits\DateTimeTrait;
 use DYB\Component\Core\Entity\Traits\EnabledTrait;
 use DYB\Component\Core\Entity\Traits\IdentifiableTrait;
+use DYB\Component\Course\Entity\Interfaces\CourseInterface;
+use DYB\Component\Course\Entity\Interfaces\LessonInterface;
 
 /**
  * Class Course entity.
  */
-class Course
+class Course implements CourseInterface
 {
     use IdentifiableTrait,
         EnabledTrait,
@@ -36,23 +37,10 @@ class Course
 
     protected $code;
     protected $name;
-    protected $slug;
     protected $description;
-    protected $chapters;
+    protected $lessons;
     protected $startDate;
     protected $endDate;
-
-    /**
-     * Course constructor.
-     */
-    public function __construct()
-    {
-        $this->chapters = new ArrayCollection();
-        $this->startDate = new DateTime();
-        $this->endDate = new DateTime();
-        $this->endDate->add(DateInterval::createFromDateString("6 months"));
-        $this->enable();
-    }
 
     /**
      * @return mixed
@@ -93,24 +81,6 @@ class Course
     /**
      * @return mixed
      */
-    public function getSlug()
-    {
-        return $this->slug;
-    }
-
-    /**
-     * @param mixed $slug
-     * @return $this Self object
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getDescription()
     {
         return $this->description;
@@ -129,43 +99,45 @@ class Course
     /**
      * @return Collection
      */
-    public function getChapters()
+    public function getLessons()
     {
-        return $this->chapters;
+        return $this->lessons;
     }
 
     /**
-     * @param Collection $chapters
+     * @param Collection $lessons
      * @return $this Self object
      */
-    public function setChapters(Collection $chapters)
+    public function setLessons(Collection $lessons)
     {
-        $this->chapters = $chapters;
+        $this->lessons = $lessons;
         return $this;
     }
 
     /**
-     * @param Chapter $chapter
+     * @param Lesson $lesson
      * @return $this Self object
      */
-    public function addChapter(Chapter $chapter)
+    public function addLesson(LessonInterface $lesson)
     {
-        if (!$this->chapters->contains($chapter)) {
-            $this->chapters->add($chapter);
+        if (!$this->lessons->contains($lesson)) {
+            $this->lessons->add($lesson);
+
+            $lesson->setCourse($this);
         }
 
         return $this;
     }
 
     /**
-     * @param Chapter $chapter
+     * @param Lesson $lesson
      * @return $this Self object
      */
-    public function removeChapter(Chapter $chapter)
+    public function removeLesson(LessonInterface $lesson)
     {
         $this
-            ->chapters
-            ->removeElement($chapter);
+            ->lessons
+            ->removeElement($lesson);
 
         return $this;
     }
@@ -204,5 +176,15 @@ class Course
     {
         $this->endDate = $endDate;
         return $this;
+    }
+
+    /**
+     * Course is accessible by today
+     */
+    public function isAvailable()
+    {
+        $today = new DateTime();
+
+        return $today >= $this->getStartDate() && $today <= $this->getEndDate();
     }
 }

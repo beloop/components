@@ -23,17 +23,22 @@ use Doctrine\Common\Collections\ArrayCollection;
 use DYB\Component\Core\Entity\Traits\DateTimeTrait;
 use DYB\Component\Core\Entity\Traits\EnabledTrait;
 use DYB\Component\Core\Entity\Traits\IdentifiableTrait;
-use DYB\Component\Core\Entity\Traits\OrderTrait;
+use DYB\Component\Core\Entity\Traits\PositionTrait;
+
+use DYB\Component\Course\Entity\Abstracts\Module;
+use DYB\Component\Course\Entity\Interfaces\CourseInterface;
+use DYB\Component\Course\Entity\Interfaces\LessonInterface;
+use DYB\Component\Course\Entity\Interfaces\ModuleInterface;
 
 /**
- * Course chapter representation
+ * Course lesson representation
  */
-class Chapter
+class Lesson implements LessonInterface
 {
     use IdentifiableTrait,
         EnabledTrait,
         DateTimeTrait,
-        OrderTrait;
+        PositionTrait;
 
     protected $name;
     protected $slug;
@@ -41,16 +46,7 @@ class Chapter
     protected $modules;
     protected $startDate;
 
-    /**
-     * Course constructor.
-     */
-    public function __construct()
-    {
-        $this->modules = new ArrayCollection();
-        $this->startDate = new DateTime();
-        $this->order = 1;
-        $this->enable();
-    }
+    protected $course;
 
     /**
      * @return mixed
@@ -128,11 +124,24 @@ class Chapter
      * @param Module $module
      * @return $this Self object
      */
-    public function addModule(Module $module)
+    public function addModule(ModuleInterface $module)
     {
         if (!$this->modules->contains($module)) {
             $this->modules->add($module);
         }
+
+        return $this;
+    }
+
+    /**
+     * @param Module $module
+     * @return $this Self object
+     */
+    public function removeModule(ModuleInterface $module)
+    {
+        $this
+            ->modules
+            ->removeElement($module);
 
         return $this;
     }
@@ -155,5 +164,32 @@ class Chapter
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getCourse()
+    {
+        return $this->course;
+    }
+
+    /**
+     * @param Course $course
+     * @return $this Self object
+     */
+    public function setCourse(CourseInterface $course)
+    {
+        $this->course = $course;
+        return $this;
+    }
+
+    /**
+     * Lesson is accessible by today
+     */
+    public function isAvailable()
+    {
+        $today = new DateTime();
+
+        return $this->course->isAvailable() && $today >= $this->getStartDate();
+    }
 
 }

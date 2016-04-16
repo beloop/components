@@ -16,34 +16,32 @@
 namespace DYB\Component\Core\Entity\Traits;
 
 /**
- * Trait OrderTrait.
+ * Trait PositionTrait.
  */
-trait OrderTrait
+trait PositionTrait
 {
     /**
      * @var int
      *
-     * Order
+     * Position
      */
-    protected $order;
+    protected $position;
 
     /**
      * @return int
      */
-    public function getOrder()
+    public function getPosition()
     {
-        return $this->order;
+        return $this->position;
     }
 
     /**
-     * @param int $order
+     * @param int $position
      * @return $this Self object
      */
-    public function setOrder($order)
+    public function setPosition($position)
     {
-        $this->order = $order;
+        $this->position = $position;
         return $this;
     }
-    
-    
 }

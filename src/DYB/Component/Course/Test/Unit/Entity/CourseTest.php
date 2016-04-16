@@ -15,10 +15,14 @@
 
 namespace DYB\Component\Course\Test\Unit\Entity;
 
+use DateInterval;
+use DateTime;
 use PHPUnit_Framework_TestCase;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 use DYB\Component\Course\Entity\Course;
-use DYB\Component\Course\Entity\Chapter;
+use DYB\Component\Course\Entity\Lesson;
 
 /**
  * Class CourseTest.
@@ -30,24 +34,39 @@ class CourseTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->course = new Course();
+        $this->course->setLessons(new ArrayCollection());
+        $this->course->setStartDate(new DateTime());
+        $this->course->setEndDate((new DateTime())->add(DateInterval::createFromDateString("6 months")));
     }
 
-    public function testDefaultValues() {
-        $this->assertEquals(true, $this->course->isEnabled());
+    public function testLessonCollection() {
+        $this->assertEquals(0, $this->course->getLessons()->count());
 
-        $interval = $this->course->getEndDate()->diff($this->course->getStartDate());
-        $this->assertEquals(6, $interval->format('%m'));
+        $chapter = new Lesson();
+        $this->course->addLesson($chapter);
+        $this->assertEquals(1, $this->course->getLessons()->count());
+        
+        $this->course->addLesson($chapter);
+        $this->assertEquals(1, $this->course->getLessons()->count());
+        
+        $this->course->removeLesson($chapter);
+        $this->assertEquals(0, $this->course->getLessons()->count());
+
+        $this->assertEquals($this->course, $chapter->getCourse());
     }
+    
+    public function testAvailability()
+    {
+        // Start date is after today
+        $this->course->getStartDate()->add(DateInterval::createFromDateString("2 months"));
+        $this->assertEquals(false, $this->course->isAvailable());
 
-    public function testChapterCollection() {
-        $this->assertEquals(0, $this->course->getChapters()->count());
+        // Start date is before today and end date is after today
+        $this->course->getStartDate()->sub(DateInterval::createFromDateString("3 months"));
+        $this->assertEquals(true, $this->course->isAvailable());
 
-        $chapter = new Chapter();
-        $this->course->addChapter($chapter);
-        $this->assertEquals(1, $this->course->getChapters()->count());
-        $this->course->addChapter($chapter);
-        $this->assertEquals(1, $this->course->getChapters()->count());
-        $this->course->removeChapter($chapter);
-        $this->assertEquals(0, $this->course->getChapters()->count());
+        // Start date and end date are before today
+        $this->course->getEndDate()->sub(DateInterval::createFromDateString("8 months"));
+        $this->assertEquals(false, $this->course->isAvailable());
     }
 }
