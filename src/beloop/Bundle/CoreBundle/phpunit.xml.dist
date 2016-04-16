@@ -11,25 +11,19 @@
          syntaxCheck="false"
          bootstrap="vendor/autoload.php"
 >
-    <php>
-        <ini name="intl.error_level" value="0"/>
-        <ini name="memory_limit" value="-1"/>
-    </php>
-
     <testsuites>
-        <testsuite name="beloop Test Suite">
-            <directory>./src/beloop/*/*/Test</directory>
+        <testsuite name="beloop bundle package">
+            <directory>./Test/</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory>./src/beloop/</directory>
+            <directory>./</directory>
             <exclude>
-                <directory>./src/beloop/*/*/Test</directory>
-                <directory>./src/beloop/*/*/Resources</directory>
-                <directory>./src/beloop/*/*/vendor</directory>
-                <directory>./src/beloop/*/*/DependencyInjection</directory>
+                <directory>./Test</directory>
+                <directory>./Resources</directory>
+                <directory>./vendor</directory>
             </exclude>
         </whitelist>
     </filter>

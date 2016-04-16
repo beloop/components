@@ -1,0 +1,55 @@
+beloop\Component\Course\Entity\Course:
+    type: entity
+    repositoryClass: beloop\Component\Course\Repository\CourseRepository
+    table: course
+
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+
+    fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        code:
+            column: code
+            type: string
+            length: 255
+            nullable: false
+        description:
+            column: description
+            type: text
+            nullable: false
+        startDate:
+            column: start_date
+            type: datetime
+            nullable: false
+        endDate:
+            column: end_date
+            type: datetime
+            nullable: false
+        enabled:
+            column: enabled
+            type: boolean
+            nullable: false
+        createdAt:
+            column: created_at
+            type: datetime
+            nullable: false
+        updatedAt:
+            column: updated_at
+            type: datetime
+            nullable: false
+
+    oneToMany:
+        lessons:
+            targetEntity: beloop\Component\Course\Entity\Lesson
+            mappedBy: course
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]

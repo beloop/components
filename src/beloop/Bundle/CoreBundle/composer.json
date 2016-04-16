@@ -1,0 +1,44 @@
+{
+  "name": "beloop/core-bundle",
+  "description": "beloop Core Bundle",
+  "keywords": [
+    "beloop",
+    "core",
+    "ecommerce"
+  ],
+  "homepage": "https://github.com/beloop/CoreBundle",
+  "type": "symfony-bundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Arkaitz Garro",
+      "email": "arkaitz.garro@gamil.com"
+    }
+  ],
+  "require": {
+    "php": "^5.5|^7.0",
+    "doctrine/common": "^2.5",
+    "doctrine/orm": "^2.5",
+
+    "symfony/http-kernel": "^2.7|^3.0",
+    "symfony/console": "^2.7|^3.0",
+
+    "beloop/core": "^0.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.8.19"
+  },
+  "autoload": {
+    "exclude-from-classmap": [
+      "/Test/"
+    ],
+    "psr-4": {
+      "beloop\\Bundle\\CoreBundle\\": ""
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.1-dev"
+    }
+  }
+}

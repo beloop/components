@@ -1,0 +1,43 @@
+{
+  "name": "beloop/course",
+  "description": "beloop Course Component",
+  "keywords": [
+    "beloop",
+    "course",
+    "lms",
+    "component"
+  ],
+  "homepage": "https://github.com/beloop/Course",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Arkaitz Garro",
+      "email": "arkaitz.garro@gamil.com"
+    }
+  ],
+  "require": {
+    "php": "^5.5|^7.0",
+    "doctrine/common": "^2.5",
+    "doctrine/orm": "^2.5",
+    "twig/twig": "^1.23",
+
+    "beloop/core": "^0.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.8.19"
+  },
+  "autoload": {
+    "exclude-from-classmap": [
+      "/Test/"
+    ],
+    "psr-4": {
+      "beloop\\Component\\Course\\": ""
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.1-dev"
+    }
+  }
+}

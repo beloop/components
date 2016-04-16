@@ -1,0 +1,41 @@
+{
+  "name": "beloop/course-bundle",
+  "description": "beloop Product Bundle",
+  "keywords": [
+    "beloop",
+    "course",
+    "ecommerce"
+  ],
+  "homepage": "https://github.com/beloop/CourseBundle",
+  "type": "symfony-bundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Arkaitz Garro",
+      "email": "arkaitz.garro@gamil.com"
+    }
+  ],
+  "require": {
+    "php": "^5.5|^7.0",
+    "doctrine/common": "^2.5",
+    "doctrine/orm": "^2.5",
+
+    "beloop/course": "^0.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.8.19"
+  },
+  "autoload": {
+    "exclude-from-classmap": [
+      "/Test/"
+    ],
+    "psr-4": {
+      "beloop\\Bundle\\CourseBundle\\": ""
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.1-dev"
+    }
+  }
+}

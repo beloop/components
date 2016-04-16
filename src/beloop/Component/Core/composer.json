@@ -1,0 +1,35 @@
+{
+  "name": "beloop/core",
+  "description": "beloop Core Component",
+  "keywords": [
+    "beloop",
+    "core",
+    "lms",
+    "component"
+  ],
+  "homepage": "https://github.com/beloop/Core",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Arkaitz Garro",
+      "email": "arkaitz.garro@gamil.com"
+    }
+  ],
+  "require": {
+    "php": "^5.5|^7.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.8.19"
+  },
+  "autoload": {
+    "psr-4": {
+      "beloop\\Component\\Core\\": ""
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.1-dev"
+    }
+  }
+}

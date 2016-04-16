@@ -1,12 +1,12 @@
 {
-  "name": "DYB/dyb-components",
-  "description": "DYB components for LMS",
+  "name": "beloop/components",
+  "description": "beloop components for LMS",
   "keywords": [
-    "DYB",
+    "beloop",
     "lms",
     "component"
   ],
-  "homepage": "https://github.com/AHDO/dyb-components",
+  "homepage": "https://github.com/beloop/components",
   "type": "library",
   "license": "MIT",
   "authors": [
@@ -20,8 +20,8 @@
     "doctrine/common": "^2.5"
   },
     "replace": {
-        "DYB/core": "self.version",
-        "DYB/course": "self.version"
+        "beloop/core": "self.version",
+        "beloop/course": "self.version"
     },
     "require-dev": {
         "fabpot/php-cs-fixer": "1.11",
@@ -33,7 +33,7 @@
             "src/**/Test/"
         ],
         "psr-4": {
-            "DYB\\": "src/DYB"
+            "beloop\\": "src/beloop"
         }
     },
     "extra": {

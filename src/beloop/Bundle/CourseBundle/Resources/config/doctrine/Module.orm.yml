@@ -1,0 +1,62 @@
+beloop\Component\Course\Entity\Module:
+    type: entity
+    repositoryClass: beloop\Component\Course\Repository\ModuleRepository
+    table: module
+    inheritanceType: joined
+        discriminatorColumn:
+            name: module_type
+            type: string
+
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+
+    fields:
+        name:
+            column: name
+            type: string
+            length: 255
+            nullable: false
+        url:
+            column: url
+            type: string
+            length: 255
+            nullable: false
+        icon:
+            column: icon
+            type: string
+            length: 255
+            nullable: false
+        position:
+            column: position
+            type: integer
+            nullable: false
+        enabled:
+            column: enabled
+            type: boolean
+            nullable: false
+        createdAt:
+            column: created_at
+            type: datetime
+            nullable: false
+        updatedAt:
+            column: updated_at
+            type: datetime
+            nullable: false
+
+    manyToOne:
+        lesson:
+            targetEntity: beloop\Component\Course\Entity\Lesson
+            inversedBy: modules
+            joinColumn:
+                name: lesson_id
+                referencedColumnName: id
+                nullable: false
+                onDelete: "CASCADE"
+                onUpdate: "CASCADE"
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]
