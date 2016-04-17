@@ -13,7 +13,7 @@
  * @author Arkaitz Garro <arkaitz.garro@gmail.com>
  */
 
-namespace beloop\Bundle\CourseBundle;
+namespace beloop\Bundle\CoreBundle;
 
 use beloop\Bundle\CoreBundle\Abstracts\AbstractBundle;
 
