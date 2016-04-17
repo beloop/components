@@ -15,7 +15,7 @@
 
 namespace beloop\Component\Course\Test\Unit\Factory;
 
-use beloop\Component\Core\Tests\UnitTest\Factory\Abstracts\AbstractFactoryTest;
+use beloop\Component\Core\Tests\Unit\Factory\Abstracts\AbstractFactoryTest;
 
 class VideoFactoryTest extends AbstractFactoryTest
 {
