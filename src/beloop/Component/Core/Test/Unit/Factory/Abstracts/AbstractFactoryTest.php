@@ -13,7 +13,7 @@
  * @author Arkaitz Garro <arkaitz.garro@gmail.com>
  */
 
-namespace beloop\Component\Core\Tests\UnitTest\Factory\Abstracts;
+namespace beloop\Component\Core\Test\Unit\Factory\Abstracts;
 
 use PHPUnit_Framework_TestCase;
 
