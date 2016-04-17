@@ -1,6 +1,9 @@
 Course Component
 ================
 
+[![Build Status](https://travis-ci.org/beloop/course.png?branch=master)](http://travis-ci.org/beloop/course)
+[![Latest Stable Version](https://poser.pugx.org/beloop/course/v/stable)](https://packagist.org/packages/beelop/course)
+
 This package is part of [beloop](http://github.com/beloop/components) project, a
 suite of Learning Management System Components and Bundles built on top of Symfony and under
 [MIT](http://opensource.org/licenses/MIT) license.

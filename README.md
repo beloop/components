@@ -1,6 +1,7 @@
 # components
 
 [![Build Status](https://travis-ci.org/beloop/components.png?branch=master)](http://travis-ci.org/beloop/components)
+[![Latest Stable Version](https://poser.pugx.org/beloop/components/v/stable)](https://packagist.org/packages/beelop/components)
 
 beloop components for LMS
 
