@@ -18,7 +18,7 @@ namespace Beloop\Bundle\CoreBundle\CompilerPass\Abstracts;
 use Mmoreram\SimpleDoctrineMapping\CompilerPass\Abstracts\AbstractMappingCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-class AbstractBeloopMappingCompilerPass extends AbstractMappingCompilerPass
+abstract class AbstractBeloopMappingCompilerPass extends AbstractMappingCompilerPass
 {
     /**
      * Add entity mapping given the entity name, given that all entity
