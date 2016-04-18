@@ -1,0 +1,43 @@
+{
+  "name": "beloop/language",
+  "description": "Beloop Language Component",
+  "keywords": [
+    "beloop",
+    "language",
+    "lms",
+    "component"
+  ],
+  "homepage": "https://github.com/beloop/Language",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Arkaitz Garro",
+      "email": "arkaitz.garro@gamil.com"
+    }
+  ],
+  "require": {
+    "php": "^5.5|^7.0",
+    "doctrine/common": "^2.5",
+    "doctrine/orm": "^2.5",
+    "twig/twig": "^1.23",
+
+    "beloop/core": "^0.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.8.19"
+  },
+  "autoload": {
+    "exclude-from-classmap": [
+      "/Test/"
+    ],
+    "psr-4": {
+      "Beloop\\Component\\Language\\": ""
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.2-dev"
+    }
+  }
+}
