@@ -121,7 +121,7 @@ class Lesson implements LessonInterface
     }
 
     /**
-     * @param Module $module
+     * @param ModuleInterface $module
      * @return $this Self object
      */
     public function addModule(ModuleInterface $module)
@@ -134,7 +134,7 @@ class Lesson implements LessonInterface
     }
 
     /**
-     * @param Module $module
+     * @param ModuleInterface $module
      * @return $this Self object
      */
     public function removeModule(ModuleInterface $module)
@@ -173,7 +173,7 @@ class Lesson implements LessonInterface
     }
 
     /**
-     * @param Course $course
+     * @param CourseInterface $course
      * @return $this Self object
      */
     public function setCourse(CourseInterface $course)

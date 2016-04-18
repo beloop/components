@@ -80,4 +80,9 @@ interface ModuleInterface
      * Module is accessible by today
      */
     public function isAvailable();
+
+    /**
+     * @return CourseInterface
+     */
+    public function getCourse();
 }
