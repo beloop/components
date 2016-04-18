@@ -17,7 +17,7 @@
     </php>
 
     <testsuites>
-        <testsuite name="beloop component package">
+        <testsuite name="Beloop component package">
             <directory>./Test</directory>
         </testsuite>
     </testsuites>

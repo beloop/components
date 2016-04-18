@@ -1,6 +1,6 @@
-beloop\Component\Course\Entity\Module:
+Beloop\Component\Course\Entity\Module:
     type: entity
-    repositoryClass: beloop\Component\Course\Repository\ModuleRepository
+    repositoryClass: Beloop\Component\Course\Repository\ModuleRepository
     table: module
     inheritanceType: joined
         discriminatorColumn:
@@ -48,7 +48,7 @@ beloop\Component\Course\Entity\Module:
 
     manyToOne:
         lesson:
-            targetEntity: beloop\Component\Course\Entity\Lesson
+            targetEntity: Beloop\Component\Course\Entity\Lesson
             inversedBy: modules
             joinColumn:
                 name: lesson_id

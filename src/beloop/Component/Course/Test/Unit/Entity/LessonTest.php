@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the beloop package.
+ * This file is part of the Beloop package.
  *
- * Copyright (c) 2016 beloop Studio B.V.
+ * Copyright (c) 2016 AHDO Studio B.V.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,18 +13,18 @@
  * @author Arkaitz Garro <arkaitz.garro@gmail.com>
  */
 
-namespace beloop\Component\Course\Test\Unit\Entity;
+namespace Beloop\Component\Course\Test\Unit\Entity;
 
 use DateInterval;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit_Framework_TestCase;
 
-use beloop\Component\Course\Entity\Course;
-use beloop\Component\Course\Entity\Lesson;
-use beloop\Component\Course\Entity\Page;
-use beloop\Component\Course\Entity\Quiz;
-use beloop\Component\Course\Entity\Video;
+use Beloop\Component\Course\Entity\Course;
+use Beloop\Component\Course\Entity\Lesson;
+use Beloop\Component\Course\Entity\Page;
+use Beloop\Component\Course\Entity\Quiz;
+use Beloop\Component\Course\Entity\Video;
 
 /**
  * Class LessonTest.
@@ -35,7 +35,7 @@ class LessonTest extends PHPUnit_Framework_TestCase {
 
     public function setUp()
     {
-        $this->course = $this->getMock('beloop\Component\Course\Entity\Course', null);
+        $this->course = $this->getMock('Beloop\Component\Course\Entity\Course', null);
         $this->course = new Course();
         $this->lesson = new Lesson();
 

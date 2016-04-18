@@ -1,7 +1,7 @@
 Course Bundle
 =============
 
-This package is part of [beloop](http://github.com/beloop/components) project, a
+This package is part of [Beloop](http://github.com/beloop/components) project, a
 suite of Learning Management System Components and Bundles built on top of Symfony and under
 [MIT](http://opensource.org/licenses/MIT) license.
 

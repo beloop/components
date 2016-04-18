@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the beloop package.
+ * This file is part of the Beloop package.
  *
- * Copyright (c) 2016 beloop Studio B.V.
+ * Copyright (c) 2016 AHDO Studio B.V.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,14 +13,14 @@
  * @author Arkaitz Garro <arkaitz.garro@gmail.com>
  */
 
-namespace beloop\Component\Course\Factory;
+namespace Beloop\Component\Course\Factory;
 
 use DateInterval;
 use DateTime;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
-use beloop\Component\Core\Factory\Abstracts\AbstractFactory;
+use Beloop\Component\Core\Factory\Abstracts\AbstractFactory;
 
 /**
  * Factory for Page entities.

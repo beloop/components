@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the beloop package.
+ * This file is part of the Beloop package.
  *
- * Copyright (c) 2016 beloop Studio B.V.
+ * Copyright (c) 2016 AHDO Studio B.V.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,7 +13,7 @@
  * @author Arkaitz Garro <arkaitz.garro@gmail.com>
  */
 
-namespace beloop\Bundle\CoreBundle\Abstracts;
+namespace Beloop\Bundle\CoreBundle\Abstracts;
 
 use Symfony\Component\Console\Application;
 use Symfony\Component\HttpKernel\Bundle\Bundle;

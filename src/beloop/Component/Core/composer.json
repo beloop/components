@@ -1,6 +1,6 @@
 {
   "name": "beloop/core",
-  "description": "beloop Core Component",
+  "description": "Beloop Core Component",
   "keywords": [
     "beloop",
     "core",
@@ -24,7 +24,7 @@
   },
   "autoload": {
     "psr-4": {
-      "beloop\\Component\\Core\\": ""
+      "Beloop\\Component\\Core\\": ""
     }
   },
   "extra": {

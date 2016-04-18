@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the beloop package.
+ * This file is part of the Beloop package.
  *
- * Copyright (c) 2016 beloop Studio B.V.
+ * Copyright (c) 2016 AHDO Studio B.V.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,22 +13,22 @@
  * @author Arkaitz Garro <arkaitz.garro@gmail.com>
  */
 
-namespace beloop\Component\Course\Entity;
+namespace Beloop\Component\Course\Entity;
 
 use \DateTime;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 
-use beloop\Component\Core\Entity\Traits\DateTimeTrait;
-use beloop\Component\Core\Entity\Traits\EnabledTrait;
-use beloop\Component\Core\Entity\Traits\IdentifiableTrait;
-use beloop\Component\Core\Entity\Traits\PositionTrait;
+use Beloop\Component\Core\Entity\Traits\DateTimeTrait;
+use Beloop\Component\Core\Entity\Traits\EnabledTrait;
+use Beloop\Component\Core\Entity\Traits\IdentifiableTrait;
+use Beloop\Component\Core\Entity\Traits\PositionTrait;
 
-use beloop\Component\Course\Entity\Abstracts\Module;
-use beloop\Component\Course\Entity\Interfaces\CourseInterface;
-use beloop\Component\Course\Entity\Interfaces\LessonInterface;
-use beloop\Component\Course\Entity\Interfaces\ModuleInterface;
+use Beloop\Component\Course\Entity\Abstracts\Module;
+use Beloop\Component\Course\Entity\Interfaces\CourseInterface;
+use Beloop\Component\Course\Entity\Interfaces\LessonInterface;
+use Beloop\Component\Course\Entity\Interfaces\ModuleInterface;
 
 /**
  * Course lesson representation

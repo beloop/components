@@ -1,6 +1,6 @@
-beloop\Component\Course\Entity\Course:
+Beloop\Component\Course\Entity\Course:
     type: entity
-    repositoryClass: beloop\Component\Course\Repository\CourseRepository
+    repositoryClass: Beloop\Component\Course\Repository\CourseRepository
     table: course
 
     id:
@@ -47,7 +47,7 @@ beloop\Component\Course\Entity\Course:
 
     oneToMany:
         lessons:
-            targetEntity: beloop\Component\Course\Entity\Lesson
+            targetEntity: Beloop\Component\Course\Entity\Lesson
             mappedBy: course
 
     lifecycleCallbacks:

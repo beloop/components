@@ -1,6 +1,6 @@
-beloop\Component\Course\Entity\Lesson:
+Beloop\Component\Course\Entity\Lesson:
     type: entity
-    repositoryClass: beloop\Component\Course\Repository\LessonRepository
+    repositoryClass: Beloop\Component\Course\Repository\LessonRepository
     table: lesson
 
     id:
@@ -47,12 +47,12 @@ beloop\Component\Course\Entity\Lesson:
 
     oneToMany:
         modules:
-            targetEntity: beloop\Component\Course\Entity\Module
+            targetEntity: Beloop\Component\Course\Entity\Module
             mappedBy: course
 
     manyToOne:
         course:
-            targetEntity: beloop\Component\Course\Entity\Course
+            targetEntity: Beloop\Component\Course\Entity\Course
             inversedBy: lessons
             joinColumn:
                 name: course_id

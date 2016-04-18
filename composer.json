@@ -33,7 +33,7 @@
             "src/**/Test/"
         ],
         "psr-4": {
-            "beloop\\": "src/beloop"
+            "Beloop\\": "src/Beloop"
         }
     },
     "extra": {

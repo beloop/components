@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the beloop package.
+ * This file is part of the Beloop package.
  *
- * Copyright (c) 2016 beloop Studio B.V.
+ * Copyright (c) 2016 AHDO Studio B.V.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,11 +13,11 @@
  * @author Arkaitz Garro <arkaitz.garro@gmail.com>
  */
 
-namespace beloop\Component\Core\Factory\Abstracts;
+namespace Beloop\Component\Core\Factory\Abstracts;
 
 use DateTime;
 
-use beloop\Component\Core\Factory\Traits\EntityNamespaceTrait;
+use Beloop\Component\Core\Factory\Traits\EntityNamespaceTrait;
 
 /**
  * Class AbstractFactory.

@@ -1,6 +1,6 @@
 {
   "name": "beloop/course-bundle",
-  "description": "beloop Product Bundle",
+  "description": "Beloop Product Bundle",
   "keywords": [
     "beloop",
     "course",
@@ -31,7 +31,7 @@
       "/Test/"
     ],
     "psr-4": {
-      "beloop\\Bundle\\CourseBundle\\": ""
+      "Beloop\\Bundle\\CourseBundle\\": ""
     }
   },
   "extra": {

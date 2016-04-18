@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the beloop package.
+ * This file is part of the Beloop package.
  *
- * Copyright (c) 2016 beloop Studio B.V.
+ * Copyright (c) 2016 AHDO Studio B.V.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,14 +13,14 @@
  * @author Arkaitz Garro <arkaitz.garro@gmail.com>
  */
 
-namespace beloop\Component\Course\Entity\Interfaces;
+namespace Beloop\Component\Course\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 
-use beloop\Component\Core\Entity\Interfaces\IdentifiableInterface;
-use beloop\Component\Core\Entity\Interfaces\DateTimeInterface;
-use beloop\Component\Core\Entity\Interfaces\EnabledInterface;
-use beloop\Component\Core\Entity\Interfaces\PositionInterface;
+use Beloop\Component\Core\Entity\Interfaces\IdentifiableInterface;
+use Beloop\Component\Core\Entity\Interfaces\DateTimeInterface;
+use Beloop\Component\Core\Entity\Interfaces\EnabledInterface;
+use Beloop\Component\Core\Entity\Interfaces\PositionInterface;
 
 /**
  * Interface LessonInterface

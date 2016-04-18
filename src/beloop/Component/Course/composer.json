@@ -1,6 +1,6 @@
 {
   "name": "beloop/course",
-  "description": "beloop Course Component",
+  "description": "Beloop Course Component",
   "keywords": [
     "beloop",
     "course",
@@ -32,7 +32,7 @@
       "/Test/"
     ],
     "psr-4": {
-      "beloop\\Component\\Course\\": ""
+      "Beloop\\Component\\Course\\": ""
     }
   },
   "extra": {

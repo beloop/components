@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of the beloop package.
+ * This file is part of the Beloop package.
  *
- * Copyright (c) 2016 beloop Studio B.V.
+ * Copyright (c) 2016 AHDO Studio B.V.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,9 +13,9 @@
  * @author Arkaitz Garro <arkaitz.garro@gmail.com>
  */
 
-namespace beloop\Component\Course\Test\Unit\Factory;
+namespace Beloop\Component\Course\Test\Unit\Factory;
 
-use beloop\Component\Core\Test\Unit\Factory\Abstracts\AbstractFactoryTest;
+use Beloop\Component\Core\Test\Unit\Factory\Abstracts\AbstractFactoryTest;
 
 class VideoFactoryTest extends AbstractFactoryTest
 {
@@ -33,7 +33,7 @@ class VideoFactoryTest extends AbstractFactoryTest
      */
     public function getFactoryNamespace()
     {
-        return 'beloop\Component\Course\Factory\VideoFactory';
+        return 'Beloop\Component\Course\Factory\VideoFactory';
     }
 
     /**
@@ -43,7 +43,7 @@ class VideoFactoryTest extends AbstractFactoryTest
      */
     public function getEntityNamespace()
     {
-        return 'beloop\Component\Course\Entity\Video';
+        return 'Beloop\Component\Course\Entity\Video';
     }
 
     public function testDefaultValues() {

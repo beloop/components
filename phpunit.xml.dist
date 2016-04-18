@@ -17,19 +17,19 @@
     </php>
 
     <testsuites>
-        <testsuite name="beloop Test Suite">
-            <directory>./src/beloop/*/*/Test</directory>
+        <testsuite name="Beloop Test Suite">
+            <directory>./src/Beloop/*/*/Test</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory>./src/beloop/</directory>
+            <directory>./src/Beloop/</directory>
             <exclude>
-                <directory>./src/beloop/*/*/Test</directory>
-                <directory>./src/beloop/*/*/Resources</directory>
-                <directory>./src/beloop/*/*/vendor</directory>
-                <directory>./src/beloop/*/*/DependencyInjection</directory>
+                <directory>./src/Beloop/*/*/Test</directory>
+                <directory>./src/Beloop/*/*/Resources</directory>
+                <directory>./src/Beloop/*/*/vendor</directory>
+                <directory>./src/Beloop/*/*/DependencyInjection</directory>
             </exclude>
         </whitelist>
     </filter>

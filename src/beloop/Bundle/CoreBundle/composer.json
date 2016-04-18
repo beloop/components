@@ -1,6 +1,6 @@
 {
   "name": "beloop/core-bundle",
-  "description": "beloop Core Bundle",
+  "description": "Beloop Core Bundle",
   "keywords": [
     "beloop",
     "core",
@@ -22,6 +22,8 @@
 
     "symfony/http-kernel": "^2.7|^3.0",
     "symfony/console": "^2.7|^3.0",
+    "symfony/dependency-injection": "^2.7|^3.0",
+    "mmoreram/simple-doctrine-mapping": "^1.0",
 
     "beloop/core": "^0.1"
   },
@@ -33,7 +35,7 @@
       "/Test/"
     ],
     "psr-4": {
-      "beloop\\Bundle\\CoreBundle\\": ""
+      "Beloop\\Bundle\\CoreBundle\\": ""
     }
   },
   "extra": {
