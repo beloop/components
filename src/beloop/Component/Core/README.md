@@ -1,7 +1,7 @@
 Core Component
 ==============
 
-[![Build Status](https://travis-ci.org/beloop/core.png?branch=master)](http://travis-ci.org/beloop/core)
+[![Build Status](https://travis-ci.org/beloop/Core.png?branch=master)](http://travis-ci.org/beloop/Core)
 [![Latest Stable Version](https://poser.pugx.org/beloop/core/v/stable)](https://packagist.org/packages/beloop/core)
 
 This package is part of [Beloop](http://github.com/beloop/components) project, a

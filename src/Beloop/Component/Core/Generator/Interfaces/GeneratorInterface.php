@@ -13,26 +13,16 @@
  * @author Arkaitz Garro <arkaitz.garro@gmail.com>
  */
 
-namespace Beloop\Component\Core\Entity\Interfaces;
+namespace Beloop\Component\Core\Generator\Interfaces;
 
-/**
- * Interface PositionInterface.
- */
-interface PositionInterface
+interface GeneratorInterface
 {
     /**
-     * Set position.
+     * Generates a hash.
      *
-     * @param int $position position value
+     * @param int $length Length of string generated
      *
-     * @return $this Self object
+     * @return string Generation
      */
-    public function setPosition($position);
-
-    /**
-     * Get position.
-     *
-     * @return int Position
-     */
-    public function getPosition();
+    public function generate($length = null);
 }
