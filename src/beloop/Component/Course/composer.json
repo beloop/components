@@ -22,7 +22,7 @@
     "doctrine/orm": "^2.5",
     "twig/twig": "^1.23",
 
-    "beloop/core": "^0.1"
+    "beloop/core": "dev-master"
   },
   "require-dev": {
     "phpunit/phpunit": "4.8.19"
