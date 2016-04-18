@@ -75,13 +75,13 @@ interface CourseInterface
     public function setLessons(Collection $lessons);
 
     /**
-     * @param Lesson $lesson
+     * @param LessonInterface $lesson
      * @return $this Self object
      */
     public function addLesson(LessonInterface $lesson);
 
     /**
-     * @param Lesson $lesson
+     * @param LessonInterface $lesson
      * @return $this Self object
      */
     public function removeLesson(LessonInterface $lesson);

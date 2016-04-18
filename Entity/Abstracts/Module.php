@@ -120,5 +120,13 @@ abstract class Module implements ModuleInterface
 
         return $this->lesson->isAvailable();
     }
-    
+
+    /**
+     * Get module course
+     */
+    public function getCourse()
+    {
+        return $this->getLesson()->getCourse();
+    }
+
 }

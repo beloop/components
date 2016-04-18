@@ -1,7 +1,7 @@
 Course Component
 ================
 
-[![Build Status](https://travis-ci.org/beloop/course.png?branch=master)](http://travis-ci.org/beloop/course)
+[![Build Status](https://travis-ci.org/beloop/Course.png?branch=master)](http://travis-ci.org/beloop/Course)
 [![Latest Stable Version](https://poser.pugx.org/beloop/course/v/stable)](https://packagist.org/packages/beloop/course)
 
 This package is part of [Beloop](http://github.com/beloop/components) project, a
