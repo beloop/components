@@ -1,4 +1,4 @@
 split:
     # Split definition for http://gitsplit.com
-    src/beloop/Bundle/*: git@github.com:beloop/$i.git
-    src/beloop/Component/*: git@github.com:beloop/$i.git
+    src/Beloop/Bundle/*: git@github.com:beloop/$i.git
+    src/Beloop/Component/*: git@github.com:beloop/$i.git
