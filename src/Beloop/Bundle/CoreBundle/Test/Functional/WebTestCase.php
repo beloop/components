@@ -65,7 +65,6 @@ abstract class WebTestCase extends PHPUnit_Framework_TestCase
     public static function setUpBeforeClass()
     {
         try {
-            die('8768');
             static::$kernel = static::createKernel();
             static::$kernel->boot();
             static::$application = new Application(static::$kernel);

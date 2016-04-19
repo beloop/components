@@ -55,7 +55,7 @@ class BeloopLanguageBundle extends AbstractBundle
     public static function getBundleDependencies(KernelInterface $kernel)
     {
         return [
-            'Beloop\Bundle\CoreBundle\CoreBundle',
+            'Beloop\Bundle\CoreBundle\BeloopCoreBundle',
         ];
     }
 }
