@@ -1,2 +1,0 @@
-imports:
-    - { resource: '@BeloopCoreBundle/Resources/config/test/configuration.test.yml' }

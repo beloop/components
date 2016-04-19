@@ -37,14 +37,14 @@ class Configuration extends AbstractConfiguration
                         ->append($this->addMappingNode(
                             'course',
                             'Beloop\Component\Course\Entity\Course',
-                            '@CourseBundle/Resources/config/doctrine/Course.orm.yml',
+                            '@BeloopCourseBundle/Resources/config/doctrine/Course.orm.yml',
                             'default',
                             true
                         ))
                         ->append($this->addMappingNode(
                             'lesson',
                             'Beloop\Component\Course\Entity\Lesson',
-                            '@CourseBundle/Resources/config/doctrine/Lesson.orm.yml',
+                            '@BeloopCourseBundle/Resources/config/doctrine/Lesson.orm.yml',
                             'default',
                             true
                         ))
