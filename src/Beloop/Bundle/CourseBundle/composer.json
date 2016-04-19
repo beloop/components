@@ -20,8 +20,8 @@
     "doctrine/common": "^2.5",
     "doctrine/orm": "^2.5",
 
-    "beloop/core": "^0.2",
-    "beloop/course": "^0.2"
+    "beloop/core": "^0.3",
+    "beloop/course": "^0.3"
   },
   "require-dev": {
     "phpunit/phpunit": "4.8.19"
@@ -36,7 +36,7 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "0.2-dev"
+      "dev-master": "0.3-dev"
     }
   }
 }
