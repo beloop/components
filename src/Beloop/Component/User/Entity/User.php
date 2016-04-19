@@ -15,7 +15,6 @@
 
 namespace Beloop\Component\User\Entity;
 
-use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Security\Core\Role\Role;
 
 use Beloop\Component\Language\Entity\Interfaces\LanguageInterface;
@@ -24,6 +23,10 @@ use Beloop\Component\User\Entity\Interfaces\UserInterface;
 
 class User extends AbstractUser implements UserInterface
 {
+    use IdentifiableTrait,
+        DateTimeTrait,
+        EnabledTrait;
+
     /**
      * @var LanguageInterface
      *
