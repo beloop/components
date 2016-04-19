@@ -22,9 +22,9 @@ use Beloop\Bundle\CourseBundle\CompilerPass\MappingCompilerPass;
 use Beloop\Bundle\CourseBundle\DependencyInjection\BeloopCourseExtension;
 
 /**
- * CourseBundle Bundle.
+ * BeloopCourseBundle Bundle.
  */
-class CourseBundle extends AbstractBundle
+class BeloopCourseBundle extends AbstractBundle
 {
     /**
      * @param ContainerBuilder $container

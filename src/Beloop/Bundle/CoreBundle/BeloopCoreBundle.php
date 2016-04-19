@@ -18,9 +18,9 @@ namespace Beloop\Bundle\CoreBundle;
 use Beloop\Bundle\CoreBundle\Abstracts\AbstractBundle;
 
 /**
- * CoreBundle Bundle.
+ * BeloopCoreBundle Bundle.
  */
-class CoreBundle extends AbstractBundle
+class BeloopCoreBundle extends AbstractBundle
 {
 
 }
