@@ -30,7 +30,7 @@ class LanguageManagerTest extends WebTestCase
     protected static function loadFixturesBundles()
     {
         return [
-            'BeloopLanguageBundle',
+            //'BeloopLanguageBundle',
         ];
     }
 

@@ -34,14 +34,14 @@ class AppKernel extends AbstractBeloopKernel
     public function registerBundles()
     {
         $instances = $this->getBundleInstances($this, [
-            'Beloop\Bundle\CoreBundle\BeloopCoreBundle',
-            'Symfony\Bundle\FrameworkBundle\FrameworkBundle',
-            'Doctrine\Bundle\DoctrineBundle\DoctrineBundle',
-            'Beloop\Bundle\LanguageBundle\BeloopLanguageBundle',
-            'Elcodi\Bundle\FixturesBoosterBundle\ElcodiFixturesBoosterBundle',
-            'Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle',
+//            'Beloop\Bundle\CoreBundle\BeloopCoreBundle',
+//            'Symfony\Bundle\FrameworkBundle\FrameworkBundle',
+//            'Doctrine\Bundle\DoctrineBundle\DoctrineBundle',
+//            'Beloop\Bundle\LanguageBundle\BeloopLanguageBundle',
+//            'Elcodi\Bundle\FixturesBoosterBundle\ElcodiFixturesBoosterBundle',
+//            'Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle',
         ]);
-        
+
         return $instances;
     }
 
