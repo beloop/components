@@ -23,6 +23,7 @@
   "replace": {
     "beloop/core-bundle": "self.version",
     "beloop/course-bundle": "self.version",
+    "beloop/language-bundle": "self.version",
     "beloop/core": "self.version",
     "beloop/course": "self.version",
     "beloop/language": "self.version",
@@ -43,7 +44,7 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "0.1-dev"
+      "dev-master": "0.3-dev"
     }
   },
   "scripts": {

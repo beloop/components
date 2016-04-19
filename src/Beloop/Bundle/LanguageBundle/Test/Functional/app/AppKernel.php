@@ -41,7 +41,7 @@ class AppKernel extends AbstractBeloopKernel
             'Elcodi\Bundle\FixturesBoosterBundle\ElcodiFixturesBoosterBundle',
             'Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle',
         ]);
-        var_dump($instances);
+        
         return $instances;
     }
 
