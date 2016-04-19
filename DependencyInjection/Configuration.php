@@ -42,20 +42,6 @@ class Configuration extends AbstractConfiguration
                             true
                         ))
                         ->append($this->addMappingNode(
-                            'admin_user',
-                            'Beloop\Component\User\Entity\AdminUser',
-                            '@BeloopUserBundle/Resources/config/doctrine/AdminUser.orm.yml',
-                            'default',
-                            true
-                        ))
-                        ->append($this->addMappingNode(
-                            'teacher',
-                            'Beloop\Component\User\Entity\Teacher',
-                            '@BeloopUserBundle/Resources/config/doctrine/Teacher.orm.yml',
-                            'default',
-                            true
-                        ))
-                        ->append($this->addMappingNode(
                             'user',
                             'Beloop\Component\User\Entity\User',
                             '@BeloopUserBundle/Resources/config/doctrine/User.orm.yml',

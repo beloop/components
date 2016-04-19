@@ -80,16 +80,6 @@ class BeloopUserExtension extends AbstractExtension implements EntitiesOverridab
             'beloop.entity.abstract_user.manager' => $config['mapping']['abstract_user']['manager'],
             'beloop.entity.abstract_user.enabled' => $config['mapping']['abstract_user']['enabled'],
 
-            'beloop.entity.admin_user.class' => $config['mapping']['admin_user']['class'],
-            'beloop.entity.admin_user.mapping_file' => $config['mapping']['admin_user']['mapping_file'],
-            'beloop.entity.admin_user.manager' => $config['mapping']['admin_user']['manager'],
-            'beloop.entity.admin_user.enabled' => $config['mapping']['admin_user']['enabled'],
-
-            'beloop.entity.teacher.class' => $config['mapping']['teacher']['class'],
-            'beloop.entity.teacher.mapping_file' => $config['mapping']['teacher']['mapping_file'],
-            'beloop.entity.teacher.manager' => $config['mapping']['teacher']['manager'],
-            'beloop.entity.teacher.enabled' => $config['mapping']['teacher']['enabled'],
-
             'beloop.entity.user.class' => $config['mapping']['user']['class'],
             'beloop.entity.user.mapping_file' => $config['mapping']['user']['mapping_file'],
             'beloop.entity.user.manager' => $config['mapping']['user']['manager'],
@@ -117,8 +107,6 @@ class BeloopUserExtension extends AbstractExtension implements EntitiesOverridab
     {
         return [
             'Beloop\Component\User\Entity\Interfaces\UserInterface' => 'beloop.entity.user.class',
-            'Beloop\Component\User\Entity\Interfaces\TeacherInterface' => 'beloop.entity.teacher.class',
-            'Beloop\Component\User\Entity\Interfaces\AdminUserInterface' => 'beloop.entity.admin_user.class',
         ];
     }
 
