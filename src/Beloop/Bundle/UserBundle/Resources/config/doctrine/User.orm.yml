@@ -1,0 +1,25 @@
+Beloop\Component\User\Entity\User:
+    type: entity
+    repositoryClass: Beloop\Component\User\Repository\UserRepository
+    table: user
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        guest:
+            column: guest
+            type: boolean
+
+    manyToOne:
+        language:
+            targetEntity: Beloop\Component\Language\Entity\Interfaces\LanguageInterface
+            joinColumn:
+                name: language_iso
+                referencedColumnName: iso
+                nullable: true
+
+    lifecycleCallbacks:
+            preUpdate: [loadUpdateAt]
+            prePersist: [loadUpdateAt]

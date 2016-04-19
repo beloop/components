@@ -1,0 +1,15 @@
+ecurity:
+
+    providers:
+        user:
+            entity:
+                class: %beloop.entity.user.class%
+                property: email
+        teacher:
+            entity:
+                class: %beloop.entity.teacher.class%
+                property: email
+        adminuser:
+            entity:
+                class: %beloop.entity.admin_user.class%
+                property: email

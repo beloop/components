@@ -4,7 +4,7 @@
   "keywords": [
     "beloop",
     "course",
-    "ecommerce"
+    "lms"
   ],
   "homepage": "https://github.com/beloop/CourseBundle",
   "type": "symfony-bundle",
