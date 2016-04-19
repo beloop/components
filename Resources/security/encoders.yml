@@ -1,0 +1,12 @@
+security:
+
+    encoders:
+        Beloop\Component\User\Entity\User:
+            algorithm: bcrypt
+            cost:      15
+        Beloop\Component\User\Entity\Teacher:
+            algorithm: bcrypt
+            cost:      15
+        Beloop\Component\User\Entity\AdminUser:
+            algorithm: bcrypt
+            cost:      15
