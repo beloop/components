@@ -1,0 +1,45 @@
+{
+  "name": "beloop/user",
+  "description": "Beloop User Component",
+  "keywords": [
+    "beloop",
+    "user",
+    "lms",
+    "component"
+  ],
+  "homepage": "https://github.com/beloop/User",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Arkaitz Garro",
+      "email": "arkaitz.garro@gamil.com"
+    }
+  ],
+  "require": {
+    "php": "^5.5|^7.0",
+    "doctrine/common": "^2.5",
+    "doctrine/orm": "^2.5",
+    "symfony/security-core": "^2.7|^3.0",
+    "twig/twig": "^1.23",
+
+    "beloop/core": "^0.2",
+    "beloop/language": "^0.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.8.19"
+  },
+  "autoload": {
+    "exclude-from-classmap": [
+      "/Test/"
+    ],
+    "psr-4": {
+      "Beloop\\Component\\User\\": ""
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.2-dev"
+    }
+  }
+}
