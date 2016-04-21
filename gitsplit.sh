@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# http://francis-besset.com/git-subtree-with-tags.html
+
 git fetch origin
 
 git checkout -B subtree_master origin/master
