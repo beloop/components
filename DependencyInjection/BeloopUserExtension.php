@@ -21,7 +21,7 @@ use Beloop\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Beloop\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
 
 /**
- * This class loads and manages your bundle configuration.
+ * This is the class that loads and manages your bundle configuration.
  */
 class BeloopUserExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
