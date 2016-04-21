@@ -56,7 +56,7 @@ class BeloopUserBundle extends AbstractBundle
     public static function getBundleDependencies(KernelInterface $kernel)
     {
         return [
-            'Beloop\Bundle\UserBundle\BeloopUserBundle',
+            'Beloop\Bundle\CoreBundle\BeloopCoreBundle',
         ];
     }
 }
