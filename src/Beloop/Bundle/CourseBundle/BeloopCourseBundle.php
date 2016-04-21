@@ -16,6 +16,7 @@
 namespace Beloop\Bundle\CourseBundle;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpKernel\KernelInterface;
 
 use Beloop\Bundle\CoreBundle\Abstracts\AbstractBundle;
 use Beloop\Bundle\CourseBundle\CompilerPass\MappingCompilerPass;
