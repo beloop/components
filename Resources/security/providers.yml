@@ -5,3 +5,12 @@ security:
             entity:
                 class: %beloop.entity.user.class%
                 property: email
+
+services:
+    beloop.event_listener.user_password:
+        class: Beloop\Component\User\EventListener\UserPasswordEventListener
+        arguments:
+            - '@beloop.provider.user_provider'
+        tags:
+            - { name: doctrine.event_listener, event: preUpdate, method: preUpdate }
+            - { name: doctrine.event_listener, event: prePersist, method: prePersist }

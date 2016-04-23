@@ -100,6 +100,7 @@ class BeloopUserExtension extends AbstractExtension implements EntitiesOverridab
             'directors',
             'factories',
             'objectManagers',
+            'providers',
             'repositories',
         ];
     }
