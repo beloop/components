@@ -1,0 +1,21 @@
+services:
+
+    #
+    # Provider user factories
+    #
+    beloop.user_provider_entity_instance:
+        class: %beloop.entity.user.class%
+        factory:
+            - '@beloop.factory.user'
+            - create
+
+    #
+    # Providers
+    #
+    beloop.provider.user_provider:
+        class: Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface
+        factory:
+            - '@security.encoder_factory'
+            - getEncoder
+        arguments:
+            - '@beloop.user_provider_entity_instance'

@@ -91,7 +91,7 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Sets Firstname.
+     * Sets First name.
      *
      * @param string $firstname Firstname
      *
@@ -104,7 +104,7 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Get Firstname.
+     * Get First name.
      *
      * @return string Firstname
      */
@@ -114,7 +114,7 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Sets Lastname.
+     * Sets Last name.
      *
      * @param string $lastname Lastname
      *
@@ -127,7 +127,7 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
-     * Get Lastname.
+     * Get Last name.
      *
      * @return string Lastname
      */
