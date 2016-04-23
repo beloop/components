@@ -15,12 +15,23 @@
 
 namespace Beloop\Bundle\CoreBundle;
 
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+
 use Beloop\Bundle\CoreBundle\Abstracts\AbstractBundle;
+use Beloop\Bundle\CoreBundle\DependencyInjection\BeloopCoreExtension;
 
 /**
  * BeloopCoreBundle Bundle.
  */
 class BeloopCoreBundle extends AbstractBundle
 {
-
+    /**
+     * Returns the bundle's container extension.
+     *
+     * @return ExtensionInterface The container extension
+     */
+    public function getContainerExtension()
+    {
+        return new BeloopCoreExtension();
+    }
 }

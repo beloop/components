@@ -1,0 +1,22 @@
+services:
+
+    #
+    # Providers
+    #
+    beloop.container_parameters:
+        class: Symfony\Component\DependencyInjection\ParameterBag\ParameterBag
+        factory:
+            - '@service_container'
+            - getParameterBag
+
+    beloop.provider.manager:
+        class: Beloop\Component\Core\Services\ManagerProvider
+        arguments:
+            - '@doctrine'
+            - '@beloop.container_parameters'
+
+    beloop.provider.repository:
+        class: Beloop\Component\Core\Services\RepositoryProvider
+        arguments:
+            - '@beloop.provider.manager'
+            - '@beloop.container_parameters'
