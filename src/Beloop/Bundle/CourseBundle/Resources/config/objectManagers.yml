@@ -1,0 +1,9 @@
+services:
+
+    #
+    # Object Managers
+    #
+    beloop.object_manager.course:
+        parent: beloop.abstract_manager
+        arguments:
+            - %beloop.entity.course.class%

@@ -1,0 +1,13 @@
+services:
+
+    #
+    # Factories
+    #
+
+    #
+    # Factory for entity course
+    #
+    beloop.factory.course:
+        class: Beloop\Component\Course\Factory\CourseFactory
+        calls:
+            - [setEntityNamespace, ["%beloop.entity.course.class%"]]

@@ -1,0 +1,12 @@
+services:
+
+    #
+    # Directors
+    #
+    beloop.director.course:
+        class: Beloop\Component\Core\Services\ObjectDirector
+        lazy: true
+        arguments:
+            - '@beloop.object_manager.course'
+            - '@beloop.repository.course'
+            - '@beloop.factory.course'

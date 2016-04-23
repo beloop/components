@@ -97,7 +97,12 @@ class BeloopCourseExtension extends AbstractExtension implements EntitiesOverrid
      */
     public function getConfigFiles(array $config)
     {
-        return [];
+        return [
+            'directors',
+            'factories',
+            'objectManagers',
+            'repositories',
+        ];
     }
 
     /**

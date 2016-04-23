@@ -1,0 +1,13 @@
+services:
+
+    #
+    # Repositories
+    #
+
+    #
+    # Repository for entity course
+    #
+    beloop.repository.course:
+        parent: beloop.abstract_repository
+        arguments:
+            - %beloop.entity.course.class%
