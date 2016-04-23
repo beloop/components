@@ -1,0 +1,13 @@
+services:
+
+    #
+    # Repositories
+    #
+
+    #
+    # Repository for entity language
+    #
+    beloop.repository.language:
+        parent: beloop.abstract_repository
+        arguments:
+            - %beloop.entity.language.class%

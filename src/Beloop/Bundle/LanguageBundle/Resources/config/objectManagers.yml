@@ -1,0 +1,9 @@
+services:
+
+    #
+    # Object Managers
+    #
+    beloop.object_manager.language:
+        parent: beloop.abstract_manager
+        arguments:
+            - %beloop.entity.language.class%

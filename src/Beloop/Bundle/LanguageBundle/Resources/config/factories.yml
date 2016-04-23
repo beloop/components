@@ -1,0 +1,13 @@
+services:
+
+    #
+    # Factories
+    #
+
+    #
+    # Factory for entity language
+    #
+    beloop.factory.language:
+        class: Beloop\Component\Language\Factory\LanguageFactory
+        calls:
+            - [setEntityNamespace, ["%beloop.entity.language.class%"]]

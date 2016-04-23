@@ -92,6 +92,10 @@ class BeloopLanguageExtension extends AbstractExtension implements EntitiesOverr
     public function getConfigFiles(array $config)
     {
         return [
+            'directors',
+            'factories',
+            'objectManagers',
+            'repositories',
         ];
     }
 

@@ -1,0 +1,12 @@
+services:
+
+    #
+    # Directors
+    #
+    beloop.director.language:
+        class: Beloop\Component\Core\Services\ObjectDirector
+        lazy: true
+        arguments:
+            - '@beloop.object_manager.language'
+            - '@beloop.repository.language'
+            - '@beloop.factory.language'
