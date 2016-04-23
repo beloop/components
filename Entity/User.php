@@ -23,10 +23,6 @@ use Beloop\Component\User\Entity\Interfaces\UserInterface;
 
 class User extends AbstractUser implements UserInterface
 {
-    use IdentifiableTrait,
-        DateTimeTrait,
-        EnabledTrait;
-
     /**
      * @var LanguageInterface
      *
