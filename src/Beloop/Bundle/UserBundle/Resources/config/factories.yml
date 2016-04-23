@@ -1,0 +1,14 @@
+services:
+
+    #
+    # Factories
+    #
+
+    #
+    # Factory for entity user
+    #
+    beloop.factory.user:
+        class: Beloop\Component\User\Factory\UserFactory
+        calls:
+            - [setEntityNamespace, ["%beloop.entity.user.class%"]]
+            - [setGenerator, ['@beloop.generator.random_string']]
