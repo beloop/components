@@ -97,6 +97,10 @@ class BeloopUserExtension extends AbstractExtension implements EntitiesOverridab
     public function getConfigFiles(array $config)
     {
         return [
+            'directors',
+            'factories',
+            'objectManagers',
+            'repositories',
         ];
     }
 

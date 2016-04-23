@@ -1,0 +1,13 @@
+services:
+
+    #
+    # Repositories
+    #
+
+    #
+    # Repository for entity user
+    #
+    beloop.repository.user:
+        parent: beloop.abstract_repository
+        arguments:
+            - %beloop.entity.user.class%
