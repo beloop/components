@@ -15,7 +15,6 @@
 
 namespace Beloop\Component\User\Entity\Abstracts;
 
-use DateTime;
 use Symfony\Component\Security\Core\Role\Role;
 
 use Beloop\Component\Core\Entity\Traits\DateTimeTrait;
@@ -26,6 +25,10 @@ use Beloop\Component\User\Exception\InvalidPasswordException;
 
 abstract class AbstractUser implements AbstractUserInterface
 {
+    use IdentifiableTrait,
+        DateTimeTrait,
+        EnabledTrait;
+    
     /**
      * @var string
      *
