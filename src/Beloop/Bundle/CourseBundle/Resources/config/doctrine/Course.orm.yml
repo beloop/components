@@ -19,6 +19,7 @@ Beloop\Component\Course\Entity\Course:
             column: code
             type: string
             length: 255
+            unique: true
             nullable: false
         description:
             column: description

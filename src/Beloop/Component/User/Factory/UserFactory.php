@@ -59,6 +59,7 @@ class UserFactory extends AbstractFactory
         $user
             ->setGuest(false)
             ->setToken($this->generator->generate(2))
+            ->setRoles([])
             ->setEnabled(true)
             ->setCreatedAt(new DateTime());
 

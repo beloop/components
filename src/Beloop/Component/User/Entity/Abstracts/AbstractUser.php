@@ -79,6 +79,43 @@ abstract class AbstractUser implements AbstractUserInterface
     protected $oneTimeLoginHash;
 
     /**
+     * @var array
+     *
+     * User roles
+     */
+    protected $roles;
+
+    /**
+     * @param array $roles
+     * @return $this
+     */
+    public function setRoles(array $roles)
+    {
+        $this->roles = [];
+
+        foreach ($roles as $role) {
+            $this->addRole($role);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param $role
+     * @return $this
+     */
+    public function addRole($role)
+    {
+        $role = strtoupper($role);
+
+        if (!in_array($role, $this->roles, true)) {
+            $this->roles[] = $role;
+        }
+
+        return $this;
+    }
+
+    /**
      * User roles.
      *
      * @return string[] Roles
@@ -100,6 +137,7 @@ abstract class AbstractUser implements AbstractUserInterface
     public function setFirstname($firstname)
     {
         $this->firstname = $firstname;
+        
         return $this;
     }
 
@@ -123,6 +161,7 @@ abstract class AbstractUser implements AbstractUserInterface
     public function setLastname($lastname)
     {
         $this->lastname = $lastname;
+        
         return $this;
     }
 
@@ -146,6 +185,7 @@ abstract class AbstractUser implements AbstractUserInterface
     public function setEmail($email)
     {
         $this->email = $email;
+        
         return $this;
     }
 
@@ -179,6 +219,7 @@ abstract class AbstractUser implements AbstractUserInterface
     public function setToken($token)
     {
         $this->token = $token;
+        
         return $this;
     }
 
@@ -204,6 +245,7 @@ abstract class AbstractUser implements AbstractUserInterface
     public function setRecoveryHash($recoveryHash)
     {
         $this->recoveryHash = $recoveryHash;
+        
         return $this;
     }
 
@@ -239,10 +281,13 @@ abstract class AbstractUser implements AbstractUserInterface
         if (null === $password) {
             return $this;
         }
+        
         if (!is_string($password) || trim($password) == '') {
             throw new InvalidPasswordException();
         }
+        
         $this->password = $password;
+        
         return $this;
     }
 
@@ -276,6 +321,7 @@ abstract class AbstractUser implements AbstractUserInterface
     public function setOneTimeLoginHash($oneTimeLoginHash)
     {
         $this->oneTimeLoginHash = $oneTimeLoginHash;
+        
         return $this;
     }
 
