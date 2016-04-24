@@ -44,9 +44,7 @@ class User extends AbstractUser implements UserInterface
      */
     public function getRoles()
     {
-        return [
-            new Role('ROLE_USER'),
-        ];
+        return $this->roles;
     }
 
     /**
@@ -59,6 +57,7 @@ class User extends AbstractUser implements UserInterface
     public function setGuest($guest)
     {
         $this->guest = $guest;
+
         return $this;
     }
 
@@ -82,6 +81,7 @@ class User extends AbstractUser implements UserInterface
     public function setLanguage(LanguageInterface $language = null)
     {
         $this->language = $language;
+
         return $this;
     }
 
