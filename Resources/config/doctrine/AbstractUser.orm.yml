@@ -39,6 +39,10 @@ Beloop\Component\User\Entity\Abstracts\AbstractUser:
             length: 255
             unique: true
             nullable: true
+        roles:
+            column: roles
+            type: array
+            nullable: false
 
         # datetime
         createdAt:
