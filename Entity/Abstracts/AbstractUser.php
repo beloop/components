@@ -122,9 +122,7 @@ abstract class AbstractUser implements AbstractUserInterface
      */
     public function getRoles()
     {
-        return [
-            new Role('IS_AUTHENTICATED_ANONYMOUSLY'),
-        ];
+        return array_unique($this->roles);
     }
 
     /**
