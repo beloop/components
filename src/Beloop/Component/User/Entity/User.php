@@ -38,16 +38,6 @@ class User extends AbstractUser implements UserInterface
     protected $guest;
 
     /**
-     * User roles.
-     *
-     * @return string[] Roles
-     */
-    public function getRoles()
-    {
-        return $this->roles;
-    }
-
-    /**
      * Sets Guest.
      *
      * @param bool $guest Guest
