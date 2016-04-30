@@ -18,7 +18,7 @@ namespace Beloop\Component\Core\Factory\Traits;
 /**
  * Trait FactoryTrait.
  */
-class FactoryTrait
+trait FactoryTrait
 {
     /**
      * @var \Beloop\Component\Core\Factory\Abstracts\AbstractFactory
