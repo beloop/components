@@ -47,7 +47,7 @@ class CourseData extends AbstractFixture
             ->create()
             ->setCode('FOOD-EN-20160401')
             ->setName('Food Styling & Photography')
-            ->setDescription('Food Styling & Photography course description')
+            ->setDescription('<p>Food Styling & Photography course description</p>')
             ->setStartDate(new DateTime())
             ->setEndDate((new DateTime())->add(DateInterval::createFromDateString("6 months")));
 
@@ -61,7 +61,7 @@ class CourseData extends AbstractFixture
             ->create()
             ->setCode('FOOD-ES-20160401')
             ->setName('Estilismo y Fotografía Gastronómica')
-            ->setDescription('Estilismo y Fotografía Gastronómica descripción del curso')
+            ->setDescription('<p>Estilismo y Fotografía Gastronómica descripción del curso</p>')
             ->setStartDate(new DateTime())
             ->setEndDate((new DateTime())->add(DateInterval::createFromDateString("6 months")));
 
@@ -75,7 +75,7 @@ class CourseData extends AbstractFixture
             ->create()
             ->setCode('STILL-EN-20160401')
             ->setName('Composition & Visual Perception')
-            ->setDescription('Composition & Visual Perception course description')
+            ->setDescription('<p>Composition & Visual Perception course description</p>')
             ->setStartDate((new DateTime())->add(DateInterval::createFromDateString("1 month")))
             ->setEndDate((new DateTime())->add(DateInterval::createFromDateString("7 months")));
 
@@ -89,7 +89,7 @@ class CourseData extends AbstractFixture
             ->create()
             ->setCode('STILL-ES-20160401')
             ->setName('Composición y Percepción Visual')
-            ->setDescription('Composición y Percepción Visual')
+            ->setDescription('<p>Composición y Percepción Visual</p>')
             ->setStartDate((new DateTime())->add(DateInterval::createFromDateString("1 month")))
             ->setEndDate((new DateTime())->add(DateInterval::createFromDateString("7 months")));
 

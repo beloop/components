@@ -48,7 +48,7 @@ class LessonData extends AbstractFixture
             ->setCourse($this->getReference('course-1'))
             ->setName('Photography Basics')
             ->setSlug('photography-basics')
-            ->setDescription('Photography Basics lesson description')
+            ->setDescription('<p>Photography Basics lesson description</p>')
             ->setPosition(1)
             ->setStartDate(new DateTime());
 
@@ -63,7 +63,7 @@ class LessonData extends AbstractFixture
             ->setCourse($this->getReference('course-1'))
             ->setName('Food Styling Basics')
             ->setSlug('food-styling-basics')
-            ->setDescription('Food Styling Basics lesson description')
+            ->setDescription('<p>Food Styling Basics lesson description</p>')
             ->setPosition(2)
             ->setStartDate((new DateTime())->add(DateInterval::createFromDateString("2 weeks")));
 
