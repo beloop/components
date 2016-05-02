@@ -10,3 +10,11 @@ services:
             - '@beloop.object_manager.course'
             - '@beloop.repository.course'
             - '@beloop.factory.course'
+
+    beloop.director.lesson:
+        class: Beloop\Component\Core\Services\ObjectDirector
+        lazy: true
+        arguments:
+            - '@beloop.object_manager.lesson'
+            - '@beloop.repository.lesson'
+            - '@beloop.factory.lesson'

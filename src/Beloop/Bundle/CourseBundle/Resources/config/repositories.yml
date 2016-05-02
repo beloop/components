@@ -11,3 +11,8 @@ services:
         parent: beloop.abstract_repository
         arguments:
             - %beloop.entity.course.class%
+
+    beloop.repository.lesson:
+        parent: beloop.abstract_repository
+        arguments:
+            - %beloop.entity.lesson.class%

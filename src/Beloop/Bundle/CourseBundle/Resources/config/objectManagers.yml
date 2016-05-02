@@ -7,3 +7,8 @@ services:
         parent: beloop.abstract_manager
         arguments:
             - %beloop.entity.course.class%
+
+    beloop.object_manager.lesson:
+        parent: beloop.abstract_manager
+        arguments:
+            - %beloop.entity.lesson.class%
