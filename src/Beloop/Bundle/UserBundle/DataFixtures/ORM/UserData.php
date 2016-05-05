@@ -38,12 +38,37 @@ class UserData extends AbstractFixture
         $userDirector = $this->getDirector('user');
 
         /**
+         * Admin.
+         */
+        $admin = $userDirector
+            ->create()
+            ->setPassword('1234')
+            ->setEmail('admin@gmail.com')
+            ->addRole('ROLE_ADMIN');
+
+        $userDirector->save($admin);
+        $this->addReference('admin', $admin);
+
+        /**
+         * Teacher.
+         */
+        $teacher = $userDirector
+            ->create()
+            ->setPassword('1234')
+            ->setEmail('teacher@gmail.com')
+            ->addRole('ROLE_TEACHER');
+
+        $userDirector->save($teacher);
+        $this->addReference('teacher', $teacher);
+
+        /**
          * User.
          */
         $user = $userDirector
             ->create()
             ->setPassword('1234')
-            ->setEmail('user@gmail.com');
+            ->setEmail('user@gmail.com')
+            ->addRole('ROLE_USER');
 
         $userDirector->save($user);
         $this->addReference('user', $user);
