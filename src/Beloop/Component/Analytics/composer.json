@@ -1,0 +1,35 @@
+{
+  "name": "beloop/analytics",
+  "description": "Beloop Analytics Component",
+  "keywords": [
+    "beloop",
+    "analytics",
+    "lms",
+    "component"
+  ],
+  "homepage": "https://github.com/beloop/Analytics",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Arkaitz Garro",
+      "email": "arkaitz.garro@gamil.com"
+    }
+  ],
+  "require": {
+    "php": "^5.5|^7.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.8.19"
+  },
+  "autoload": {
+    "psr-4": {
+      "Beloop\\Component\\Analytics\\": ""
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.4-dev"
+    }
+  }
+}
