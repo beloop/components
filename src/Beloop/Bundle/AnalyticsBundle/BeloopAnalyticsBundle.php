@@ -15,11 +15,48 @@
 
 namespace Beloop\Bundle\AnalyticsBundle;
 
+use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpKernel\KernelInterface;
+
 use Beloop\Bundle\CoreBundle\Abstracts\AbstractBundle;
+use Beloop\Bundle\AnalyticsBundle\CompilerPass\MappingCompilerPass;
+use Beloop\Bundle\AnalyticsBundle\DependencyInjection\BeloopAnalyticsExtension;
 
 /**
  * BeloopAnalyticsBundle Bundle.
  */
 class BeloopAnalyticsBundle extends AbstractBundle
 {
+    /**
+     * @param ContainerBuilder $container
+     */
+    public function build(ContainerBuilder $container)
+    {
+        parent::build($container);
+
+        $container->addCompilerPass(new MappingCompilerPass());
+    }
+
+    /**
+     * Returns the bundle's container extension.
+     *
+     * @return ExtensionInterface The container extension
+     */
+    public function getContainerExtension()
+    {
+        return new BeloopAnalyticsExtension();
+    }
+
+    /**
+     * Create instance of current bundle, and return dependent bundle namespaces.
+     *
+     * @param KernelInterface $kernel
+     * @return array Bundle instances
+     */
+    public static function getBundleDependencies(KernelInterface $kernel)
+    {
+        return [
+            'Beloop\Bundle\CoreBundle\BeloopCoreBundle',
+        ];
+    }
 }
