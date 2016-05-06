@@ -1,0 +1,34 @@
+Beloop\Component\Analytics\Entity\Entry:
+    type: entity
+    repositoryClass: Beloop\Component\Analytics\Repository\EntryRepository
+    table: entry
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        user:
+            column: user_id
+            type: integer
+            length: 8
+            nullable: false
+        event:
+            column: event
+            type: string
+            length: 255
+            nullable: false
+        value:
+            column: value
+            type: string
+            length: 512
+            nullable: false
+        ip:
+            column: ip_address
+            type: string
+            length: 255
+            nullable: false
+        createdAt:
+            column: created_at
+            type: datetime
+            nullable: false
