@@ -21,9 +21,9 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Beloop\Component\Analytics\Factory\EntryFactory;
 
 /**
- * Class MetricManager.
+ * Class AnalyticsManager.
  */
-class MetricManager
+class AnalyticsManager
 {
     /**
      * @var EntryFactory

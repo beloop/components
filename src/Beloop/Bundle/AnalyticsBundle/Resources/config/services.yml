@@ -1,0 +1,10 @@
+services:
+
+    #
+    # Services
+    #
+    beloop.analytics_manager:
+        class: Beloop\Component\Analytics\Services\AnalyticsManager
+        arguments:
+            - '@beloop.factory.analytics_entry'
+            - '@beloop.object_manager.entry'

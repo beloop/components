@@ -38,7 +38,7 @@ class Configuration extends AbstractConfiguration
                             'entry',
                             'Beloop\Component\Analytics\Entity\Entry',
                             '@BeloopAnalyticsBundle/Resources/config/doctrine/Entry.orm.yml',
-                            'default',
+                            'analytics',
                             true
                         ))
                     ->end()

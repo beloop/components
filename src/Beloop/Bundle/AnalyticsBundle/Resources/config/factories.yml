@@ -1,0 +1,7 @@
+services:
+
+    #
+    # Factories
+    #
+    beloop.factory.analytics_entry:
+        class: Beloop\Component\Analytics\Factory\EntryFactory

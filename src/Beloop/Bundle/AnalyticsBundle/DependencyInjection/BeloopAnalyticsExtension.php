@@ -92,6 +92,10 @@ class BeloopAnalyticsExtension extends AbstractExtension implements EntitiesOver
     public function getConfigFiles(array $config)
     {
         return [
+            'eventListeners',
+            'factories',
+            'objectManagers',
+            'services',
         ];
     }
 
