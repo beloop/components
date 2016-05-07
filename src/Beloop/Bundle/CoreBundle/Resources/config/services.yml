@@ -19,3 +19,11 @@ services:
             - '@beloop.provider.repository'
             - getRepositoryByEntityNamespace
         abstract: true
+
+    #
+    # PositionFixer
+    #
+    beloop.position_fixer:
+        class: Beloop\Component\Core\Services\PositionFixer
+        arguments:
+            - '@beloop.provider.manager'
