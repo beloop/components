@@ -18,6 +18,7 @@ namespace Beloop\Bundle\CourseBundle\DataFixtures\ORM;
 use DateInterval;
 use DateTime;
 
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Beloop\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
@@ -28,7 +29,7 @@ use Beloop\Component\Core\Services\ObjectDirector;
  *
  * Load fixtures of course entities
  */
-class CourseData extends AbstractFixture
+class CourseData extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritdoc}
@@ -48,6 +49,7 @@ class CourseData extends AbstractFixture
             ->setCode('FOOD-EN-20160401')
             ->setName('Food Styling & Photography')
             ->setDescription('<p>Food Styling & Photography course description</p>')
+            ->setLanguage($this->getReference('language-en'))
             ->setStartDate(new DateTime())
             ->setEndDate((new DateTime())->add(DateInterval::createFromDateString("6 months")));
 
@@ -62,6 +64,7 @@ class CourseData extends AbstractFixture
             ->setCode('FOOD-ES-20160401')
             ->setName('Estilismo y Fotografía Gastronómica')
             ->setDescription('<p>Estilismo y Fotografía Gastronómica descripción del curso</p>')
+            ->setLanguage($this->getReference('language-es'))
             ->setStartDate(new DateTime())
             ->setEndDate((new DateTime())->add(DateInterval::createFromDateString("6 months")));
 
@@ -76,6 +79,7 @@ class CourseData extends AbstractFixture
             ->setCode('STILL-EN-20160401')
             ->setName('Composition & Visual Perception')
             ->setDescription('<p>Composition & Visual Perception course description</p>')
+            ->setLanguage($this->getReference('language-en'))
             ->setStartDate((new DateTime())->add(DateInterval::createFromDateString("1 month")))
             ->setEndDate((new DateTime())->add(DateInterval::createFromDateString("7 months")));
 
@@ -90,10 +94,21 @@ class CourseData extends AbstractFixture
             ->setCode('STILL-ES-20160401')
             ->setName('Composición y Percepción Visual')
             ->setDescription('<p>Composición y Percepción Visual</p>')
+            ->setLanguage($this->getReference('language-es'))
             ->setStartDate((new DateTime())->add(DateInterval::createFromDateString("1 month")))
             ->setEndDate((new DateTime())->add(DateInterval::createFromDateString("7 months")));
 
         $courseDirector->save($course4);
         $this->addReference('course-4', $course4);
+    }
+
+    /**
+     * Get the order of this fixture
+     *
+     * @return integer
+     */
+    public function getOrder()
+    {
+        return 3;
     }
 }

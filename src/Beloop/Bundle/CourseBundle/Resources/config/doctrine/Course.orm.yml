@@ -46,6 +46,13 @@ Beloop\Component\Course\Entity\Course:
             type: datetime
             nullable: false
 
+    manyToOne:
+        language:
+            targetEntity: Beloop\Component\Language\Entity\Language
+            joinColumn:
+                name: language_iso
+                referencedColumnName: iso
+
     oneToMany:
         lessons:
             targetEntity: Beloop\Component\Course\Entity\Lesson

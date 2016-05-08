@@ -18,13 +18,13 @@ namespace Beloop\Component\Course\Entity;
 use DateTime;
 
 use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\ArrayCollection;
 
 use Beloop\Component\Core\Entity\Traits\DateTimeTrait;
 use Beloop\Component\Core\Entity\Traits\EnabledTrait;
 use Beloop\Component\Core\Entity\Traits\IdentifiableTrait;
 use Beloop\Component\Course\Entity\Interfaces\CourseInterface;
 use Beloop\Component\Course\Entity\Interfaces\LessonInterface;
+use Beloop\Component\Language\Entity\Traits\LanguageTrait;
 
 /**
  * Class Course entity.
@@ -32,6 +32,7 @@ use Beloop\Component\Course\Entity\Interfaces\LessonInterface;
 class Course implements CourseInterface
 {
     use IdentifiableTrait,
+        LanguageTrait,
         EnabledTrait,
         DateTimeTrait;
 

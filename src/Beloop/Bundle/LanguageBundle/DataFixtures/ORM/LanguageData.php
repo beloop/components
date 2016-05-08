@@ -15,6 +15,7 @@
 
 namespace Beloop\Bundle\LanguageBundle\DataFixtures\ORM;
 
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Beloop\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
@@ -25,7 +26,7 @@ use Beloop\Component\Core\Services\ObjectDirector;
  *
  * Load fixtures of admin entities
  */
-class LanguageData extends AbstractFixture
+class LanguageData extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritdoc}
@@ -54,5 +55,10 @@ class LanguageData extends AbstractFixture
 
         $languageDirector->save($languageEn);
         $this->addReference('language-en', $languageEn);
+    }
+
+    public function getOrder()
+    {
+        return 2;
     }
 }

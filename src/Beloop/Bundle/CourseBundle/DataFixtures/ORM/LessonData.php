@@ -18,6 +18,7 @@ namespace Beloop\Bundle\CourseBundle\DataFixtures\ORM;
 use DateInterval;
 use DateTime;
 
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Beloop\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
@@ -28,7 +29,7 @@ use Beloop\Component\Core\Services\ObjectDirector;
  *
  * Load fixtures of course entities
  */
-class LessonData extends AbstractFixture
+class LessonData extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritdoc}
@@ -69,5 +70,15 @@ class LessonData extends AbstractFixture
 
         $lessonDirector->save($lesson2);
         $this->addReference('lesson-2', $lesson2);
+    }
+
+    /**
+     * Get the order of this fixture
+     *
+     * @return integer
+     */
+    public function getOrder()
+    {
+        return 4;
     }
 }
