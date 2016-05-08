@@ -62,17 +62,24 @@ class UserData extends AbstractFixture implements OrderedFixtureInterface
         $userDirector->save($teacher);
         $this->addReference('teacher', $teacher);
 
-        /**
-         * User.
-         */
-        $user = $userDirector
-            ->create()
-            ->setPassword('1234')
-            ->setEmail('user@gmail.com')
-            ->addRole('ROLE_USER');
+        $this->createStudents($userDirector);
+    }
 
-        $userDirector->save($user);
-        $this->addReference('user', $user);
+    /**
+     * Create 10 student users
+     */
+    private function createStudents($userDirector)
+    {
+        for ($i = 1; $i <= 10; $i++) {
+            $user = $userDirector
+                ->create()
+                ->setPassword('1234')
+                ->setEmail('user' . $i . '@gmail.com')
+                ->addRole('ROLE_USER');
+
+            $userDirector->save($user);
+            $this->addReference('user' . $i, $user);
+        }
     }
 
     /**
