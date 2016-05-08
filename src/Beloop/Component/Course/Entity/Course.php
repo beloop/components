@@ -15,8 +15,10 @@
 
 namespace Beloop\Component\Course\Entity;
 
+use Beloop\Component\User\Entity\Interfaces\UserInterface;
 use DateTime;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 use Beloop\Component\Core\Entity\Traits\DateTimeTrait;
@@ -39,9 +41,17 @@ class Course implements CourseInterface
     protected $code;
     protected $name;
     protected $description;
-    protected $lessons;
     protected $startDate;
     protected $endDate;
+
+    protected $enrolledUsers;
+    protected $lessons;
+
+    public function __construct()
+    {
+        $this->enrolledUsers = new ArrayCollection();
+        $this->lessons = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -94,6 +104,50 @@ class Course implements CourseInterface
     public function setDescription($description)
     {
         $this->description = $description;
+        return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getEnrolledUsers()
+    {
+        return $this->enrolledUsers;
+    }
+
+    /**
+     * @param Collection $enrolledUsers
+     * @return $this Self object
+     */
+    public function setEnrolledUsers(Collection $enrolledUsers)
+    {
+        $this->enrolledUsers = $enrolledUsers;
+        return $this;
+    }
+
+    /**
+     * @param UserInterface $user
+     * @return $this Self object
+     */
+    public function enrollUser(UserInterface $user)
+    {
+        if (!$this->enrolledUsers->contains($user)) {
+            $this->enrolledUsers->add($user);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param UserInterface $user
+     * @return $this Self object
+     */
+    public function unEnrollUser(UserInterface $user)
+    {
+        $this
+            ->enrolledUsers
+            ->removeElement($user);
+
         return $this;
     }
 

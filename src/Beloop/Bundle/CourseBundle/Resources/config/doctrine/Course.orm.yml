@@ -53,6 +53,18 @@ Beloop\Component\Course\Entity\Course:
                 name: language_iso
                 referencedColumnName: iso
 
+    manyToMany:
+        enrolledUsers:
+            targetEntity: Beloop\Component\User\Entity\User
+            joinTable:
+                name: course_enrolled_users
+                joinColumns:
+                    course_id:
+                      referencedColumnName: id
+                inverseJoinColumns:
+                    user_id:
+                      referencedColumnName: id
+
     oneToMany:
         lessons:
             targetEntity: Beloop\Component\Course\Entity\Lesson

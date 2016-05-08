@@ -53,6 +53,16 @@ class CourseData extends AbstractFixture implements OrderedFixtureInterface
             ->setStartDate(new DateTime())
             ->setEndDate((new DateTime())->add(DateInterval::createFromDateString("6 months")));
 
+        /**
+         * Enroll some users
+         */
+        $course1->enrollUser($this->getReference('admin'));
+        $course1->enrollUser($this->getReference('teacher'));
+
+        for ($i = 1; $i <= 4; $i++) {
+            $course1->enrollUser($this->getReference('user' . $i));
+        }
+
         $courseDirector->save($course1);
         $this->addReference('course-1', $course1);
 
@@ -67,6 +77,16 @@ class CourseData extends AbstractFixture implements OrderedFixtureInterface
             ->setLanguage($this->getReference('language-es'))
             ->setStartDate(new DateTime())
             ->setEndDate((new DateTime())->add(DateInterval::createFromDateString("6 months")));
+
+        /**
+         * Enroll some users
+         */
+        $course2->enrollUser($this->getReference('admin'));
+        $course2->enrollUser($this->getReference('teacher'));
+
+        for ($i = 3; $i <= 7; $i++) {
+            $course2->enrollUser($this->getReference('user' . $i));
+        }
 
         $courseDirector->save($course2);
         $this->addReference('course-2', $course2);
@@ -83,6 +103,16 @@ class CourseData extends AbstractFixture implements OrderedFixtureInterface
             ->setStartDate((new DateTime())->add(DateInterval::createFromDateString("1 month")))
             ->setEndDate((new DateTime())->add(DateInterval::createFromDateString("7 months")));
 
+        /**
+         * Enroll some users
+         */
+        $course3->enrollUser($this->getReference('admin'));
+        $course3->enrollUser($this->getReference('teacher'));
+
+        for ($i = 6; $i <= 10; $i++) {
+            $course3->enrollUser($this->getReference('user' . $i));
+        }
+
         $courseDirector->save($course3);
         $this->addReference('course-3', $course3);
 
@@ -97,6 +127,9 @@ class CourseData extends AbstractFixture implements OrderedFixtureInterface
             ->setLanguage($this->getReference('language-es'))
             ->setStartDate((new DateTime())->add(DateInterval::createFromDateString("1 month")))
             ->setEndDate((new DateTime())->add(DateInterval::createFromDateString("7 months")));
+
+        $course4->enrollUser($this->getReference('admin'));
+        $course4->enrollUser($this->getReference('teacher'));
 
         $courseDirector->save($course4);
         $this->addReference('course-4', $course4);
