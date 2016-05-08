@@ -28,7 +28,7 @@ class CourseRepository extends EntityRepository
 
         $qb
             ->addSelect('l')
-            ->innerJoin('c.lessons', 'l')
+            ->leftJoin('c.lessons', 'l')
             ->orderBy('l.position', 'ASC');
 
         foreach ($criteria as $key => $value) {
