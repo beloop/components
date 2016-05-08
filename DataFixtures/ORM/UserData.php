@@ -43,6 +43,8 @@ class UserData extends AbstractFixture implements OrderedFixtureInterface
          */
         $admin = $userDirector
             ->create()
+            ->setFirstName('Admin')
+            ->setLastName('User')
             ->setPassword('1234')
             ->setEmail('admin@gmail.com')
             ->addRole('ROLE_ADMIN');
@@ -55,6 +57,8 @@ class UserData extends AbstractFixture implements OrderedFixtureInterface
          */
         $teacher = $userDirector
             ->create()
+            ->setFirstName('Teacher')
+            ->setLastName('User')
             ->setPassword('1234')
             ->setEmail('teacher@gmail.com')
             ->addRole('ROLE_TEACHER');
@@ -67,12 +71,16 @@ class UserData extends AbstractFixture implements OrderedFixtureInterface
 
     /**
      * Create 10 student users
+     * 
+     * @param $userDirector
      */
     private function createStudents($userDirector)
     {
         for ($i = 1; $i <= 10; $i++) {
             $user = $userDirector
                 ->create()
+                ->setFirstName('Student')
+                ->setLastName('User')
                 ->setPassword('1234')
                 ->setEmail('user' . $i . '@gmail.com')
                 ->addRole('ROLE_USER');
