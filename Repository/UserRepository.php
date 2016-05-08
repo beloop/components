@@ -43,4 +43,23 @@ class UserRepository extends EntityRepository implements UserEmaileableInterface
             ? $user
             : null;
     }
+
+    /**
+     * Find entities by role
+     *
+     * @param string $role Role
+     *
+     * @return AbstractUserInterface|null User found
+     */
+    public function findByRole($role)
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder();
+
+        $qb->select('u')
+            ->from($this->getEntityName(), 'u')
+            ->where('u.roles LIKE :role')
+            ->setParameter('role', '%' . $role . '%');
+
+        return $qb->getQuery()->getResult();
+    }
 }
