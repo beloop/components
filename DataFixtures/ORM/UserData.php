@@ -15,6 +15,7 @@
 
 namespace Beloop\Bundle\UserBundle\DataFixtures\ORM;
 
+use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
 use Beloop\Bundle\CoreBundle\DataFixtures\ORM\Abstracts\AbstractFixture;
@@ -25,7 +26,7 @@ use Beloop\Component\Core\Services\ObjectDirector;
  *
  * Load fixtures of user entities
  */
-class UserData extends AbstractFixture
+class UserData extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritdoc}
@@ -72,5 +73,15 @@ class UserData extends AbstractFixture
 
         $userDirector->save($user);
         $this->addReference('user', $user);
+    }
+
+    /**
+     * Get the order of this fixture
+     *
+     * @return integer
+     */
+    public function getOrder()
+    {
+        return 1;
     }
 }
