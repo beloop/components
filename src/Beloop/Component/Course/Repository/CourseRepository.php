@@ -17,11 +17,47 @@ namespace Beloop\Component\Course\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
+use Beloop\Component\User\Entity\Interfaces\UserInterface;
+
 /**
  * Class CourseRepository.
  */
 class CourseRepository extends EntityRepository
 {
+    /**
+     * Find courses. Join with lessons and modules
+     *
+     * @param UserInterface $user
+     *
+     * @return array
+     */
+    public function findByUser(UserInterface $user)
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        $qb
+            ->addSelect('l')
+            ->innerJoin('c.lessons', 'l')
+            ->innerJoin('c.enrolledUsers', 'u')
+            //->leftJoin('l.modules', 'm')
+            ->where('u.id = :user')
+            ->orderBy('c.startDate', 'DESC')
+            ->addOrderBy('l.position', 'ASC')
+            //->addOrderBy('m.position', 'ASC')
+            ->setParameter('user', $user)
+            ;
+
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * Find one course. Join with lessons and modules
+     *
+     * @param array $criteria
+     * @param array|null $orderBy
+     * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
     public function findOneBy(array $criteria, array $orderBy = null)
     {
         $qb = $this->createQueryBuilder('c');
@@ -29,7 +65,10 @@ class CourseRepository extends EntityRepository
         $qb
             ->addSelect('l')
             ->leftJoin('c.lessons', 'l')
-            ->orderBy('l.position', 'ASC');
+            //->leftJoin('l.modules', 'm')
+            ->orderBy('l.position', 'ASC')
+            //->addOrderBy('m.position', 'ASC')
+            ;
 
         foreach ($criteria as $key => $value) {
             $qb
