@@ -1,0 +1,15 @@
+services:
+
+    #
+    # Services
+    #
+
+    #
+    # CSV file transformer
+    #
+    beloop.csv_transformer.user:
+        class: Beloop\Component\User\Transformer\ExtractUsersFromCSV
+        arguments:
+            - '@beloop.factory.user'
+            - ['Email', 'First Name', 'Last Name']
+            - ';'
