@@ -20,6 +20,7 @@ use Doctrine\Common\Collections\Collection;
 use Beloop\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Beloop\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Beloop\Component\Core\Entity\Interfaces\EnabledInterface;
+use Beloop\Component\User\Entity\Interfaces\UserInterface;
 
 /**
  * Interface CourseInterface
@@ -112,4 +113,27 @@ interface CourseInterface
      * Course is accessible by today
      */
     public function isAvailable();
+
+    /**
+     * @return Collection
+     */
+    public function getEnrolledUsers();
+
+    /**
+     * @param Collection $enrolledUsers
+     * @return $this Self object
+     */
+    public function setEnrolledUsers(Collection $enrolledUsers);
+
+    /**
+     * @param UserInterface $user
+     * @return $this Self object
+     */
+    public function enrollUser(UserInterface $user);
+
+    /**
+     * @param UserInterface $user
+     * @return $this Self object
+     */
+    public function unEnrollUser(UserInterface $user);
 }
