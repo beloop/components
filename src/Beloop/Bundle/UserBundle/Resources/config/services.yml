@@ -5,6 +5,15 @@ services:
     #
 
     #
+    # Manager
+    #
+    beloop.manager.user:
+        class: Beloop\Component\User\Services\UserManager
+        arguments:
+            - '@beloop.object_manager.user'
+            - '@beloop.repository.user'
+
+    #
     # CSV file transformer
     #
     beloop.csv_transformer.user:
@@ -12,4 +21,15 @@ services:
         arguments:
             - '@beloop.factory.user'
             - ['Email', 'First Name', 'Last Name']
-            - ';'
+        calls:
+           - [setDelimiter, [';']]
+
+    #
+    # User enrollment
+    #
+    beloop.user_enrollment:
+        class: Beloop\Component\Course\Services\UserEnrollment
+        arguments:
+            - '@beloop.csv_transformer.user'
+            - '@beloop.manager.user'
+            - '@beloop.director.user'

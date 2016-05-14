@@ -27,16 +27,15 @@ class ExtractUsersFromCSV
 {
     protected $userFactory;
     protected $headers;
-    protected $delimiter;
+    protected $delimiter = ',';
 
     /**
      * ExtractUsersFromCSV constructor.
      *
      * @param UserFactory $userFactory
      * @param array $headers Array of column names
-     * @param string $delimiter
      */
-    public function __construct(UserFactory $userFactory, array $headers, $delimiter = ',')
+    public function __construct(UserFactory $userFactory, array $headers)
     {
         // Help PHP detect line ending in Mac OS X.
         if (!ini_get("auto_detect_line_endings")) {
@@ -45,7 +44,17 @@ class ExtractUsersFromCSV
 
         $this->userFactory = $userFactory;
         $this->headers = $headers;
+    }
+
+    /**
+     * @param string $delimiter
+     * @return $this Self object
+     */
+    public function setDelimiter($delimiter)
+    {
         $this->delimiter = $delimiter;
+
+        return $this;
     }
 
     /**
@@ -114,7 +123,7 @@ class ExtractUsersFromCSV
 
     /**
      * Create user instance from user row
-     *
+     * 
      * @param $row
      * @return mixed
      */
@@ -127,7 +136,7 @@ class ExtractUsersFromCSV
             $method = lcfirst(preg_replace('/\s+/', '', $column));
             $accessor->setValue($user, $method, $value);
         }
-
+        
         return $user;
     }
 }
