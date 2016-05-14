@@ -10,7 +10,8 @@ Beloop\Component\User\Entity\Abstracts\AbstractUser:
             column: email
             type: string
             length: 255
-            nullable: true
+            unique: true
+            nullable: false
         token:
             column: token
             type: string
