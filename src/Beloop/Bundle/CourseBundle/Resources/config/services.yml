@@ -1,0 +1,11 @@
+services:
+
+    #
+    # User enrollment
+    #
+    beloop.user_enrollment:
+        class: Beloop\Component\Course\Services\UserEnrollment
+        arguments:
+            - '@beloop.csv_transformer.user'
+            - '@beloop.manager.user'
+            - '@beloop.director.user'

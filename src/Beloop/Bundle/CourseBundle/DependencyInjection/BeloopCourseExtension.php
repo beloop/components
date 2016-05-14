@@ -102,6 +102,7 @@ class BeloopCourseExtension extends AbstractExtension implements EntitiesOverrid
             'factories',
             'objectManagers',
             'repositories',
+            'services',
         ];
     }
 
