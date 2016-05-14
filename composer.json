@@ -20,7 +20,7 @@
     "php": "^5.5|^7.0",
     "doctrine/common": "^2.5",
     "doctrine/orm": "^2.5",
-    "league/csv": "^7.2.0",
+    "league/csv": "^8.0.0",
     "symfony/property-access": "^3.0",
     "symfony/security-core": "^2.7|^3.0",
     "twig/twig": "^1.23",
