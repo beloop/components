@@ -24,7 +24,7 @@ use Beloop\Component\Core\Factory\Abstracts\AbstractFactory;
 /**
  * Factory for Page entities.
  */
-class PageFactory extends AbstractFactory
+class SquarespacePageFactory extends AbstractFactory
 {
 
     /**

@@ -34,7 +34,7 @@ class MappingCompilerPass extends AbstractBeloopMappingCompilerPass
             ->addEntityMappings(
                 $container,
                 [
-                    'page',
+                    'squarespace_page',
                 ]
             );
     }

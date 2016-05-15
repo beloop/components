@@ -1,0 +1,13 @@
+services:
+
+    #
+    # Repositories
+    #
+
+    #
+    # Repository for entity squearespace page
+    #
+    beloop.repository.squarespace_page:
+        parent: beloop.abstract_repository
+        arguments:
+            - %beloop.entity.squarespace_page.class%

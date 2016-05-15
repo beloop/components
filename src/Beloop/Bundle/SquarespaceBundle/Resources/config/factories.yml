@@ -1,0 +1,13 @@
+services:
+
+    #
+    # Factories
+    #
+
+    #
+    # Factory for entity Squarespace page
+    #
+    beloop.factory.squarespace_page:
+        class: Beloop\Component\Squarespace\Factory\SquarespacePageFactory
+        calls:
+            - [setEntityNamespace, ["%beloop.entity.squarespace_page.class%"]]

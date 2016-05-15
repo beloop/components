@@ -17,7 +17,7 @@ namespace Beloop\Component\Squarespace\Entity;
 
 use Beloop\Component\Course\Entity\Abstracts\ExternalModule;
 
-class Page extends ExternalModule
+class SquarespacePage extends ExternalModule
 {
     /**
      * Module type

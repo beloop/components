@@ -35,9 +35,9 @@ class Configuration extends AbstractConfiguration
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->append($this->addMappingNode(
-                            'squarespace',
-                            'Beloop\Component\Squarespace\Entity\Page',
-                            '@BeloopSquarespaceBundle/Resources/config/doctrine/Page.orm.yml',
+                            'squarespace_page',
+                            'Beloop\Component\Squarespace\Entity\SquarespacePage',
+                            '@BeloopSquarespaceBundle/Resources/config/doctrine/SquarespacePage.orm.yml',
                             'default',
                             true
                         ))
