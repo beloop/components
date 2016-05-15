@@ -1,3 +1,0 @@
-Beloop\Component\Squarespace\Entity\Page:
-    type: entity
-    repositoryClass: Beloop\Component\Squarespace\Repository\PageRepository
