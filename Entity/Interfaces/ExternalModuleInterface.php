@@ -17,10 +17,6 @@ namespace Beloop\Component\Course\Entity\Interfaces;
 
 use Doctrine\Common\Collections\Collection;
 
-use Beloop\Component\Core\Entity\Interfaces\IdentifiableInterface;
-use Beloop\Component\Core\Entity\Interfaces\DateTimeInterface;
-use Beloop\Component\Core\Entity\Interfaces\EnabledInterface;
-use Beloop\Component\Core\Entity\Interfaces\PositionInterface;
 use Beloop\Component\Course\Entity\Interfaces\ModuleInterface;
 
 /**
@@ -28,11 +24,7 @@ use Beloop\Component\Course\Entity\Interfaces\ModuleInterface;
  */
 interface ExternalModuleInterface
     extends
-    ModuleInterface,
-    IdentifiableInterface,
-    PositionInterface,
-    DateTimeInterface,
-    EnabledInterface
+    ModuleInterface
 {
     /**
      * @return mixed
