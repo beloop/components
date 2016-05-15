@@ -15,7 +15,17 @@
 
 namespace Beloop\Component\Course\Entity\Interfaces;
 
+use Beloop\Component\Core\Entity\Interfaces\IdentifiableInterface;
+use Beloop\Component\Core\Entity\Interfaces\DateTimeInterface;
+use Beloop\Component\Core\Entity\Interfaces\EnabledInterface;
+use Beloop\Component\Core\Entity\Interfaces\PositionInterface;
+
 interface ModuleInterface
+    extends
+    IdentifiableInterface,
+    PositionInterface,
+    DateTimeInterface,
+    EnabledInterface
 {
     /**
      * @return mixed
