@@ -14,6 +14,9 @@ for repoName in `ls -1 src/Beloop/Component` ; do
     # add remote identified by $repoName
     git remote add $repoName https://$GH_TOKEN@github.com/beloop/$repoName.git
 
+    # integrate the remote changes
+    git pull --rebase
+
     # push local branch on remote
     git push $repoName subtree_${repoName}_master:master
 done
@@ -25,6 +28,9 @@ for repoName in `ls -1 src/Beloop/Bundle` ; do
 
     # add remote identified by $repoName
     git remote add $repoName https://$GH_TOKEN@github.com/beloop/$repoName.git
+
+    # integrate the remote changes
+    git pull --rebase
 
     # push local branch on remote
     git push $repoName subtree_${repoName}_master:master
