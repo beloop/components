@@ -49,15 +49,15 @@ class LessonTest extends PHPUnit_Framework_TestCase {
     public function testModuleCollection() {
         $this->assertEquals(0, $this->lesson->getModules()->count());
 
-        $page = new Page();
+        $page = $this->getMockForAbstractClass('Beloop\Component\Course\Entity\Abstracts\ExternalModule');
         $this->lesson->addModule($page);
         $this->assertEquals(1, $this->lesson->getModules()->count());
 
-        $quiz = new Quiz();
+        $quiz = $this->getMockForAbstractClass('Beloop\Component\Course\Entity\Abstracts\ExternalModule');
         $this->lesson->addModule($quiz);
         $this->assertEquals(2, $this->lesson->getModules()->count());
 
-        $video = new Video();
+        $video = $this->getMockForAbstractClass('Beloop\Component\Course\Entity\Abstracts\ExternalModule');
         $this->lesson->addModule($video);
         $this->assertEquals(3, $this->lesson->getModules()->count());
 
