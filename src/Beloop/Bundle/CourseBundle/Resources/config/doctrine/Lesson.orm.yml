@@ -45,10 +45,10 @@ Beloop\Component\Course\Entity\Lesson:
             type: datetime
             nullable: false
 
-#    oneToMany:
-#        modules:
-#            targetEntity: Beloop\Component\Course\Entity\Module
-#            mappedBy: course
+    oneToMany:
+        modules:
+            targetEntity: Beloop\Component\Course\Entity\Abstracts\AbstractModule
+            mappedBy: lesson
 
     manyToOne:
         course:

@@ -15,47 +15,15 @@
 
 namespace Beloop\Component\Course\Entity\Abstracts;
 
-use DateTime;
-use Beloop\Component\Core\Entity\Traits\DateTimeTrait;
-use Beloop\Component\Core\Entity\Traits\EnabledTrait;
-use Beloop\Component\Core\Entity\Traits\IdentifiableTrait;
-use Beloop\Component\Core\Entity\Traits\PositionTrait;
-use Beloop\Component\Course\Entity\Interfaces\LessonInterface;
+use Beloop\Component\Course\Entity\Abstracts\AbstractModule;
 use Beloop\Component\Course\Entity\Interfaces\ExternalModuleInterface;
 
 /**
  * Class ExternalModule
  */
-abstract class ExternalModule implements ExternalModuleInterface
+abstract class ExternalModule extends AbstractModule implements ExternalModuleInterface
 {
-    use IdentifiableTrait,
-        EnabledTrait,
-        DateTimeTrait,
-        PositionTrait;
-
-    private $name;
     private $url;
-    private $icon;
-
-    private $lesson;
-    
-    /**
-     * @return mixed
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param mixed $name
-     * @return $this Self object
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-        return $this;
-    }
 
     /**
      * @return mixed
@@ -74,59 +42,4 @@ abstract class ExternalModule implements ExternalModuleInterface
         $this->url = $url;
         return $this;
     }
-
-    /**
-     * @return mixed
-     */
-    public function getIcon()
-    {
-        return $this->icon;
-    }
-
-    /**
-     * @param mixed $icon
-     * @return $this Self object
-     */
-    public function setIcon($icon)
-    {
-        $this->icon = $icon;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getLesson()
-    {
-        return $this->lesson;
-    }
-
-    /**
-     * @param LessonInterface $lesson
-     * @return $this Self object
-     */
-    public function setLesson(LessonInterface $lesson)
-    {
-        $this->lesson = $lesson;
-        return $this;
-    }
-
-    /**
-     * Module is accessible by today
-     */
-    public function isAvailable()
-    {
-        $today = new DateTime();
-
-        return $this->lesson->isAvailable();
-    }
-
-    /**
-     * Get module course
-     */
-    public function getCourse()
-    {
-        return $this->getLesson()->getCourse();
-    }
-
 }

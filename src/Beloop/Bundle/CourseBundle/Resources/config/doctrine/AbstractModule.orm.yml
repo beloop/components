@@ -1,25 +1,8 @@
-Beloop\Component\Course\Entity\ExternalModule:
+Beloop\Component\Course\Entity\Abstracts\AbstractModule:
     type: mappedSuperclass
-    inheritanceType: SINGLE_TABLE
-    table: external_module
-    discriminatorColumn:
-        name: type
-        type: string
-
-    id:
-        id:
-            type: integer
-            generator:
-                strategy: AUTO
-
     fields:
         name:
             column: name
-            type: string
-            length: 255
-            nullable: false
-        url:
-            column: url
             type: string
             length: 255
             nullable: false
@@ -57,5 +40,5 @@ Beloop\Component\Course\Entity\ExternalModule:
                 onUpdate: "CASCADE"
 
     lifecycleCallbacks:
-        preUpdate: [loadUpdateAt]
-        prePersist: [loadUpdateAt]
+            preUpdate: [loadUpdateAt]
+            prePersist: [loadUpdateAt]
