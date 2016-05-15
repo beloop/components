@@ -21,9 +21,9 @@ use PHPUnit_Framework_TestCase;
 
 use Beloop\Component\Course\Entity\Course;
 use Beloop\Component\Course\Entity\Lesson;
-use Beloop\Component\Squarespace\Entity\Page;
+use Beloop\Component\Squarespace\Entity\SquarespacePage;
 
-class PageTest extends PHPUnit_Framework_TestCase
+class SquarespacePageTest extends PHPUnit_Framework_TestCase
 {
     private $course;
     private $lesson;
@@ -33,7 +33,7 @@ class PageTest extends PHPUnit_Framework_TestCase
     {
         $this->course = new Course();
         $this->lesson = new Lesson();
-        $this->page = new Page();
+        $this->page = new SquarespacePage();
 
         $this->course->setStartDate(new DateTime());
         $this->course->setEndDate(new DateTime());

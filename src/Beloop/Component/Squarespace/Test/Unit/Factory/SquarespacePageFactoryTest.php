@@ -17,7 +17,7 @@ namespace Beloop\Component\Squarespace\Test\Unit\Factory;
 
 use Beloop\Component\Core\Test\Unit\Factory\Abstracts\AbstractFactoryTest;
 
-class PageFactoryTest extends AbstractFactoryTest
+class SquarespacePageFactoryTest extends AbstractFactoryTest
 {
     private $page;
 
@@ -33,7 +33,7 @@ class PageFactoryTest extends AbstractFactoryTest
      */
     public function getFactoryNamespace()
     {
-        return 'Beloop\Component\Squarespace\Factory\PageFactory';
+        return 'Beloop\Component\Squarespace\Factory\SquarespacePageFactory';
     }
 
     /**
@@ -43,7 +43,7 @@ class PageFactoryTest extends AbstractFactoryTest
      */
     public function getEntityNamespace()
     {
-        return 'Beloop\Component\Squarespace\Entity\Page';
+        return 'Beloop\Component\Squarespace\Entity\SquarespacePage';
     }
 
     public function testDefaultValues() {
