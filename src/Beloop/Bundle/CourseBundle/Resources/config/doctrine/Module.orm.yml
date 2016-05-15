@@ -1,11 +1,10 @@
-Beloop\Component\Course\Entity\Module:
-    type: entity
-    repositoryClass: Beloop\Component\Course\Repository\ModuleRepository
-    table: module
-    inheritanceType: joined
-        discriminatorColumn:
-            name: module_type
-            type: string
+Beloop\Component\Course\Entity\ExternalModule:
+    type: mappedSuperclass
+    inheritanceType: SINGLE_TABLE
+    table: external_module
+    discriminatorColumn:
+        name: type
+        type: string
 
     id:
         id:

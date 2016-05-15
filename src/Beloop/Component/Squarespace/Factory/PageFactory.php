@@ -13,9 +13,8 @@
  * @author Arkaitz Garro <arkaitz.garro@gmail.com>
  */
 
-namespace Beloop\Component\Course\Factory;
+namespace Beloop\Component\Squarespace\Factory;
 
-use DateInterval;
 use DateTime;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -23,9 +22,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Beloop\Component\Core\Factory\Abstracts\AbstractFactory;
 
 /**
- * Factory for Quiz entities.
+ * Factory for Page entities.
  */
-class QuizFactory extends AbstractFactory
+class PageFactory extends AbstractFactory
 {
 
     /**
@@ -43,16 +42,16 @@ class QuizFactory extends AbstractFactory
         $now = new DateTime();
 
         /**
-         * @var Quiz $quiz
+         * @var Page $page
          */
         $classNamespace = $this->getEntityNamespace();
-        $quiz = new $classNamespace();
+        $page = new $classNamespace();
 
-        $quiz
+        $page
             ->setPosition(1)
             ->enable()
             ->setCreatedAt($now);
 
-        return $quiz;
+        return $page;
     }
 }

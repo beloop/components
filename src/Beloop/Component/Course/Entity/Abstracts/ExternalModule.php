@@ -21,12 +21,12 @@ use Beloop\Component\Core\Entity\Traits\EnabledTrait;
 use Beloop\Component\Core\Entity\Traits\IdentifiableTrait;
 use Beloop\Component\Core\Entity\Traits\PositionTrait;
 use Beloop\Component\Course\Entity\Interfaces\LessonInterface;
-use Beloop\Component\Course\Entity\Interfaces\ModuleInterface;
+use Beloop\Component\Course\Entity\Interfaces\ExternalModuleInterface;
 
 /**
- * Class Module
+ * Class ExternalModule
  */
-abstract class Module implements ModuleInterface
+abstract class ExternalModule implements ExternalModuleInterface
 {
     use IdentifiableTrait,
         EnabledTrait,
@@ -38,7 +38,7 @@ abstract class Module implements ModuleInterface
     private $icon;
 
     private $lesson;
-
+    
     /**
      * @return mixed
      */

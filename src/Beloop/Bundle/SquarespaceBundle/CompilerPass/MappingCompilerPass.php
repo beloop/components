@@ -13,15 +13,12 @@
  * @author Arkaitz Garro <arkaitz.garro@gmail.com>
  */
 
-namespace Beloop\Bundle\CourseBundle\CompilerPass;
+namespace Beloop\Bundle\SquarespaceBundle\CompilerPass;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 use Beloop\Bundle\CoreBundle\CompilerPass\Abstracts\AbstractBeloopMappingCompilerPass;
 
-/**
- * Class MappingCompilerPass.
- */
 class MappingCompilerPass extends AbstractBeloopMappingCompilerPass
 {
     /**
@@ -37,9 +34,7 @@ class MappingCompilerPass extends AbstractBeloopMappingCompilerPass
             ->addEntityMappings(
                 $container,
                 [
-                    'course',
-                    'lesson',
-                    'module',
+                    'page',
                 ]
             );
     }

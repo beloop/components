@@ -13,7 +13,7 @@
  * @author Arkaitz Garro <arkaitz.garro@gmail.com>
  */
 
-namespace Beloop\Component\Course\Test\Unit\Entity;
+namespace Beloop\Component\Squarespace\Test\Unit\Entity;
 
 use DateInterval;
 use DateTime;
@@ -21,7 +21,7 @@ use PHPUnit_Framework_TestCase;
 
 use Beloop\Component\Course\Entity\Course;
 use Beloop\Component\Course\Entity\Lesson;
-use Beloop\Component\Course\Entity\Page;
+use Beloop\Component\Squarespace\Entity\Page;
 
 class PageTest extends PHPUnit_Framework_TestCase
 {
@@ -43,7 +43,7 @@ class PageTest extends PHPUnit_Framework_TestCase
     }
 
     public function testDefaultValues() {
-        $this->assertEquals('page', $this->page->getType());
+        $this->assertEquals('squarespace_page', $this->page->getType());
     }
 
     public function testAvailability()

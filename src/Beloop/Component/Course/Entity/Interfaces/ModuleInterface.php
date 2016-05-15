@@ -15,22 +15,7 @@
 
 namespace Beloop\Component\Course\Entity\Interfaces;
 
-use Doctrine\Common\Collections\Collection;
-
-use Beloop\Component\Core\Entity\Interfaces\IdentifiableInterface;
-use Beloop\Component\Core\Entity\Interfaces\DateTimeInterface;
-use Beloop\Component\Core\Entity\Interfaces\EnabledInterface;
-use Beloop\Component\Core\Entity\Interfaces\PositionInterface;
-
-/**
- * Interface ModuleInterface
- */
 interface ModuleInterface
-    extends
-    IdentifiableInterface,
-    PositionInterface,
-    DateTimeInterface,
-    EnabledInterface
 {
     /**
      * @return mixed
@@ -42,17 +27,6 @@ interface ModuleInterface
      * @return $this Self object
      */
     public function setName($name);
-
-    /**
-     * @return mixed
-     */
-    public function getUrl();
-
-    /**
-     * @param mixed $url
-     * @return $this Self object
-     */
-    public function setUrl($url);
 
     /**
      * @return mixed

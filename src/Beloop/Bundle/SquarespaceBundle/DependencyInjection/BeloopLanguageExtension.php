@@ -13,10 +13,9 @@
  * @author Arkaitz Garro <arkaitz.garro@gmail.com>
  */
 
-namespace Beloop\Bundle\CourseBundle\DependencyInjection;
+namespace Beloop\Bundle\SquarespaceBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 use Beloop\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
 use Beloop\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableExtensionInterface;
@@ -24,14 +23,14 @@ use Beloop\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableE
 /**
  * This is the class that loads and manages your bundle configuration.
  */
-class BeloopCourseExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
+class BeloopSquarespaceExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
     /**
      * @var string
      *
      * Extension name
      */
-    const EXTENSION_NAME = 'beloop_course';
+    const EXTENSION_NAME = 'beloop_squarespace';
 
     /**
      * Get the Config file location.
@@ -47,7 +46,7 @@ class BeloopCourseExtension extends AbstractExtension implements EntitiesOverrid
      * Return a new Configuration instance.
      *
      * If object returned by this method is an instance of
-     * ConfigurationInterface, extension will use the Configuration to read allpurchasable_pack
+     * ConfigurationInterface, extension will use the Configuration to read all
      * bundle config definitions.
      *
      * Also will call getParametrizationValues method to load some config values
@@ -76,20 +75,10 @@ class BeloopCourseExtension extends AbstractExtension implements EntitiesOverrid
     protected function getParametrizationValues(array $config)
     {
         return [
-            'beloop.entity.course.class' => $config['mapping']['course']['class'],
-            'beloop.entity.course.mapping_file' => $config['mapping']['course']['mapping_file'],
-            'beloop.entity.course.manager' => $config['mapping']['course']['manager'],
-            'beloop.entity.course.enabled' => $config['mapping']['course']['enabled'],
-
-            'beloop.entity.lesson.class' => $config['mapping']['lesson']['class'],
-            'beloop.entity.lesson.mapping_file' => $config['mapping']['lesson']['mapping_file'],
-            'beloop.entity.lesson.manager' => $config['mapping']['lesson']['manager'],
-            'beloop.entity.lesson.enabled' => $config['mapping']['lesson']['enabled'],
-
-            'beloop.entity.external_module.class' => $config['mapping']['external_module']['class'],
-            'beloop.entity.external_module.mapping_file' => $config['mapping']['external_module']['mapping_file'],
-            'beloop.entity.external_module.manager' => $config['mapping']['external_module']['manager'],
-            'beloop.entity.external_module.enabled' => $config['mapping']['external_module']['enabled'],
+            'beloop.entity.squarespace.class' => $config['mapping']['squarespace']['class'],
+            'beloop.entity.squarespace.mapping_file' => $config['mapping']['squarespace']['mapping_file'],
+            'beloop.entity.squarespace.manager' => $config['mapping']['squarespace']['manager'],
+            'beloop.entity.squarespace.enabled' => $config['mapping']['squarespace']['enabled'],
         ];
     }
 
@@ -107,7 +96,6 @@ class BeloopCourseExtension extends AbstractExtension implements EntitiesOverrid
             'factories',
             'objectManagers',
             'repositories',
-            'services',
         ];
     }
 
@@ -123,9 +111,7 @@ class BeloopCourseExtension extends AbstractExtension implements EntitiesOverrid
     public function getEntitiesOverrides()
     {
         return [
-            'Beloop\Component\Course\Entity\Interfaces\CourseInterface' => 'beloop.entity.course.class',
-            'Beloop\Component\Course\Entity\Interfaces\LessonInterface' => 'beloop.entity.lesson.class',
-            'Beloop\Component\Course\Entity\Interfaces\ExternalModuleInterface' => 'beloop.entity.external_module.class',
+            'Beloop\Component\Course\Entity\Interfaces\ExternalModuleInterface' => 'beloop.entity.squarespace.class',
         ];
     }
 

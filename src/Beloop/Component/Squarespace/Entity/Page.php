@@ -13,21 +13,22 @@
  * @author Arkaitz Garro <arkaitz.garro@gmail.com>
  */
 
-namespace Beloop\Component\Course\Entity;
+namespace Beloop\Component\Squarespace\Entity;
 
-use Beloop\Component\Course\Entity\Abstracts\Module;
+use Beloop\Component\Course\Entity\Abstracts\ExternalModule;
 
-class Quiz extends Module
+class Page extends ExternalModule
 {
-    private $type = 'quiz';
+    /**
+     * Module type
+     */
+    const TYPE = 'squarespace_page';
 
     /**
-     * @return string
+     * @return mixed
      */
     public function getType()
     {
-        return $this->type;
+        return static::TYPE;
     }
-
-    
 }

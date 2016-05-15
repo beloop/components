@@ -13,17 +13,17 @@
  * @author Arkaitz Garro <arkaitz.garro@gmail.com>
  */
 
-namespace Beloop\Component\Course\Test\Unit\Factory;
+namespace Beloop\Component\Squarespace\Test\Unit\Factory;
 
 use Beloop\Component\Core\Test\Unit\Factory\Abstracts\AbstractFactoryTest;
 
-class QuizFactoryTest extends AbstractFactoryTest
+class PageFactoryTest extends AbstractFactoryTest
 {
-    private $quiz;
+    private $page;
 
     public function setUp()
     {
-        $this->quiz = $this->createInstance();
+        $this->page = $this->createInstance();
     }
     
     /**
@@ -33,7 +33,7 @@ class QuizFactoryTest extends AbstractFactoryTest
      */
     public function getFactoryNamespace()
     {
-        return 'Beloop\Component\Course\Factory\QuizFactory';
+        return 'Beloop\Component\Squarespace\Factory\PageFactory';
     }
 
     /**
@@ -43,12 +43,12 @@ class QuizFactoryTest extends AbstractFactoryTest
      */
     public function getEntityNamespace()
     {
-        return 'Beloop\Component\Course\Entity\Quiz';
+        return 'Beloop\Component\Squarespace\Entity\Page';
     }
 
     public function testDefaultValues() {
-        $this->assertEquals(true, $this->quiz->isEnabled());
-        $this->assertEquals('quiz', $this->quiz->getType());
-        $this->assertEquals(1, $this->quiz->getPosition());
+        $this->assertEquals(true, $this->page->isEnabled());
+        $this->assertEquals('squarespace_page', $this->page->getType());
+        $this->assertEquals(1, $this->page->getPosition());
     }
 }
