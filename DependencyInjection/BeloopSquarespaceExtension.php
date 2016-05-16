@@ -111,7 +111,6 @@ class BeloopSquarespaceExtension extends AbstractExtension implements EntitiesOv
     public function getEntitiesOverrides()
     {
         return [
-            'Beloop\Component\Course\Entity\Abstracts\AbstractModule' => 'beloop.entity.squarespace_page.class',
         ];
     }
 

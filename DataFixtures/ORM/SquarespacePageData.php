@@ -46,13 +46,13 @@ class SquarespacePageData extends AbstractFixture implements OrderedFixtureInter
          */
         $page1 = $pageDirector
             ->create()
-            ->setName('Page 1')
+            ->setName('Squarespace Page 1')
             ->setIcon('external-link')
-            ->setUrl('')
+            ->setUrl('http://www.deliciousyetbeautiful.com/')
             ->setLesson($this->getReference('lesson-1'));
 
         $pageDirector->save($page1);
-        $this->addReference('page-1', $page1);
+        $this->addReference('squarespace-page-1', $page1);
     }
 
     /**

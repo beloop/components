@@ -1,3 +1,17 @@
 Beloop\Component\Squarespace\Entity\SquarespacePage:
     type: entity
     repositoryClass: Beloop\Component\Squarespace\Repository\SquarespacePageRepository
+    table: course_module_squarespace_page
+
+    fields:
+        url:
+            column: url
+            type: string
+            length: 255
+            nullable: false
+
+        password:
+            column: password
+            type: string
+            length: 255
+            nullable: true
