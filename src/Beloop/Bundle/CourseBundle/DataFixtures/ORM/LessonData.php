@@ -27,7 +27,7 @@ use Beloop\Component\Core\Services\ObjectDirector;
 /**
  * LessonData class.
  *
- * Load fixtures of course entities
+ * Load fixtures of lesson entities
  */
 class LessonData extends AbstractFixture implements OrderedFixtureInterface
 {

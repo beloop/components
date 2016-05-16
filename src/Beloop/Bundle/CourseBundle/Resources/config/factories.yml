@@ -16,3 +16,8 @@ services:
         class: Beloop\Component\Course\Factory\LessonFactory
         calls:
             - [setEntityNamespace, ["%beloop.entity.lesson.class%"]]
+
+    beloop.factory.page:
+        class: Beloop\Component\Course\Factory\PageFactory
+        calls:
+            - [setEntityNamespace, ["%beloop.entity.page.class%"]]

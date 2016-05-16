@@ -1,5 +1,17 @@
 Beloop\Component\Course\Entity\Abstracts\AbstractModule:
-    type: mappedSuperclass
+    type: entity
+    inheritanceType: JOINED
+    table: course_module
+    discriminatorColumn:
+        name: type
+        type: string
+
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+
     fields:
         name:
             column: name

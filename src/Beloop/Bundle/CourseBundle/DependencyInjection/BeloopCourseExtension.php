@@ -91,10 +91,10 @@ class BeloopCourseExtension extends AbstractExtension implements EntitiesOverrid
             'beloop.entity.abstract_module.manager' => $config['mapping']['abstract_module']['manager'],
             'beloop.entity.abstract_module.enabled' => $config['mapping']['abstract_module']['enabled'],
 
-            'beloop.entity.external_module.class' => $config['mapping']['external_module']['class'],
-            'beloop.entity.external_module.mapping_file' => $config['mapping']['external_module']['mapping_file'],
-            'beloop.entity.external_module.manager' => $config['mapping']['external_module']['manager'],
-            'beloop.entity.external_module.enabled' => $config['mapping']['external_module']['enabled'],
+            'beloop.entity.page.class' => $config['mapping']['page']['class'],
+            'beloop.entity.page.mapping_file' => $config['mapping']['page']['mapping_file'],
+            'beloop.entity.page.manager' => $config['mapping']['page']['manager'],
+            'beloop.entity.page.enabled' => $config['mapping']['page']['enabled'],
         ];
     }
 
@@ -130,6 +130,7 @@ class BeloopCourseExtension extends AbstractExtension implements EntitiesOverrid
         return [
             'Beloop\Component\Course\Entity\Interfaces\CourseInterface' => 'beloop.entity.course.class',
             'Beloop\Component\Course\Entity\Interfaces\LessonInterface' => 'beloop.entity.lesson.class',
+            'Beloop\Component\Course\Entity\Interfaces\ModuleInterface' => 'beloop.entity.abstract_module.class',
         ];
     }
 

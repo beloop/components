@@ -18,3 +18,11 @@ services:
             - '@beloop.object_manager.lesson'
             - '@beloop.repository.lesson'
             - '@beloop.factory.lesson'
+
+    beloop.director.page:
+        class: Beloop\Component\Core\Services\ObjectDirector
+        lazy: true
+        arguments:
+            - '@beloop.object_manager.page'
+            - '@beloop.repository.page'
+            - '@beloop.factory.page'

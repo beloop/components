@@ -40,7 +40,7 @@ class MappingCompilerPass extends AbstractBeloopMappingCompilerPass
                     'course',
                     'lesson',
                     'abstract_module',
-                    'external_module',
+                    'page',
                 ]
             );
     }

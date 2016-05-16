@@ -47,7 +47,7 @@ Beloop\Component\Course\Entity\Lesson:
 
     oneToMany:
         modules:
-            targetEntity: Beloop\Component\Course\Entity\Abstracts\AbstractModule
+            targetEntity: Beloop\Component\Course\Entity\Interfaces\ModuleInterface
             mappedBy: lesson
 
     manyToOne:

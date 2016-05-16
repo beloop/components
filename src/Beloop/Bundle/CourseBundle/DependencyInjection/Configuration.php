@@ -56,9 +56,9 @@ class Configuration extends AbstractConfiguration
                             true
                         ))
                         ->append($this->addMappingNode(
-                            'external_module',
-                            'Beloop\Component\Course\Entity\Abstracts\ExternalModule',
-                            '@BeloopCourseBundle/Resources/config/doctrine/ExternalModule.orm.yml',
+                            'page',
+                            'Beloop\Component\Course\Entity\Page',
+                            '@BeloopCourseBundle/Resources/config/doctrine/Page.orm.yml',
                             'default',
                             true
                         ))

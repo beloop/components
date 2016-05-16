@@ -1,0 +1,19 @@
+Beloop\Component\Course\Entity\Page:
+    type: entity
+    repositoryClass: Beloop\Component\Course\Repository\PageRepository
+    table: course_module_page
+
+    fields:
+        description:
+            column: description
+            type: string
+            length: 255
+            nullable: true
+        content:
+            column: content
+            type: text
+            nullable: true
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]
