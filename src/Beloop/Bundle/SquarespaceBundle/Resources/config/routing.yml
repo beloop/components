@@ -1,0 +1,3 @@
+SquarespaceBundle:
+    resource: "@BeloopSquarespaceBundle/Controller/"
+    type:     annotation
