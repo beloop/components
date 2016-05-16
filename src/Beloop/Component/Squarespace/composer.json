@@ -20,6 +20,7 @@
     "php": "^5.5|^7.0",
     "doctrine/common": "^2.5",
     "doctrine/orm": "^2.5",
+    "guzzlehttp/guzzle:": "~6.0",
     "league/csv": "^8.0.0",
     "symfony/property-access": "^2.7|^3.0",
     "symfony/security-core": "^2.7|^3.0",
