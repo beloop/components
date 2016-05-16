@@ -30,6 +30,11 @@ interface ModuleInterface
     /**
      * @return mixed
      */
+    public function getType();
+    
+    /**
+     * @return mixed
+     */
     public function getName();
 
     /**

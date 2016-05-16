@@ -111,4 +111,5 @@ abstract class AbstractModule implements ModuleInterface
         return $this->getLesson()->getCourse();
     }
 
+    abstract public function getType();
 }
