@@ -20,6 +20,11 @@ use Beloop\Component\Course\Entity\Abstracts\AbstractModule;
 class Page extends AbstractModule
 {
     /**
+     * Module type
+     */
+    const TYPE = 'regular_page';
+
+    /**
      * @var string
      *
      * Page description
@@ -32,6 +37,14 @@ class Page extends AbstractModule
      * Page content
      */
     protected $content;
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return static::TYPE;
+    }
 
     /**
      * @return mixed
