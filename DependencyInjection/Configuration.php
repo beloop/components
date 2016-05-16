@@ -43,6 +43,14 @@ class Configuration extends AbstractConfiguration
                         ))
                     ->end()
                 ->end()
+                ->arrayNode('authorization')
+                    ->addDefaultsIfNotSet()
+                        ->children()
+                            ->scalarNode('password')
+                                ->defaultValue('1234')
+                            ->end()
+                        ->end()
+                ->end()
             ->end();
     }
 }

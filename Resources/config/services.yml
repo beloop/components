@@ -1,0 +1,10 @@
+services:
+
+  #
+  # Page renderer
+  #
+  beloop.squarespace.page_renderer:
+      class: Beloop\Component\Squarespace\Services\PageRenderer
+      arguments:
+          - '@guzzle.client.api_squarespace'
+          - '%beloop.squarespace.authorization.password%'

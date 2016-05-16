@@ -79,6 +79,8 @@ class BeloopSquarespaceExtension extends AbstractExtension implements EntitiesOv
             'beloop.entity.squarespace_page.mapping_file' => $config['mapping']['squarespace_page']['mapping_file'],
             'beloop.entity.squarespace_page.manager' => $config['mapping']['squarespace_page']['manager'],
             'beloop.entity.squarespace_page.enabled' => $config['mapping']['squarespace_page']['enabled'],
+
+            'beloop.squarespace.authorization.password' => $config['authorization']['password'],
         ];
     }
 
@@ -96,6 +98,7 @@ class BeloopSquarespaceExtension extends AbstractExtension implements EntitiesOv
             'factories',
             'objectManagers',
             'repositories',
+            'services',
         ];
     }
 
