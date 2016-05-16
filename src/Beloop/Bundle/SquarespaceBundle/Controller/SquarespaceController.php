@@ -66,12 +66,10 @@ class SquarespaceController  extends Controller
 
         $course = $page->getCourse();
 
-        $page->setUrl(
-            $this->generateUrl(
-                'beloop_render_module_squarespace_page',
-                ['code' => $course->getCode(), 'id' => $page->getId()],
-                UrlGeneratorInterface::ABSOLUTE_URL
-            )
+        $renderUrl = $this->generateUrl(
+            'beloop_render_module_squarespace_page',
+            ['code' => $course->getCode(), 'id' => $page->getId()],
+            UrlGeneratorInterface::ABSOLUTE_URL
         );
 
         return [
@@ -79,6 +77,7 @@ class SquarespaceController  extends Controller
             'user' => $user,
             'course' => $page->getCourse(),
             'page' => $page,
+            'renderUrl' => $renderUrl
         ];
     }
 
