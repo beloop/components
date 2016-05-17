@@ -1,0 +1,12 @@
+services:
+
+    #
+    # Event Dispatchers
+    #
+    beloop.event_dispatcher.user:
+        class: Beloop\Component\User\EventDispatcher\UserEventDispatcher
+        parent: beloop.event_dispatcher.abstract
+
+    beloop.event_dispatcher.password:
+        class: Beloop\Component\User\EventDispatcher\PasswordEventDispatcher
+        parent: beloop.event_dispatcher.abstract
