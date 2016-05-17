@@ -1,5 +1,24 @@
 {% extends 'CourseBundle:Module:view.html.twig' %}
 
 {% block module_content %}
-    <iframe src="{{ renderUrl }}" width="100%" height="100%" frameborder="0"></iframe>
+    <div class="iframe-wrapper">
+        <iframe id="squarespace-content" src="{{ renderUrl }}" width="100%" height="100%" frameborder="0"></iframe>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(function(){
+            var iframe = document.getElementById('squarespace-content');
+            var container = document.querySelector('.iframe-wrapper');
+
+            var resize = function () {
+                iframe.contentDocument.body.style.width = container.clientWidth + 'px';
+            };
+
+            iframe.addEventListener('load', resize);
+            window.addEventListener('resize', resize);
+        });
+    </script>
 {% endblock %}
