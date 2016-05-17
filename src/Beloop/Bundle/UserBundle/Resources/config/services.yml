@@ -3,6 +3,13 @@ services:
     #
     # Services
     #
+    beloop.manager.password:
+        class: Beloop\Component\User\Services\PasswordManager
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@router'
+            - '@beloop.event_dispatcher.password'
+            - '@beloop.generator.sha1'
 
     #
     # Manager
