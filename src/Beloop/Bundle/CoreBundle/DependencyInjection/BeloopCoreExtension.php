@@ -46,6 +46,7 @@ class BeloopCoreExtension extends AbstractExtension
     public function getConfigFiles(array $config)
     {
         return [
+            'eventDispatchers',
             'generators',
             'providers',
             'services',
