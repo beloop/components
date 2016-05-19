@@ -137,4 +137,29 @@ class PasswordManager
 
         return $this;
     }
+
+    /**
+     * Recovers a password given a user.
+     *
+     * @param AbstractUser $user        User
+     * @param string       $hash        Hash given by provider
+     * @param string       $newPassword New password
+     *
+     * @return $this Self object
+     */
+    public function recoverPassword(AbstractUser $user, $hash, $newPassword)
+    {
+        if ($hash == $user->getRecoveryHash()) {
+            $user
+                ->setPassword($newPassword)
+                ->setRecoveryHash(null);
+            $this->manager->flush($user);
+
+            $this
+                ->passwordEventDispatcher
+                ->dispatchOnPasswordRecoverEvent($user);
+        }
+
+        return $this;
+    }
 }
