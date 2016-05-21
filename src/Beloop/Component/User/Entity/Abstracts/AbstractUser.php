@@ -15,8 +15,6 @@
 
 namespace Beloop\Component\User\Entity\Abstracts;
 
-use Symfony\Component\Security\Core\Role\Role;
-
 use Beloop\Component\Core\Entity\Traits\DateTimeTrait;
 use Beloop\Component\Core\Entity\Traits\EnabledTrait;
 use Beloop\Component\Core\Entity\Traits\IdentifiableTrait;
@@ -28,7 +26,7 @@ abstract class AbstractUser implements AbstractUserInterface
     use IdentifiableTrait,
         DateTimeTrait,
         EnabledTrait;
-    
+
     /**
      * @var string
      *
@@ -135,7 +133,7 @@ abstract class AbstractUser implements AbstractUserInterface
     public function setFirstname($firstname)
     {
         $this->firstname = $firstname;
-        
+
         return $this;
     }
 
@@ -159,7 +157,7 @@ abstract class AbstractUser implements AbstractUserInterface
     public function setLastname($lastname)
     {
         $this->lastname = $lastname;
-        
+
         return $this;
     }
 
@@ -183,7 +181,7 @@ abstract class AbstractUser implements AbstractUserInterface
     public function setEmail($email)
     {
         $this->email = $email;
-        
+
         return $this;
     }
 
@@ -217,7 +215,7 @@ abstract class AbstractUser implements AbstractUserInterface
     public function setToken($token)
     {
         $this->token = $token;
-        
+
         return $this;
     }
 
@@ -243,7 +241,7 @@ abstract class AbstractUser implements AbstractUserInterface
     public function setRecoveryHash($recoveryHash)
     {
         $this->recoveryHash = $recoveryHash;
-        
+
         return $this;
     }
 
@@ -279,13 +277,13 @@ abstract class AbstractUser implements AbstractUserInterface
         if (null === $password) {
             return $this;
         }
-        
+
         if (!is_string($password) || trim($password) == '') {
             throw new InvalidPasswordException();
         }
-        
+
         $this->password = $password;
-        
+
         return $this;
     }
 
@@ -319,7 +317,7 @@ abstract class AbstractUser implements AbstractUserInterface
     public function setOneTimeLoginHash($oneTimeLoginHash)
     {
         $this->oneTimeLoginHash = $oneTimeLoginHash;
-        
+
         return $this;
     }
 
@@ -362,4 +360,5 @@ abstract class AbstractUser implements AbstractUserInterface
     {
         return ['id', 'email'];
     }
+
 }

@@ -50,4 +50,52 @@ interface UserInterface extends AbstractUserInterface
      * @return LanguageInterface
      */
     public function getLanguage();
+
+    /**
+     * Get biography
+     *
+     * @return string
+     */
+    public function getBiography();
+
+    /**
+     * Set biography
+     *
+     * @param string $biography
+     */
+    public function setBiography($biography);
+
+    /**
+     * Set website.
+     *
+     * @param string $website The Website
+     *
+     * @return $this Self object
+     */
+    public function setWebsite($website);
+
+    /**
+     * Get website.
+     *
+     * @return string
+     */
+    public function getWebsite();
+
+    /**
+     * Set instagram user.
+     *
+     * @param string $instagram Instagram user
+     *
+     * @return $this Self object
+     */
+    public function setInstagram($instagram);
+
+    /**
+     * Get instagram user.
+     *
+     * @return string
+     */
+    public function getInstagram();
+
+
 }

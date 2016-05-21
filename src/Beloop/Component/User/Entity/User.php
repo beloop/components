@@ -15,8 +15,6 @@
 
 namespace Beloop\Component\User\Entity;
 
-use Symfony\Component\Security\Core\Role\Role;
-
 use Beloop\Component\Language\Entity\Interfaces\LanguageInterface;
 use Beloop\Component\User\Entity\Abstracts\AbstractUser;
 use Beloop\Component\User\Entity\Interfaces\UserInterface;
@@ -36,6 +34,27 @@ class User extends AbstractUser implements UserInterface
      * Is guest
      */
     protected $guest;
+
+    /**
+     * @var string
+     *
+     * Biography
+     */
+    protected $biography;
+
+    /**
+     * @var string
+     *
+     * Website URL
+     */
+    protected $website;
+
+    /**
+     * @var string
+     *
+     * Instagram user
+     */
+    protected $instagram;
 
     /**
      * Sets Guest.
@@ -83,5 +102,59 @@ class User extends AbstractUser implements UserInterface
     public function getLanguage()
     {
         return $this->language;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBiography()
+    {
+        return $this->biography;
+    }
+
+    /**
+     * @param string $biography
+     */
+    public function setBiography($biography)
+    {
+        $this->biography = $biography;
+    }
+
+    /**
+     * @param string $website
+     * @return $this
+     */
+    public function setWebsite($website)
+    {
+        $this->website = $website;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getWebsite()
+    {
+        return $this->website;
+    }
+
+    /**
+     * @param string $instagram
+     * @return $this
+     */
+    public function setInstagram($instagram)
+    {
+        $this->instagram = $instagram;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInstagram()
+    {
+        return $this->instagram;
     }
 }

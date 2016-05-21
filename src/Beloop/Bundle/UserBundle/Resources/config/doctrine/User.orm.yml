@@ -11,6 +11,20 @@ Beloop\Component\User\Entity\User:
         guest:
             column: guest
             type: boolean
+        biography:
+            column: biography
+            type: text
+            nullable: true
+        website:
+            column: website
+            type: string
+            length: 255
+            nullable: true
+        instagram:
+            column: instagram
+            type: string
+            length: 255
+            nullable: true
 
     manyToOne:
         language:
