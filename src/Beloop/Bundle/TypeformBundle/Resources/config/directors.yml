@@ -1,0 +1,12 @@
+services:
+
+    #
+    # Directors
+    #
+    beloop.director.typeform_quiz:
+        class: Beloop\Component\Core\Services\ObjectDirector
+        lazy: true
+        arguments:
+            - '@beloop.object_manager.typeform_quiz'
+            - '@beloop.repository.typeform_quiz'
+            - '@beloop.factory.typeform_quiz'

@@ -1,0 +1,11 @@
+services:
+
+  #
+  # Page renderer
+  #
+  beloop.typeform.page_renderer:
+      class: Beloop\Component\Typeform\Services\PageRenderer
+      arguments:
+          - '@logger'
+          - '@session'
+          - '@guzzle.client.api_typeform'

@@ -1,0 +1,21 @@
+language: php
+
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+
+matrix:
+  include:
+    - php: 5.5
+  allow_failures:
+    - php: nightly
+
+before_install:
+  - composer self-update
+  - composer config preferred-install source
+
+install: composer install --no-interaction --no-progress
+
+script: vendor/bin/phpunit -v

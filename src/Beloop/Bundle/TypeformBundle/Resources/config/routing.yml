@@ -1,0 +1,3 @@
+TypeformBundle:
+    resource: "@BeloopTypeformBundle/Controller/"
+    type:     annotation

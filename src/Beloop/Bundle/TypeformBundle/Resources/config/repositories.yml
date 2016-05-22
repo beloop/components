@@ -1,0 +1,13 @@
+services:
+
+    #
+    # Repositories
+    #
+
+    #
+    # Repository for entity Typeform quiz
+    #
+    beloop.repository.typeform_quiz:
+        parent: beloop.abstract_repository
+        arguments:
+            - %beloop.entity.typeform_quiz.class%

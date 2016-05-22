@@ -1,0 +1,13 @@
+services:
+
+    #
+    # Factories
+    #
+
+    #
+    # Factory for entity Typeform quiz
+    #
+    beloop.factory.typeform_quiz:
+        class: Beloop\Component\Typeform\Factory\TypeformQuizFactory
+        calls:
+            - [setEntityNamespace, ["%beloop.entity.typeform_quiz.class%"]]
