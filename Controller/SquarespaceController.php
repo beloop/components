@@ -76,7 +76,7 @@ class SquarespaceController  extends Controller
             'section' => 'my-courses',
             'user' => $user,
             'course' => $page->getCourse(),
-            'page' => $page,
+            'module' => $page,
             'renderUrl' => $renderUrl
         ];
     }
