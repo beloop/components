@@ -1,0 +1,9 @@
+services:
+
+    #
+    # Wrappers
+    #
+    beloop.wrapper.user:
+        class: Beloop\Component\User\Wrapper\UserWrapper
+        arguments:
+            - '@?security.token_storage'
