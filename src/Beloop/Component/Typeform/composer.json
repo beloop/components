@@ -1,0 +1,46 @@
+{
+  "name": "beloop/typeform",
+  "description": "Beloop Typeform Component",
+  "keywords": [
+    "beloop",
+    "typeform",
+    "lms",
+    "component"
+  ],
+  "homepage": "https://github.com/beloop/Typeform",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Arkaitz Garro",
+      "email": "arkaitz.garro@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^5.5|^7.0",
+    "doctrine/common": "^2.5",
+    "doctrine/orm": "^2.5",
+    "guzzlehttp/guzzle": "~6.0",
+    "symfony/security-core": "^2.7|^3.0",
+    "twig/twig": "^1.23",
+
+    "beloop/core": "^0.4",
+    "beloop/course": "^0.4"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.8.19"
+  },
+  "autoload": {
+    "exclude-from-classmap": [
+      "/Test/"
+    ],
+    "psr-4": {
+      "Beloop\\Component\\Typeform\\": ""
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.4-dev"
+    }
+  }
+}
