@@ -23,7 +23,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 use Mmoreram\ControllerExtraBundle\Annotation\Entity as EntityAnnotation;
 
-use Beloop\Component\TypeForm\Entity\TypeformQuiz;
+use Beloop\Component\Typeform\Entity\TypeformQuiz;
 
 class TypeformController  extends Controller
 {
@@ -54,17 +54,17 @@ class TypeformController  extends Controller
      *      mappingFallback = true
      * )
      */
-    public function viewTypeFormQuizAction(TypeformQuiz $quiz)
+    public function viewTypeformQuizAction(TypeformQuiz $quiz)
     {
         $user = $this->getUser();
 
-        $userEnrolled = $page->getCourse()->getEnrolledUsers()->contains($user);
+        $userEnrolled = $quiz->getCourse()->getEnrolledUsers()->contains($user);
 
         if (!$userEnrolled) {
             throw $this->createNotFoundException('The course does not exist');
         }
 
-        $course = $page->getCourse();
+        $course = $quiz->getCourse();
 
         $renderUrl = $this->generateUrl(
             'beloop_render_module_typeform_quiz',
@@ -76,7 +76,7 @@ class TypeformController  extends Controller
             'section' => 'my-courses',
             'user' => $user,
             'course' => $quiz->getCourse(),
-            'quiz' => $quiz,
+            'module' => $quiz,
             'renderUrl' => $renderUrl
         ];
     }
@@ -106,7 +106,7 @@ class TypeformController  extends Controller
      *      mappingFallback = true
      * )
      */
-    public function renderTypeFormQuizAction(TypeformQuiz $quiz)
+    public function renderTypeformQuizAction(TypeformQuiz $quiz)
     {
         $user = $this->getUser();
 

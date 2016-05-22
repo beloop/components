@@ -39,11 +39,11 @@ class TypeformQuizData extends AbstractFixture implements OrderedFixtureInterfac
         $quizDirector = $this->getDirector('typeform_quiz');
 
         /**
-         * TypeForm quiz.
+         * Typeform quiz.
          */
         $quiz1 = $quizDirector
             ->create()
-            ->setName('TypeForm quiz 1')
+            ->setName('Typeform quiz 1')
             ->setIcon('quiz')
             ->setUrl('https://freetemplate.typeform.com/to/GiClwL')
             ->setLesson($this->getReference('lesson-1'));

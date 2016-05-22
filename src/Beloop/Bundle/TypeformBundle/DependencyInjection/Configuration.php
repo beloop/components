@@ -37,7 +37,7 @@ class Configuration extends AbstractConfiguration
                         ->append($this->addMappingNode(
                             'typeform_quiz',
                             'Beloop\Component\Typeform\Entity\TypeformQuiz',
-                            '@BelooptypeformBundle/Resources/config/doctrine/TypeformQuiz.orm.yml',
+                            '@BeloopTypeformBundle/Resources/config/doctrine/TypeformQuiz.orm.yml',
                             'default',
                             true
                         ))
