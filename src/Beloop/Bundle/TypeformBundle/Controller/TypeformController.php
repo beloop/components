@@ -77,7 +77,6 @@ class TypeformController  extends Controller
             'user' => $user,
             'course' => $quiz->getCourse(),
             'module' => $quiz,
-            'renderUrl' => $renderUrl
         ];
     }
 
