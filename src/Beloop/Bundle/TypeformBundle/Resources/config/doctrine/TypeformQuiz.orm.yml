@@ -1,0 +1,11 @@
+Beloop\Component\Typeform\Entity\TypeformQuiz:
+    type: entity
+    repositoryClass: Beloop\Component\Typeform\Repository\TypeformQuizRepository
+    table: course_module_typeform_quiz
+
+    fields:
+        url:
+            column: url
+            type: string
+            length: 255
+            nullable: false
