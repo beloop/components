@@ -1,7 +1,7 @@
 Beloop\Component\Course\Entity\Lesson:
     type: entity
     repositoryClass: Beloop\Component\Course\Repository\LessonRepository
-    table: lesson
+    table: course_lesson
 
     id:
         id:
