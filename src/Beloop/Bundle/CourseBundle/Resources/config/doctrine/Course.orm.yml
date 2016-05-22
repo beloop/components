@@ -25,6 +25,11 @@ Beloop\Component\Course\Entity\Course:
             column: description
             type: text
             nullable: false
+        imageName:
+            column: image_name
+            type: string
+            length: 255
+            nullable: true
         startDate:
             column: start_date
             type: datetime

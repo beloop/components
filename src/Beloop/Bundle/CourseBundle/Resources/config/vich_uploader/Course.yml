@@ -1,0 +1,4 @@
+Beloop\Component\Course\Entity\Course:
+    imageFile:
+        mapping:           course_image
+        filename_property: imageName
