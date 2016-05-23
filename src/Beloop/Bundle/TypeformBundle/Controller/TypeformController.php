@@ -64,6 +64,10 @@ class TypeformController  extends Controller
             throw $this->createNotFoundException('The course does not exist');
         }
 
+        if (!$quiz->isAvailable()) {
+            throw $this->createNotFoundException('The course does not exist');
+        }
+
         $course = $quiz->getCourse();
 
         $renderUrl = $this->generateUrl(
@@ -75,7 +79,7 @@ class TypeformController  extends Controller
         return [
             'section' => 'my-courses',
             'user' => $user,
-            'course' => $quiz->getCourse(),
+            'course' => $course,
             'module' => $quiz,
         ];
     }
@@ -112,6 +116,10 @@ class TypeformController  extends Controller
         $userEnrolled = $quiz->getCourse()->getEnrolledUsers()->contains($user);
 
         if (!$userEnrolled) {
+            throw $this->createNotFoundException('The course does not exist');
+        }
+
+        if (!$quiz->isAvailable()) {
             throw $this->createNotFoundException('The course does not exist');
         }
 

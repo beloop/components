@@ -56,6 +56,10 @@ class SquarespaceController  extends Controller
      */
     public function viewSquarespacePageAction(SquarespacePage $page)
     {
+        if (!$page->isAvailable()) {
+            throw $this->createNotFoundException('The course does not exist');
+        }
+
         $user = $this->getUser();
 
         $userEnrolled = $page->getCourse()->getEnrolledUsers()->contains($user);
@@ -75,7 +79,7 @@ class SquarespaceController  extends Controller
         return [
             'section' => 'my-courses',
             'user' => $user,
-            'course' => $page->getCourse(),
+            'course' => $course,
             'module' => $page,
             'renderUrl' => $renderUrl
         ];
@@ -108,6 +112,10 @@ class SquarespaceController  extends Controller
      */
     public function renderSquarespacePageAction(SquarespacePage $page)
     {
+        if (!$page->isAvailable()) {
+            throw $this->createNotFoundException('The course does not exist');
+        }
+
         $user = $this->getUser();
 
         $userEnrolled = $page->getCourse()->getEnrolledUsers()->contains($user);
