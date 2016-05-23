@@ -15,6 +15,7 @@
 
 namespace Beloop\Component\Course\Repository;
 
+use DateTime;
 use Doctrine\ORM\EntityRepository;
 
 use Beloop\Component\User\Entity\Interfaces\UserInterface;
@@ -36,16 +37,16 @@ class CourseRepository extends EntityRepository
         $qb = $this->createQueryBuilder('c');
 
         $qb
-            ->addSelect('l')
-            ->innerJoin('c.lessons', 'l')
-            ->innerJoin('c.enrolledUsers', 'u')
-            //->leftJoin('l.modules', 'm')
-            ->where('u.id = :user')
+            ->addSelect('l, u, m')
+                ->innerJoin('c.lessons', 'l')
+                ->innerJoin('c.enrolledUsers', 'u')
+                ->leftJoin('l.modules', 'm')
+            ->where('u.id = :user')->setParameter('user', $user)
+                ->andWhere('c.endDate >= :now')->setParameter('now', new DateTime())
             ->orderBy('c.startDate', 'DESC')
-            ->addOrderBy('l.position', 'ASC')
-            //->addOrderBy('m.position', 'ASC')
-            ->setParameter('user', $user)
-            ;
+                ->addOrderBy('l.position', 'ASC')
+                ->addOrderBy('m.position', 'ASC')
+        ;
 
         return $qb->getQuery()->getResult();
     }
@@ -63,12 +64,12 @@ class CourseRepository extends EntityRepository
         $qb = $this->createQueryBuilder('c');
 
         $qb
-            ->addSelect('l')
-            ->leftJoin('c.lessons', 'l')
-            //->leftJoin('l.modules', 'm')
+            ->addSelect('l, m')
+                ->leftJoin('c.lessons', 'l')
+                ->leftJoin('l.modules', 'm')
             ->orderBy('l.position', 'ASC')
-            //->addOrderBy('m.position', 'ASC')
-            ;
+                ->addOrderBy('m.position', 'ASC')
+        ;
 
         foreach ($criteria as $key => $value) {
             $qb
