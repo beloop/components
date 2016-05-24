@@ -15,6 +15,8 @@
 
 namespace Beloop\Component\User\Entity;
 
+use Symfony\Component\HttpFoundation\File\File;
+
 use Beloop\Component\Language\Entity\Interfaces\LanguageInterface;
 use Beloop\Component\User\Entity\Abstracts\AbstractUser;
 use Beloop\Component\User\Entity\Interfaces\UserInterface;
@@ -55,6 +57,16 @@ class User extends AbstractUser implements UserInterface
      * Instagram user
      */
     protected $instagram;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     */
+    protected $avatarFile;
+
+    /**
+     * @var string
+     */
+    protected $avatarName;
 
     /**
      * Sets Guest.
@@ -156,5 +168,49 @@ class User extends AbstractUser implements UserInterface
     public function getInstagram()
     {
         return $this->instagram;
+    }
+
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     *
+     * @return Self
+     */
+    public function setAvatarFile(File $image = null)
+    {
+        $this->avatarFile = $image;
+
+        if ($image) {
+            $this->updatedAt = new \DateTime('now');
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return File
+     */
+    public function getAvatarFile()
+    {
+        return $this->avatarFile;
+    }
+
+    /**
+     * @param string $avatarName
+     *
+     * @return Self
+     */
+    public function setAvatarName($avatarName)
+    {
+        $this->avatarName = $avatarName;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAvatarName()
+    {
+        return $this->avatarName;
     }
 }
