@@ -1,0 +1,5 @@
+Beloop\Component\User\Entity\User:
+    properties:
+        avatarFile:
+            - Image:
+                maxSize: 512k

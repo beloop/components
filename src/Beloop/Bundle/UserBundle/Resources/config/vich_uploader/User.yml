@@ -1,0 +1,4 @@
+Beloop\Component\User\Entity\User:
+    avatarFile:
+        mapping:           user_avatar
+        filename_property: avatarName

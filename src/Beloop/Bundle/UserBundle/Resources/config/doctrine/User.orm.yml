@@ -25,6 +25,11 @@ Beloop\Component\User\Entity\User:
             type: string
             length: 255
             nullable: true
+        avatarName:
+            column: avatar
+            type: string
+            length: 255
+            nullable: true
 
     manyToOne:
         language:
