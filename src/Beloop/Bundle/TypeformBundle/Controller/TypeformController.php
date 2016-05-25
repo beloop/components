@@ -57,18 +57,20 @@ class TypeformController  extends Controller
     public function viewTypeformQuizAction(TypeformQuiz $quiz)
     {
         $user = $this->getUser();
-
-        $userEnrolled = $quiz->getCourse()->getEnrolledUsers()->contains($user);
-
-        if (!$userEnrolled) {
-            throw $this->createNotFoundException('The course does not exist');
-        }
-
-        if (!$quiz->isAvailable()) {
-            throw $this->createNotFoundException('The course does not exist');
-        }
-
         $course = $quiz->getCourse();
+
+        // Extra checks if user is not TEACHER or ADMIN
+        if (false === $this->get('security.authorization_checker')->isGranted('ROLE_TEACHER')) {
+            $userEnrolled = $course->getEnrolledUsers()->contains($user);
+
+            if (!$userEnrolled) {
+                throw $this->createNotFoundException('The course does not exist');
+            }
+
+            if (!$quiz->isAvailable()) {
+                throw $this->createNotFoundException('The course does not exist');
+            }
+        }
 
         $renderUrl = $this->generateUrl(
             'beloop_render_module_typeform_quiz',

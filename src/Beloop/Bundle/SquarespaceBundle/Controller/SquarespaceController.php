@@ -56,19 +56,21 @@ class SquarespaceController  extends Controller
      */
     public function viewSquarespacePageAction(SquarespacePage $page)
     {
-        if (!$page->isAvailable()) {
-            throw $this->createNotFoundException('The course does not exist');
-        }
-
         $user = $this->getUser();
-
-        $userEnrolled = $page->getCourse()->getEnrolledUsers()->contains($user);
-
-        if (!$userEnrolled) {
-            throw $this->createNotFoundException('The course does not exist');
-        }
-
         $course = $page->getCourse();
+
+        // Extra checks if user is not TEACHER or ADMIN
+        if (false === $this->get('security.authorization_checker')->isGranted('ROLE_TEACHER')) {
+            $userEnrolled = $course->getEnrolledUsers()->contains($user);
+
+            if (!$userEnrolled) {
+                throw $this->createNotFoundException('The course does not exist');
+            }
+
+            if (!$page->isAvailable()) {
+                throw $this->createNotFoundException('The course does not exist');
+            }
+        }
 
         $renderUrl = $this->generateUrl(
             'beloop_render_module_squarespace_page',
