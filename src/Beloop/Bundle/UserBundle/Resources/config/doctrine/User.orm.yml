@@ -39,6 +39,11 @@ Beloop\Component\User\Entity\User:
                 referencedColumnName: iso
                 nullable: true
 
+    manyToMany:
+        courses:
+            targetEntity: Beloop\Component\Course\Entity\Interfaces\CourseInterface
+            mappedBy: enrolledUsers
+
     lifecycleCallbacks:
             preUpdate: [loadUpdateAt]
             prePersist: [loadUpdateAt]
