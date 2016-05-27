@@ -25,7 +25,7 @@ use Mmoreram\ControllerExtraBundle\Annotation\Entity as EntityAnnotation;
 
 use Beloop\Component\Typeform\Entity\TypeformQuiz;
 
-class TypeformController  extends Controller
+class TypeformController extends Controller
 {
     /**
      * View typeform form module
@@ -114,15 +114,19 @@ class TypeformController  extends Controller
     public function renderTypeformQuizAction(TypeformQuiz $quiz)
     {
         $user = $this->getUser();
+        $course = $quiz->getCourse();
 
-        $userEnrolled = $quiz->getCourse()->getEnrolledUsers()->contains($user);
+        // Extra checks if user is not TEACHER or ADMIN
+        if (false === $this->get('security.authorization_checker')->isGranted('ROLE_TEACHER')) {
+            $userEnrolled = $course->getEnrolledUsers()->contains($user);
 
-        if (!$userEnrolled) {
-            throw $this->createNotFoundException('The course does not exist');
-        }
+            if (!$userEnrolled) {
+                throw $this->createNotFoundException('The course does not exist');
+            }
 
-        if (!$quiz->isAvailable()) {
-            throw $this->createNotFoundException('The course does not exist');
+            if (!$quiz->isAvailable()) {
+                throw $this->createNotFoundException('The course does not exist');
+            }
         }
 
         $content = $this->get('beloop.typeform.page_renderer')->render($quiz);

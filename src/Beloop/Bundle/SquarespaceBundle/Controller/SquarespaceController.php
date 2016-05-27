@@ -25,7 +25,7 @@ use Mmoreram\ControllerExtraBundle\Annotation\Entity as EntityAnnotation;
 
 use Beloop\Component\Squarespace\Entity\SquarespacePage;
 
-class SquarespaceController  extends Controller
+class SquarespaceController extends Controller
 {
     /**
      * View squarespace page module
@@ -114,16 +114,20 @@ class SquarespaceController  extends Controller
      */
     public function renderSquarespacePageAction(SquarespacePage $page)
     {
-        if (!$page->isAvailable()) {
-            throw $this->createNotFoundException('The course does not exist');
-        }
-
         $user = $this->getUser();
+        $course = $page->getCourse();
 
-        $userEnrolled = $page->getCourse()->getEnrolledUsers()->contains($user);
+        // Extra checks if user is not TEACHER or ADMIN
+        if (false === $this->get('security.authorization_checker')->isGranted('ROLE_TEACHER')) {
+            $userEnrolled = $course->getEnrolledUsers()->contains($user);
 
-        if (!$userEnrolled) {
-            throw $this->createNotFoundException('The course does not exist');
+            if (!$userEnrolled) {
+                throw $this->createNotFoundException('The course does not exist');
+            }
+
+            if (!$page->isAvailable()) {
+                throw $this->createNotFoundException('The course does not exist');
+            }
         }
 
         $content = $this->get('beloop.squarespace.page_renderer')->render($page);
