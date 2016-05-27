@@ -15,6 +15,8 @@
 
 namespace Beloop\Component\User\Entity\Interfaces;
 
+use Symfony\Component\HttpFoundation\File\File;
+
 use Beloop\Component\Language\Entity\Interfaces\LanguageInterface;
 
 interface UserInterface extends AbstractUserInterface
