@@ -1,0 +1,4 @@
+Beloop\Component\Instagram\Entity\Instagram:
+    imageFile:
+        mapping:           instagram
+        filename_property: imageName

@@ -1,0 +1,43 @@
+{
+  "name": "beloop/instagram-bundle",
+  "description": "Beloop Instagram Bundle",
+  "keywords": [
+    "beloop",
+    "instagram",
+    "lms"
+  ],
+  "homepage": "https://github.com/beloop/InstagramBundle",
+  "type": "symfony-bundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Arkaitz Garro",
+      "email": "arkaitz.garro@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^5.5|^7.0",
+    "doctrine/common": "^2.5",
+    "doctrine/orm": "^2.5",
+
+    "beloop/core": "^0.4",
+    "beloop/instagram": "^0.4",
+    "beloop/user": "^0.4"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.8.19"
+  },
+  "autoload": {
+    "exclude-from-classmap": [
+      "/Test/"
+    ],
+    "psr-4": {
+      "Beloop\\Bundle\\InstagramBundle\\": ""
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.4-dev"
+    }
+  }
+}

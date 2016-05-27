@@ -1,0 +1,5 @@
+Beloop\Component\Instagram\Entity\Instagram:
+    properties:
+        imageFile:
+            - Image:
+                maxSize: 1024k

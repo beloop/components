@@ -1,0 +1,50 @@
+Beloop\Component\Instagram\Entity\Instagram:
+    type: entity
+    repositoryClass: Beloop\Component\Instagram\Repository\InstagramRepository
+    table: instagram
+
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+
+    fields:
+        title:
+            column: title
+            type: string
+            length: 255
+            required: true
+            nullable: false
+        description:
+            column: description
+            type: text
+            required: false
+            nullable: true
+        imageName:
+            column: image_name
+            type: string
+            length: 255
+            nullable: false
+        createdAt:
+            column: created_at
+            type: datetime
+            nullable: false
+        updatedAt:
+            column: updated_at
+            type: datetime
+            nullable: false
+
+    manyToOne:
+        user:
+            targetEntity: Beloop\Component\User\Entity\Interface\UserInterface
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+                nullable: false
+                onDelete: "CASCADE"
+                onUpdate: "CASCADE"
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]

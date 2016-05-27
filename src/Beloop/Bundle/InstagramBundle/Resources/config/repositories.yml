@@ -1,0 +1,13 @@
+services:
+
+    #
+    # Repositories
+    #
+
+    #
+    # Repository for entity instagram
+    #
+    beloop.repository.instagram:
+        parent: beloop.abstract_repository
+        arguments:
+            - %beloop.entity.instagram.class%

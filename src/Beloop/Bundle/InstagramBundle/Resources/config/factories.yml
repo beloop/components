@@ -1,0 +1,13 @@
+services:
+
+    #
+    # Factories
+    #
+
+    #
+    # Factory for entity instagram
+    #
+    beloop.factory.instagram:
+        class: Beloop\Component\Instagram\Factory\InstagramFactory
+        calls:
+            - [setEntityNamespace, ["%beloop.entity.instagram.class%"]]
