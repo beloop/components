@@ -37,7 +37,7 @@ class Configuration extends AbstractConfiguration
                         ->append($this->addMappingNode(
                             'instagram',
                             'Beloop\Component\Instagram\Entity\Instagram',
-                            '@InstagramBundle/Resources/config/doctrine/Instagram.orm.yml',
+                            '@BeloopInstagramBundle/Resources/config/doctrine/Instagram.orm.yml',
                             'default',
                             true
                         ))

@@ -24,7 +24,7 @@ use Beloop\Bundle\CoreBundle\DependencyInjection\Interfaces\EntitiesOverridableE
 /**
  * This is the class that loads and manages your bundle configuration.
  */
-class InstagramExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
+class BeloopInstagramExtension extends AbstractExtension implements EntitiesOverridableExtensionInterface
 {
     /**
      * @var string
@@ -94,7 +94,6 @@ class InstagramExtension extends AbstractExtension implements EntitiesOverridabl
     {
         return [
             'factories',
-            'formTypes',
             'objectManagers',
             'repositories',
         ];
