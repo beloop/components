@@ -97,5 +97,32 @@ interface UserInterface extends AbstractUserInterface
      */
     public function getInstagram();
 
+    /**
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
+     *
+     * @return Self
+     */
+    public function setAvatarFile(File $image = null);
 
+    /**
+     * @return File
+     */
+    public function getAvatarFile();
+
+    /**
+     * @param string $avatarName
+     *
+     * @return Self
+     */
+    public function setAvatarName($avatarName);
+
+    /**
+     * @return string
+     */
+    public function getAvatarName();
+
+    /**
+     * @return Collection
+     */
+    public function getCourses();
 }

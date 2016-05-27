@@ -213,4 +213,12 @@ class User extends AbstractUser implements UserInterface
     {
         return $this->avatarName;
     }
+
+    /**
+     * @return Collection
+     */
+    public function getCourses()
+    {
+        return $this->courses;
+    }
 }
