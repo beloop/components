@@ -69,6 +69,11 @@ class User extends AbstractUser implements UserInterface
     protected $avatarName;
 
     /**
+     * @var Collection
+     */
+    protected $courses;
+
+    /**
      * Sets Guest.
      *
      * @param bool $guest Guest
