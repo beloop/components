@@ -37,7 +37,7 @@ Beloop\Component\Instagram\Entity\Instagram:
 
     manyToOne:
         user:
-            targetEntity: Beloop\Component\User\Entity\Interface\UserInterface
+            targetEntity: Beloop\Component\User\Entity\User
             joinColumn:
                 name: user_id
                 referencedColumnName: id
