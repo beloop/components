@@ -1,7 +1,6 @@
-Beloop\Component\Instagram\Entity\Instagram:
+Beloop\Component\Instagram\Entity\Comment:
     type: entity
-    repositoryClass: Beloop\Component\Instagram\Repository\InstagramRepository
-    table: instagram
+    table: instagram_comment
 
     id:
         id:
@@ -10,21 +9,10 @@ Beloop\Component\Instagram\Entity\Instagram:
                 strategy: AUTO
 
     fields:
-        title:
-            column: title
-            type: string
-            length: 255
-            required: true
-            nullable: false
-        description:
-            column: description
+        text:
+            column: text
             type: text
-            required: false
-            nullable: true
-        imageName:
-            column: image_name
-            type: string
-            length: 255
+            required: true
             nullable: false
         enabled:
             column: enabled
@@ -39,19 +27,15 @@ Beloop\Component\Instagram\Entity\Instagram:
             nullable: false
 
     manyToOne:
-        user:
-            targetEntity: Beloop\Component\User\Entity\User
+        image:
+            targetEntity: Beloop\Component\Instagram\Entity\Instagram
+            inversedBy: comments
             joinColumn:
-                name: user_id
+                name: image_id
                 referencedColumnName: id
                 nullable: false
                 onDelete: "CASCADE"
                 onUpdate: "CASCADE"
-
-    oneToMany:
-        comments:
-            targetEntity: Beloop\Component\Instagram\Entity\Comment
-            mappedBy: image
 
     lifecycleCallbacks:
         preUpdate: [loadUpdateAt]

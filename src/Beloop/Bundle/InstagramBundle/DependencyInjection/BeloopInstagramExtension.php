@@ -80,6 +80,11 @@ class BeloopInstagramExtension extends AbstractExtension implements EntitiesOver
             'beloop.entity.instagram.mapping_file' => $config['mapping']['instagram']['mapping_file'],
             'beloop.entity.instagram.manager' => $config['mapping']['instagram']['manager'],
             'beloop.entity.instagram.enabled' => $config['mapping']['instagram']['enabled'],
+
+            'beloop.entity.instagram_comment.class' => $config['mapping']['instagram_comment']['class'],
+            'beloop.entity.instagram_comment.mapping_file' => $config['mapping']['instagram_comment']['mapping_file'],
+            'beloop.entity.instagram_comment.manager' => $config['mapping']['instagram_comment']['manager'],
+            'beloop.entity.instagram_comment.enabled' => $config['mapping']['instagram_comment']['enabled'],
         ];
     }
 
@@ -110,7 +115,10 @@ class BeloopInstagramExtension extends AbstractExtension implements EntitiesOver
      */
     public function getEntitiesOverrides()
     {
-        return [];
+        return [
+            'Beloop\Component\Instagram\Entity\Interfaces\InstagramInterface' => 'beloop.entity.instagram.class',
+            'Beloop\Component\Instagram\Entity\Interfaces\CommentInterface' => 'beloop.entity.instagram_comment.class',
+        ];
     }
 
     /**

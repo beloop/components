@@ -41,6 +41,13 @@ class Configuration extends AbstractConfiguration
                             'default',
                             true
                         ))
+                        ->append($this->addMappingNode(
+                            'instagram_comment',
+                            'Beloop\Component\Instagram\Entity\Comment',
+                            '@BeloopInstagramBundle/Resources/config/doctrine/Comment.orm.yml',
+                            'default',
+                            true
+                        ))
                     ->end()
                 ->end()
             ->end();

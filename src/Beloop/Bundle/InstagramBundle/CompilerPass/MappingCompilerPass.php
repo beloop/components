@@ -38,6 +38,7 @@ class MappingCompilerPass extends AbstractBeloopMappingCompilerPass
                 $container,
                 [
                     'instagram',
+                    'instagram_comment',
                 ]
             );
     }

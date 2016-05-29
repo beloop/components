@@ -15,10 +15,13 @@
 
 namespace Beloop\Component\Instagram\Entity;
 
+use Doctrine\Common\Collections\Collection;
+
 use Beloop\Component\Core\Entity\Traits\DateTimeTrait;
 use Beloop\Component\Core\Entity\Traits\EnabledTrait;
 use Beloop\Component\Core\Entity\Traits\IdentifiableTrait;
 use Beloop\Component\Core\Entity\Traits\ImageTrait;
+use Beloop\Component\Instagram\Entity\Interfaces\CommentInterface;
 use Beloop\Component\Instagram\Entity\Interfaces\InstagramInterface;
 use Beloop\Component\User\Entity\Interfaces\UserInterface;
 
@@ -50,6 +53,11 @@ class Instagram implements InstagramInterface
      * @var User
      */
     protected $user;
+
+    /**
+     * @var Collection
+     */
+    protected $comments;
 
     /**
      * @param string $title
@@ -108,4 +116,49 @@ class Instagram implements InstagramInterface
         return $this;
     }
 
+    /**
+     * @return Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param Collection $comments
+     * @return $this Self object
+     */
+    public function setComments(Collection $comments)
+    {
+        $this->comments = $comments;
+        return $this;
+    }
+
+    /**
+     * @param CommentInterface $comment
+     * @return $this Self object
+     */
+    public function addComment(CommentInterface $comment)
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments->add($comment);
+
+            $comment->setImage($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param CommentInterface $comment
+     * @return $this Self object
+     */
+    public function removeComment(CommentInterface $comment)
+    {
+        $this
+            ->comments
+            ->removeElement($comment);
+
+        return $this;
+    }
 }

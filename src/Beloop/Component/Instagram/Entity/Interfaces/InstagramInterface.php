@@ -15,10 +15,13 @@
 
 namespace Beloop\Component\Instagram\Entity\Interfaces;
 
+use Doctrine\Common\Collections\Collection;
+
 use Beloop\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Beloop\Component\Core\Entity\Interfaces\EnabledInterface;
 use Beloop\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Beloop\Component\Core\Entity\Interfaces\ImageInterface;
+use Beloop\Component\Instagram\Entity\Interfaces\CommentInterface;
 
 interface InstagramInterface
     extends
@@ -46,4 +49,27 @@ interface InstagramInterface
      * @param mixed $description
      */
     public function setDescription($description);
+
+    /**
+     * @return Collection
+     */
+    public function getComments();
+
+    /**
+     * @param Collection $comments
+     * @return $this Self object
+     */
+    public function setComments(Collection $comments);
+
+    /**
+     * @param CommentInterface $comment
+     * @return $this Self object
+     */
+    public function addComment(CommentInterface $comment);
+
+    /**
+     * @param CommentInterface $comment
+     * @return $this Self object
+     */
+    public function removeComment(CommentInterface $comment);
 }

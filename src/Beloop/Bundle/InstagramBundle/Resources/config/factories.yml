@@ -11,3 +11,11 @@ services:
         class: Beloop\Component\Instagram\Factory\InstagramFactory
         calls:
             - [setEntityNamespace, ["%beloop.entity.instagram.class%"]]
+
+    #
+    # Factory for entity instagram comment
+    #
+    beloop.factory.instagram_comment:
+        class: Beloop\Component\Instagram\Factory\CommentFactory
+        calls:
+            - [setEntityNamespace, ["%beloop.entity.instagram_comment.class%"]]
