@@ -42,7 +42,7 @@ class CommentFactory extends AbstractFactory
          * @var CommentInterface $comment
          */
         $classNamespace = $this->getEntityNamespace();
-        $image = new $classNamespace();
+        $comment = new $classNamespace();
 
         $comment
             ->enable()
