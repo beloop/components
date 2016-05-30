@@ -36,6 +36,14 @@ Beloop\Component\Instagram\Entity\Comment:
                 nullable: false
                 onDelete: "CASCADE"
                 onUpdate: "CASCADE"
+        user:
+            targetEntity: Beloop\Component\User\Entity\User
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+                nullable: false
+                onDelete: "CASCADE"
+                onUpdate: "CASCADE"
 
     lifecycleCallbacks:
         preUpdate: [loadUpdateAt]

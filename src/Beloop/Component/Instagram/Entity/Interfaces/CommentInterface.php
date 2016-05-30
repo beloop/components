@@ -19,6 +19,7 @@ use Beloop\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Beloop\Component\Core\Entity\Interfaces\EnabledInterface;
 use Beloop\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Beloop\Component\Instagram\Entity\Interfaces\InstagramInterface;
+use Beloop\Component\User\Entity\Interfaces\UserInterface;
 
 interface CommentInterface
     extends
@@ -45,4 +46,15 @@ interface CommentInterface
      * @param InstagramInterface $image
      */
     public function setImage(InstagramInterface $image);
+
+    /**
+     * @return UserInterface
+     */
+    public function getUser();
+
+    /**
+     * @param UserInterface $user
+     * @return $this
+     */
+    public function setUser(UserInterface $user);
 }

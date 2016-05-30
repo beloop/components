@@ -20,6 +20,7 @@ use Beloop\Component\Core\Entity\Traits\EnabledTrait;
 use Beloop\Component\Core\Entity\Traits\IdentifiableTrait;
 use Beloop\Component\Instagram\Entity\Interfaces\CommentInterface;
 use Beloop\Component\Instagram\Entity\Interfaces\InstagramInterface;
+use Beloop\Component\User\Entity\Interfaces\UserInterface;
 
 /**
  * Class Comment entity.
@@ -41,6 +42,11 @@ class Comment implements CommentInterface
      * @var InstagramInterface
      */
     protected $image;
+
+    /**
+     * @var UserInterface
+     */
+    protected $user;
 
     /**
      * @return string
@@ -78,4 +84,22 @@ class Comment implements CommentInterface
         return $this;
     }
 
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param UserInterface $user
+     * @return $this
+     */
+    public function setUser(UserInterface $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
 }
