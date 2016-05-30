@@ -31,6 +31,11 @@ Beloop\Component\User\Entity\User:
             length: 255
             nullable: true
 
+    oneToMany:
+        images:
+            targetEntity: Beloop\Component\Instagram\Entity\Instagram
+            mappedBy: user
+
     manyToOne:
         language:
             targetEntity: Beloop\Component\Language\Entity\Interfaces\LanguageInterface
