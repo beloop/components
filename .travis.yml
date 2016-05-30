@@ -22,4 +22,3 @@ install: composer install --no-interaction --no-progress
 
 script:
   - vendor/bin/phpunit -v
-  - sh gitsplit.sh
