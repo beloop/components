@@ -74,6 +74,11 @@ class User extends AbstractUser implements UserInterface
     protected $courses;
 
     /**
+     * @var Collection
+     */
+    protected $images;
+
+    /**
      * Sets Guest.
      *
      * @param bool $guest Guest
@@ -225,5 +230,13 @@ class User extends AbstractUser implements UserInterface
     public function getCourses()
     {
         return $this->courses;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 }
