@@ -69,6 +69,7 @@ Beloop\Component\Course\Entity\Course:
                 inverseJoinColumns:
                     user_id:
                       referencedColumnName: id
+            inversedBy: courses
 
     oneToMany:
         lessons:
