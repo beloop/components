@@ -47,6 +47,7 @@ Beloop\Component\Instagram\Entity\Instagram:
                 nullable: false
                 onDelete: "CASCADE"
                 onUpdate: "CASCADE"
+            inversedBy: images
 
     oneToMany:
         comments:
