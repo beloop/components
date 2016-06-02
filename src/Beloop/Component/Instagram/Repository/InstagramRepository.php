@@ -36,11 +36,12 @@ class InstagramRepository extends EntityRepository
         $qb = $this->createQueryBuilder('i');
 
         $qb
-            ->addSelect('u, c')
-            ->innerJoin('i.user', 'u')
-            ->innerJoin('u.courses', 'c')
-            ->where('c.id IN(:userCourses)')->setParameter('userCourses', $user->getCourses())
-            ->orderBy('i.createdAt', 'DESC');
+            ->addSelect('c, u')
+            ->leftJoin('i.comments', 'c')
+            ->leftJoin('c.user', 'u')
+            ->where('i.course IN(:userCourses)')->setParameter('userCourses', $user->getCourses())
+            ->orderBy('i.createdAt', 'DESC')
+            ->addOrderBy('c.createdAt', 'ASC')
         ;
 
         return $qb->getQuery()->getResult();
@@ -60,8 +61,9 @@ class InstagramRepository extends EntityRepository
 
         $qb
             ->addSelect('u, c')
-            ->innerJoin('i.user', 'u')
-            ->innerJoin('u.courses', 'c')
+            ->leftJoin('i.comments', 'c')
+            ->leftJoin('c.user', 'u')
+            ->orderBy('c.createdAt', 'ASC')
         ;
 
         foreach ($criteria as $key => $value) {

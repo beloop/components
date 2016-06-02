@@ -21,6 +21,7 @@ use Beloop\Component\Core\Entity\Traits\DateTimeTrait;
 use Beloop\Component\Core\Entity\Traits\EnabledTrait;
 use Beloop\Component\Core\Entity\Traits\IdentifiableTrait;
 use Beloop\Component\Core\Entity\Traits\ImageTrait;
+use Beloop\Component\Course\Entity\Interfaces\CourseInterface;
 use Beloop\Component\Instagram\Entity\Interfaces\CommentInterface;
 use Beloop\Component\Instagram\Entity\Interfaces\InstagramInterface;
 use Beloop\Component\User\Entity\Interfaces\UserInterface;
@@ -50,9 +51,14 @@ class Instagram implements InstagramInterface
     protected $description;
 
     /**
-     * @var User
+     * @var UserInterface
      */
     protected $user;
+
+    /**
+     * @var CourseInterface
+     */
+    protected $course;
 
     /**
      * @var Collection
@@ -98,7 +104,7 @@ class Instagram implements InstagramInterface
     }
 
     /**
-     * @return User
+     * @return UserInterface
      */
     public function getUser()
     {
@@ -114,6 +120,22 @@ class Instagram implements InstagramInterface
         $this->user = $user;
 
         return $this;
+    }
+
+    /**
+     * @return CourseInterface
+     */
+    public function getCourse()
+    {
+        return $this->course;
+    }
+
+    /**
+     * @param CourseInterface $course
+     */
+    public function setCourse(CourseInterface $course)
+    {
+        $this->course = $course;
     }
 
     /**

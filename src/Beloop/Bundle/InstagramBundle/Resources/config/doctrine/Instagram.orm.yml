@@ -49,6 +49,15 @@ Beloop\Component\Instagram\Entity\Instagram:
                 onUpdate: "CASCADE"
             inversedBy: images
 
+        course:
+            targetEntity: Beloop\Component\Course\Entity\Course
+            joinColumn:
+                name: course_id
+                referencedColumnName: id
+                nullable: true
+                onDelete: "CASCADE"
+                onUpdate: "CASCADE"
+
     oneToMany:
         comments:
             targetEntity: Beloop\Component\Instagram\Entity\Comment

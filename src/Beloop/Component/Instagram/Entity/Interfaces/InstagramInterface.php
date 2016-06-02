@@ -21,6 +21,7 @@ use Beloop\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Beloop\Component\Core\Entity\Interfaces\EnabledInterface;
 use Beloop\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Beloop\Component\Core\Entity\Interfaces\ImageInterface;
+use Beloop\Component\Course\Entity\Interfaces\CourseInterface;
 use Beloop\Component\Instagram\Entity\Interfaces\CommentInterface;
 
 interface InstagramInterface
@@ -49,6 +50,16 @@ interface InstagramInterface
      * @param mixed $description
      */
     public function setDescription($description);
+
+    /**
+     * @return CourseInterface
+     */
+    public function getCourse();
+
+    /**
+     * @param CourseInterface $course
+     */
+    public function setCourse(CourseInterface $course);
 
     /**
      * @return Collection
