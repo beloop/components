@@ -16,39 +16,23 @@
 namespace Beloop\Component\Squarespace\Services;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Cookie\CookieJar;
 
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Log\LoggerInterface;
 
 use Beloop\Component\Squarespace\Entity\SquarespacePage;
+use Beloop\Component\Squarespace\Services\AuthenticationService;
 
 class PageRenderer
 {
-    const COOKIE_JAR = 'sq_page_renderer.cookie_jar';
-
-    /**
-     * @var LoggerInterface
-     */
-    protected $logger;
-
-    /**
-     * @var SessionInterface
-     */
-    protected $session;
-
     /**
      * @var Client
      */
     protected $client;
 
     /**
-     * @var string
-     *
-     * Squarespace password
+     * @var AuthenticationService
      */
-    protected $password;
+    protected $authenticationService;
 
     /**
      * @var string
@@ -58,33 +42,16 @@ class PageRenderer
     protected $base_url;
 
     /**
-     * @var string
-     *
-     * Squarespace host
-     */
-    protected $host;
-
-    /**
-     * @var CookieJar
-     */
-    protected $jar;
-
-    /**
      * PageRenderer constructor.
-     * @param LoggerInterface $logger
      * @param Client $client
-     * @param $password
+     * @param AuthenticationService $authenticationService
      */
-    public function __construct(LoggerInterface $logger, SessionInterface $session, Client $client, $password)
+    public function __construct(Client $client, AuthenticationService $authenticationService)
     {
-        $this->logger = $logger;
-        $this->session = $session;
         $this->client = $client;
-        $this->password = $password;
+        $this->authenticationService = $authenticationService;
 
-        $this->jar = $this->session->get(static::COOKIE_JAR, new CookieJar());
         $this->base_url = $client->getConfig('base_uri')->__toString();
-        $this->host =  $client->getConfig('base_uri')->getHost();
     }
 
     /**
@@ -96,15 +63,15 @@ class PageRenderer
     {
         $response = $this->client->get(
             $this->extractResourceFromUri($this->base_url, $page->getUrl()),
-            ['exceptions' => false, 'cookies' => $this->jar]
+            ['exceptions' => false, 'cookies' => $this->authenticationService->getJar()]
         );
 
         if ($response->getStatusCode() === Response::HTTP_UNAUTHORIZED) {
-            $this->authenticate($page);
+            $this->authenticationService->authenticate();
 
             $response = $this->client->get(
                 $this->extractResourceFromUri($this->base_url, $page->getUrl()),
-                ['exceptions' => false, 'cookies' => $this->jar]
+                ['exceptions' => false, 'cookies' => $this->authenticationService->getJar()]
             );
         }
 
@@ -141,33 +108,4 @@ class PageRenderer
         return $body;
     }
 
-    /**
-     * Authenticate against Squarespace
-     * @param SquarespacePage $page
-     */
-    private function authenticate(SquarespacePage $page)
-    {
-        $crumb = $this->jar->toArray()[0]['Value'];
-
-        try {
-            $this->client->post('/api/auth/visitor/site', array(
-                    'query' => ['crumb' => $crumb],
-                    'exceptions' => true,
-                    'cookies' => $this->jar,
-                    'headers' => [
-                        'Content-Type' => 'application/json',
-                        'Host' => $this->host,
-                        'Origin' => $this->base_url,
-                        'Referer' => $page->getUrl(),
-                    ],
-                    'body' => json_encode(['password' => $this->password])
-                )
-            );
-
-            $this->session->set(static::COOKIE_JAR, $this->jar);
-        } catch (\Exception $ex) {
-            $this->logger->error($ex->getMessage());
-            die($ex->getMessage());
-        }
-    }
 }
