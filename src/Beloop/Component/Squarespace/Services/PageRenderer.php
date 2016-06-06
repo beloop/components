@@ -63,7 +63,7 @@ class PageRenderer
     {
         $response = $this->client->get(
             $this->extractResourceFromUri($this->base_url, $page->getUrl()),
-            ['exceptions' => false, 'cookies' => $this->authenticationService->getJar()]
+            ['exceptions' => false, 'cookies' => $this->authenticationService->jar]
         );
 
         if ($response->getStatusCode() === Response::HTTP_UNAUTHORIZED) {
@@ -71,7 +71,7 @@ class PageRenderer
 
             $response = $this->client->get(
                 $this->extractResourceFromUri($this->base_url, $page->getUrl()),
-                ['exceptions' => false, 'cookies' => $this->authenticationService->getJar()]
+                ['exceptions' => false, 'cookies' => $this->authenticationService->jar]
             );
         }
 

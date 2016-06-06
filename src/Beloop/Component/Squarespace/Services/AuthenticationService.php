@@ -25,6 +25,12 @@ class AuthenticationService
     const COOKIE_JAR = 'sq_page_renderer.cookie_jar';
 
     /**
+     * Make cookie jar public, so it can be updated on every request
+     * @var CookieJar
+     */
+    public $jar;
+
+    /**
      * @var LoggerInterface
      */
     protected $logger;
@@ -40,11 +46,6 @@ class AuthenticationService
      * Squarespace password
      */
     protected $password;
-
-    /**
-     * @var CookieJar
-     */
-    protected $jar;
 
     /**
      * @var string
@@ -105,13 +106,5 @@ class AuthenticationService
             $this->logger->error($ex->getMessage());
             die($ex->getMessage());
         }
-    }
-
-    /**
-     * @return CookieJar|mixed
-     */
-    public function getJar()
-    {
-        return $this->jar;
     }
 }
