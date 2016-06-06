@@ -60,7 +60,7 @@ class ProxyController extends Controller
             [
                 'query' => $request->query->all(),
                 'form_params' => $request->request->all(),
-                'cookies' => $authenticationService->getJar()
+                'cookies' => $authenticationService->jar
             ]
         );
 
