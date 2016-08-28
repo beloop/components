@@ -49,6 +49,7 @@ Beloop\Component\Course\Entity\Lesson:
         modules:
             targetEntity: Beloop\Component\Course\Entity\Interfaces\ModuleInterface
             mappedBy: lesson
+            cascade: [ persist ]
 
     manyToOne:
         course:

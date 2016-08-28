@@ -192,4 +192,23 @@ class Lesson implements LessonInterface
         return $this->course->isAvailable() && $today >= $this->getStartDate();
     }
 
+    /**
+     * Clone lesson
+     */
+    public function __clone()
+    {
+        if ($this->id) {
+            $this->setId(null);
+
+            // Clone modules
+            $modules = $this->getModules();
+            $this->modules = new ArrayCollection();
+            foreach ($modules as $module) {
+                $moduleClone = clone $module;
+                $moduleClone->setLesson($this);
+                $this->addModule($moduleClone);
+            }
+        }
+    }
+
 }

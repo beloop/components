@@ -244,4 +244,26 @@ class Course implements CourseInterface
 
         return $today >= $this->getStartDate() && $today <= $this->getEndDate();
     }
+
+    /**
+     * Clone course
+     */
+    public function __clone()
+    {
+        if ($this->id) {
+            $this->setId(null);
+            $this->enrolledUsers = new ArrayCollection();
+            $this->code = 'CLONE-' . $this->code . '-' . rand();
+            $this->name = 'CLONE ' . $this->name;
+
+            // Clone lessons
+            $lessons = $this->getLessons();
+            $this->lessons = new ArrayCollection();
+            foreach ($lessons as $lesson) {
+                $lessonClone = clone $lesson;
+                $lessonClone->setCourse($this);
+                $this->addLesson($lessonClone);
+            }
+        }
+    }
 }

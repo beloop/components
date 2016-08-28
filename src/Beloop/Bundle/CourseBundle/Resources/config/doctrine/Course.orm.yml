@@ -75,6 +75,7 @@ Beloop\Component\Course\Entity\Course:
         lessons:
             targetEntity: Beloop\Component\Course\Entity\Lesson
             mappedBy: course
+            cascade: [ persist ]
 
     lifecycleCallbacks:
         preUpdate: [loadUpdateAt]

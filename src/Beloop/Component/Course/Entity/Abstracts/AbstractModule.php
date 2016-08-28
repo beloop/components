@@ -111,5 +111,15 @@ abstract class AbstractModule implements ModuleInterface
         return $this->getLesson()->getCourse();
     }
 
+    /**
+     * Clone module
+     */
+    public function __clone()
+    {
+        if ($this->id) {
+            $this->setId(null);
+        }
+    }
+
     abstract public function getType();
 }
