@@ -85,7 +85,7 @@ class AuthenticationService
      */
     public function authenticate()
     {
-        $crumb = $this->jar->toArray()[0]['Value'];
+        $crumb = $this->getCrumbVaue();
 
         try {
             $this->client->post('/api/auth/visitor/site', array(
@@ -105,6 +105,14 @@ class AuthenticationService
         } catch (\Exception $ex) {
             $this->logger->error($ex->getMessage());
             die($ex->getMessage());
+        }
+    }
+
+    private function getCrumbVaue() {
+        foreach ($this->jar->toArray() as $cookie) {
+            if(strtolower($cookie['Name']) === 'crumb') {
+                return $cookie['Value'];
+            }
         }
     }
 }
