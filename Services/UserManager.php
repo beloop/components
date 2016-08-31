@@ -58,24 +58,69 @@ class UserManager
      */
     public function insertOrUpdate(Collection $users)
     {
-        $procesedUsers = new ArrayCollection();
+        $this->enableExistantUsers($users);
+        $this->insertUsers($users);
 
-        foreach ($users as $user) {
-            $userDB = $this->repository->findOneBy(['email' => $user->getEmail()]);
+        return $this->repository->findBy(['email' => $this->extractEmails($users)->toArray()]);
+    }
 
-            if (!$userDB) {
-                $user->addRole('ROLE_USER');
-                $procesedUsers->add($user);
-                $this->manager->persist($user);
-            } else {
-                $userDB->enable();
-                $procesedUsers->add($userDB);
-                $this->manager->persist($userDB);
-            }
+    /**
+     * Enable existant users
+     *
+     * @param Collection $users
+     */
+    private function enableExistantUsers(Collection $users) {
+        $query = $this->manager->createQuery('UPDATE Beloop\Component\User\Entity\User u SET u.enabled=:enabled WHERE u.email IN (:emails)');
+        $query->setParameter('enabled', true);
+        $query->setParameter('emails', $this->extractEmails($users)->toArray());
+    }
+
+    /**
+     * Insert new users
+     *
+     * @param Collection $users
+     */
+    private function insertUsers(Collection $users) {
+        set_time_limit(60);
+        $this->manager->getConnection()->getConfiguration()->setSQLLogger(null);
+
+        // Get existan user from DB
+        $existantUsers = $this->repository->findBy(['email' => $this->extractEmails($users)->toArray()]);
+
+        // Create an array of emails
+        $existantEmails = array_map(function($user) {
+            return $user->getEmail();
+        }, $existantUsers);
+
+        unset($existantUsers);
+
+        // Get not existant users ready to import
+        $nonExistantUsers = $users->filter(function($user) use ($existantEmails){
+            return !in_array($user->getEmail(), $existantEmails);
+        });
+
+        unset($existantEmails);
+
+        foreach ($nonExistantUsers as $user) {
+            $user->addRole('ROLE_USER');
+            $this->manager->persist($user);
+            $this->manager->flush();
+            $this->manager->clear();
+
+            $this->manager->detach($user);
+
+            gc_enable();
+            gc_collect_cycles();
         }
+    }
 
-        $this->manager->flush();
-
-        return $procesedUsers;
+    /**
+     * Extract emails from users
+     *
+     * @param Collection $users
+     * @return Collection
+     */
+    private function extractEmails(Collection $users) {
+        return $users->map(function($user) { return $user->getEmail(); });
     }
 }
