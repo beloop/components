@@ -38,6 +38,12 @@ Beloop\Component\Course\Entity\Course:
             column: end_date
             type: datetime
             nullable: false
+        demo:
+            column: demo
+            type: boolean
+            nullable: false
+            options:
+                default: false
         enabled:
             column: enabled
             type: boolean

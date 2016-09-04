@@ -65,6 +65,21 @@ interface CourseInterface
     public function setDescription($description);
 
     /**
+     * @return mixed
+     */
+    public function getDemo();
+
+    /**
+     * @param mixed $demo
+     */
+    public function setDemo($demo);
+
+    /**
+     * @return mixed
+     */
+    public function isDemo();
+
+    /**
      * @return Collection
      */
     public function getLessons();

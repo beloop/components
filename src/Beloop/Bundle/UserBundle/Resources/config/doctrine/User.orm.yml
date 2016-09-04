@@ -8,9 +8,6 @@ Beloop\Component\User\Entity\User:
             generator:
                 strategy: AUTO
     fields:
-        guest:
-            column: guest
-            type: boolean
         biography:
             column: biography
             type: text

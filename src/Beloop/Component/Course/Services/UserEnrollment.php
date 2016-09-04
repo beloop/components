@@ -17,6 +17,7 @@ namespace Beloop\Component\Course\Services;
 
 use Beloop\Component\Core\Services\ObjectDirector;
 use Beloop\Component\Course\Entity\Interfaces\CourseInterface;
+use Beloop\Component\User\Entity\Interfaces\UserInterface;
 use Beloop\Component\User\Services\UserManager;
 use Beloop\Component\User\Transformer\ExtractUsersFromCSV;
 
@@ -56,8 +57,8 @@ class UserEnrollment
     }
 
     /**
-     * Enrol user from CSV file on given course
-     * 
+     * Enrol users from CSV file on given course
+     *
      * @param CourseInterface $course
      * @param $csv
      */
@@ -71,9 +72,21 @@ class UserEnrollment
 
         // Enroll users on course
         foreach ($procesedUsers as $user) {
+            $user->addRole('ROLE_USER');
             $course->enrollUser($user);
         }
 
+        $this->courseDirector->save($course);
+    }
+
+    /**
+     * Enrol an user on a given course
+     *
+     * @param CourseInterface $course
+     * @param UserInterface $user
+     */
+    public function enrol(CourseInterface $course, UserInterface $user) {
+        $course->enrollUser($user);
         $this->courseDirector->save($course);
     }
 }

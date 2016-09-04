@@ -60,7 +60,10 @@ class SquarespaceController extends Controller
         $course = $page->getCourse();
 
         // Extra checks if user is not TEACHER or ADMIN
-        if (false === $this->get('security.authorization_checker')->isGranted('ROLE_TEACHER')) {
+        if (
+            false === $this->get('security.authorization_checker')->isGranted('ROLE_TEACHER') &&
+            false === $course->isDemo()
+        ) {
             $userEnrolled = $course->getEnrolledUsers()->contains($user);
 
             if (!$userEnrolled) {
@@ -79,7 +82,7 @@ class SquarespaceController extends Controller
         );
 
         return [
-            'section' => 'my-courses',
+            'section' => $course->isDemo() ? 'public-courses' : 'my-courses',
             'user' => $user,
             'course' => $course,
             'module' => $page,
@@ -118,7 +121,10 @@ class SquarespaceController extends Controller
         $course = $page->getCourse();
 
         // Extra checks if user is not TEACHER or ADMIN
-        if (false === $this->get('security.authorization_checker')->isGranted('ROLE_TEACHER')) {
+        if (
+            false === $this->get('security.authorization_checker')->isGranted('ROLE_TEACHER') &&
+            false === $course->isDemo()
+        ) {
             $userEnrolled = $course->getEnrolledUsers()->contains($user);
 
             if (!$userEnrolled) {

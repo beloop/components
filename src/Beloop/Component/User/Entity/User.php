@@ -31,13 +31,6 @@ class User extends AbstractUser implements UserInterface
     protected $language;
 
     /**
-     * @var bool
-     *
-     * Is guest
-     */
-    protected $guest;
-
-    /**
      * @var string
      *
      * Biography
@@ -77,31 +70,7 @@ class User extends AbstractUser implements UserInterface
      * @var Collection
      */
     protected $images;
-
-    /**
-     * Sets Guest.
-     *
-     * @param bool $guest Guest
-     *
-     * @return $this Self object
-     */
-    public function setGuest($guest)
-    {
-        $this->guest = $guest;
-
-        return $this;
-    }
-
-    /**
-     * Get Guest.
-     *
-     * @return bool Guest
-     */
-    public function isGuest()
-    {
-        return $this->guest;
-    }
-
+    
     /**
      * Set language.
      *

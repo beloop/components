@@ -45,6 +45,7 @@ class Course implements CourseInterface
     protected $description;
     protected $startDate;
     protected $endDate;
+    protected $demo;
 
     protected $enrolledUsers;
     protected $lessons;
@@ -108,6 +109,31 @@ class Course implements CourseInterface
         $this->description = $description;
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDemo()
+    {
+        return $this->demo;
+    }
+
+    /**
+     * @param mixed $demo
+     */
+    public function setDemo($demo)
+    {
+        $this->demo = $demo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function isDemo()
+    {
+        return $this->demo === true;
+    }
+
 
     /**
      * @return Collection

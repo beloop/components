@@ -60,7 +60,10 @@ class TypeformController extends Controller
         $course = $quiz->getCourse();
 
         // Extra checks if user is not TEACHER or ADMIN
-        if (false === $this->get('security.authorization_checker')->isGranted('ROLE_TEACHER')) {
+        if (
+            false === $this->get('security.authorization_checker')->isGranted('ROLE_TEACHER') &&
+            false === $course->isDemo()
+        ) {
             $userEnrolled = $course->getEnrolledUsers()->contains($user);
 
             if (!$userEnrolled) {
@@ -72,14 +75,8 @@ class TypeformController extends Controller
             }
         }
 
-        $renderUrl = $this->generateUrl(
-            'beloop_render_module_typeform_quiz',
-            ['code' => $course->getCode(), 'id' => $quiz->getId()],
-            UrlGeneratorInterface::ABSOLUTE_URL
-        );
-
         return [
-            'section' => 'my-courses',
+            'section' => $course->isDemo() ? 'public-courses' : 'my-courses',
             'user' => $user,
             'course' => $course,
             'module' => $quiz,

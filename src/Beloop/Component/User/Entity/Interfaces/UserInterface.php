@@ -22,22 +22,6 @@ use Beloop\Component\Language\Entity\Interfaces\LanguageInterface;
 interface UserInterface extends AbstractUserInterface
 {
     /**
-     * Sets Guest.
-     *
-     * @param bool $guest Guest
-     *
-     * @return $this Self object
-     */
-    public function setGuest($guest);
-
-    /**
-     * Get Guest.
-     *
-     * @return bool Guest
-     */
-    public function isGuest();
-
-    /**
      * Set language.
      *
      * @param LanguageInterface $language The language
