@@ -57,7 +57,6 @@ class UserFactory extends AbstractFactory
         $classNamespace = $this->getEntityNamespace();
         $user = new $classNamespace();
         $user
-            ->setGuest(false)
             ->setPassword('newyork2014')
             ->setToken($this->generator->generate(2))
             ->setRoles([])
