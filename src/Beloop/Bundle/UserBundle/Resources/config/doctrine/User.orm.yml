@@ -45,6 +45,8 @@ Beloop\Component\User\Entity\User:
         courses:
             targetEntity: Beloop\Component\Course\Entity\Interfaces\CourseInterface
             mappedBy: enrolledUsers
+            orderBy:
+                startDate: DESC
 
     lifecycleCallbacks:
             preUpdate: [loadUpdateAt]
