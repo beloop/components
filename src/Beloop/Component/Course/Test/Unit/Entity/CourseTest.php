@@ -23,6 +23,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 use Beloop\Component\Course\Entity\Course;
 use Beloop\Component\Course\Entity\Lesson;
+use Beloop\Component\Language\Entity\Language;
 
 /**
  * Class CourseTest.
@@ -33,10 +34,14 @@ class CourseTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
+        $language = new Language();
+        $language->setIso('es');
+
         $this->course = new Course();
         $this->course->setLessons(new ArrayCollection());
         $this->course->setStartDate(new DateTime());
         $this->course->setEndDate((new DateTime())->add(DateInterval::createFromDateString("6 months")));
+        $this->course->setLanguage($language);
     }
 
     public function testLessonCollection() {
@@ -68,5 +73,27 @@ class CourseTest extends PHPUnit_Framework_TestCase
         // Start date and end date are before today
         $this->course->getEndDate()->sub(DateInterval::createFromDateString("8 months"));
         $this->assertEquals(false, $this->course->isAvailable());
+    }
+
+    public function testSerialization()
+    {
+        $this->course->setCode('UNIQUE-COURSE');
+        $this->course->setName('A course name');
+        $this->course->setDescription('Course description');
+        $this->course->setDemo(true);
+        $this->course->enable();
+
+        $serialized = $this->course->serialize();
+        $this->assertEquals(null, $serialized['id']);
+        $this->assertEquals('A course name', $serialized['name']);
+        $this->assertEquals('UNIQUE-COURSE', $serialized['code']);
+        $this->assertEquals('Course description', $serialized['description']);
+        $this->assertEquals('es', $serialized['language']);
+        $this->assertEquals(true, $serialized['demo']);
+        $this->assertEquals(true, $serialized['enabled']);
+        $this->assertEquals(0, $serialized['enrolledUsers']);
+        $this->assertEquals(0, $serialized['lessons']);
+        $this->assertEquals($this->course->getStartDate()->getTimestamp(), $serialized['startDate']);
+        $this->assertEquals($this->course->getEndDate()->getTimestamp(), $serialized['endDate']);
     }
 }

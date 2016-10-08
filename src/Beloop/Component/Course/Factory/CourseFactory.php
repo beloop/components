@@ -21,12 +21,19 @@ use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Beloop\Component\Core\Factory\Abstracts\AbstractFactory;
+use Beloop\Component\Language\Factory\LanguageFactory;
 
 /**
  * Factory for Course entities.
  */
 class CourseFactory extends AbstractFactory
 {
+    private $languageFactory;
+
+    public function __construct(LanguageFactory $languageFactory)
+    {
+        $this->languageFactory = $languageFactory;
+    }
 
     /**
      * Creates an instance of an entity.
@@ -40,6 +47,8 @@ class CourseFactory extends AbstractFactory
      */
     public function create()
     {
+        $language = $this->languageFactory->create();
+
         $now = new DateTime();
         $end = (new DateTime())->add(DateInterval::createFromDateString("6 months"));
 
@@ -53,6 +62,7 @@ class CourseFactory extends AbstractFactory
             ->setLessons(new ArrayCollection())
             ->setStartDate($now)
             ->setEndDate($end)
+            ->setLanguage($language)
             ->enable()
             ->setCreatedAt($now);
 

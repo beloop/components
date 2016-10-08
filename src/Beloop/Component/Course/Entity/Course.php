@@ -16,6 +16,7 @@
 namespace Beloop\Component\Course\Entity;
 
 use DateTime;
+use Serializable;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -32,7 +33,7 @@ use Beloop\Component\User\Entity\Interfaces\UserInterface;
 /**
  * Class Course entity.
  */
-class Course implements CourseInterface
+class Course implements CourseInterface, Serializable
 {
     use IdentifiableTrait,
         LanguageTrait,
@@ -270,6 +271,24 @@ class Course implements CourseInterface
 
         return $today >= $this->getStartDate() && $today <= $this->getEndDate();
     }
+
+    public function serialize() {
+        return [
+            'id' => $this->id,
+            'code' => $this->code,
+            'name' => $this->name,
+            'description' => $this->description,
+            'startDate' => $this->startDate->getTimestamp(),
+            'endDate' => $this->endDate->getTimestamp(),
+            'language' => $this->getLanguage()->getIso(),
+            'demo' => $this->demo,
+            'enabled' => $this->enabled,
+            'enrolledUsers' => count($this->enrolledUsers),
+            'lessons' => count($this->lessons),
+        ];
+    }
+
+    public function unserialize($serialized) {}
 
     /**
      * Clone course
