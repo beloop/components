@@ -77,9 +77,13 @@ class CourseTest extends PHPUnit_Framework_TestCase
 
     public function testSerialization()
     {
+        $language = new Language();
+        $language->setIso('es');
+
         $this->course->setCode('UNIQUE-COURSE');
         $this->course->setName('A course name');
         $this->course->setDescription('Course description');
+        $this->course->setLanguage($language);
         $this->course->setDemo(true);
         $this->course->enable();
 

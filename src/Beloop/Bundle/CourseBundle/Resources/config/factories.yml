@@ -9,8 +9,6 @@ services:
     #
     beloop.factory.course:
         class: Beloop\Component\Course\Factory\CourseFactory
-        arguments:
-            - '@beloop.factory.language'
         calls:
             - [setEntityNamespace, ["%beloop.entity.course.class%"]]
 
