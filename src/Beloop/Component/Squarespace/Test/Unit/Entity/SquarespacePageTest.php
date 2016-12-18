@@ -37,6 +37,7 @@ class SquarespacePageTest extends PHPUnit_Framework_TestCase
 
         $this->course->setStartDate(new DateTime());
         $this->course->setEndDate(new DateTime());
+        $this->course->getEndDate()->add(DateInterval::createFromDateString("2 months"));
         $this->lesson->setStartDate(new DateTime());
         $this->page->setLesson($this->lesson);
         $this->lesson->setCourse($this->course);
