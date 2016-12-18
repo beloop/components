@@ -97,7 +97,7 @@ class CourseTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(true, $serialized['enabled']);
         $this->assertEquals(0, $serialized['enrolledUsers']);
         $this->assertEquals(0, $serialized['lessons']);
-        $this->assertEquals($this->course->getStartDate()->getTimestamp(), $serialized['startDate']);
-        $this->assertEquals($this->course->getEndDate()->getTimestamp(), $serialized['endDate']);
+        $this->assertEquals($this->course->getStartDate()->getTimestamp() * 1000, $serialized['startDate']);
+        $this->assertEquals($this->course->getEndDate()->getTimestamp() * 1000, $serialized['endDate']);
     }
 }
