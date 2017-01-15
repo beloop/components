@@ -23,7 +23,7 @@ use Beloop\Component\Course\Entity\Course;
 use Beloop\Component\Course\Entity\Lesson;
 use Beloop\Component\Typeform\Entity\TypeformQuiz;
 
-class SquarespacePageTest extends PHPUnit_Framework_TestCase
+class TypeFormQuizTest extends PHPUnit_Framework_TestCase
 {
     private $course;
     private $lesson;
@@ -37,6 +37,7 @@ class SquarespacePageTest extends PHPUnit_Framework_TestCase
 
         $this->course->setStartDate(new DateTime());
         $this->course->setEndDate(new DateTime());
+        $this->course->getEndDate()->add(DateInterval::createFromDateString("2 months"));
         $this->lesson->setStartDate(new DateTime());
         $this->quiz->setLesson($this->lesson);
         $this->lesson->setCourse($this->course);

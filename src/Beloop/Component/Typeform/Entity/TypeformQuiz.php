@@ -56,4 +56,9 @@ class TypeformQuiz extends AbstractModule
         $this->url = $url;
         return $this;
     }
+
+    public function getFormUID() {
+        $parts = explode('/', $this->url);
+        return end($parts);
+    }
 }

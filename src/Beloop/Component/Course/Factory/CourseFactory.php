@@ -27,7 +27,6 @@ use Beloop\Component\Core\Factory\Abstracts\AbstractFactory;
  */
 class CourseFactory extends AbstractFactory
 {
-
     /**
      * Creates an instance of an entity.
      *

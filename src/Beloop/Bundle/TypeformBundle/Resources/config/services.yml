@@ -9,3 +9,13 @@ services:
           - '@logger'
           - '@session'
           - '@guzzle.client.api_typeform'
+
+  #
+  # ScoreRetriever service
+  #
+  beloop.typeform.score_retriever_service:
+      class: Beloop\Component\Typeform\Services\ScoreRetriever
+      arguments:
+          - '@logger'
+          - '@guzzle.client.api_typeform'
+          - '%typeform_api_key%'

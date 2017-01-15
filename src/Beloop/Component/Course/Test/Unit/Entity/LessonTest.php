@@ -84,4 +84,20 @@ class LessonTest extends PHPUnit_Framework_TestCase {
         $this->course->getEndDate()->sub(DateInterval::createFromDateString("8 months"));
         $this->assertEquals(false, $this->lesson->isAvailable());
     }
+
+    public function testSerialization()
+    {
+        $this->lesson->setName('A lesson name');
+        $this->lesson->setSlug('lesson-name');
+        $this->lesson->setDescription('Lesson description');
+        $this->lesson->enable();
+
+        $serialized = $this->lesson->serialize();
+        $this->assertEquals(null, $serialized['id']);
+        $this->assertEquals('A lesson name', $serialized['name']);
+        $this->assertEquals('Lesson description', $serialized['description']);
+        $this->assertEquals(true, $serialized['enabled']);
+        $this->assertEquals(0, $serialized['modules']);
+        $this->assertEquals($this->lesson->getStartDate()->getTimestamp(), $serialized['startDate']);
+    }
 }

@@ -16,6 +16,7 @@
 namespace Beloop\Component\Course\Entity;
 
 use \DateTime;
+use \Serializable;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -33,7 +34,7 @@ use Beloop\Component\Course\Entity\Interfaces\ModuleInterface;
 /**
  * Course lesson representation
  */
-class Lesson implements LessonInterface
+class Lesson implements LessonInterface, Serializable
 {
     use IdentifiableTrait,
         EnabledTrait,
@@ -191,6 +192,21 @@ class Lesson implements LessonInterface
 
         return $this->course->isAvailable() && $today >= $this->getStartDate();
     }
+
+    public function serialize() {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'slug' => $this->slug,
+            'description' => $this->description,
+            'startDate' => $this->startDate->getTimestamp(),
+            'enabled' => count($this->enabled),
+            'modules' => count($this->modules),
+            'courseId' => $this->course->getId(),
+        ];
+    }
+
+    public function unserialize($serialized) {}
 
     /**
      * Clone lesson
