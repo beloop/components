@@ -49,11 +49,13 @@ class UserEnrollment
     public function __construct(
         ExtractUsersFromCSV $transformer,
         UserManager $userManager,
-        ObjectDirector $courseDirector
+        ObjectDirector $courseDirector,
+        ObjectDirector $userDirector
     ) {
         $this->transformer = $transformer;
         $this->userManager = $userManager;
         $this->courseDirector = $courseDirector;
+        $this->userDirector = $userDirector;
     }
 
     /**
@@ -72,7 +74,9 @@ class UserEnrollment
 
         // Enroll users on course
         foreach ($procesedUsers as $user) {
+            $user->setLanguage($course->getLanguage());
             $user->addRole('ROLE_USER');
+            $this->userDirector->save($user);
             $course->enrollUser($user);
         }
 

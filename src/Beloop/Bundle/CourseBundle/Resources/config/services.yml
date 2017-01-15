@@ -8,4 +8,5 @@ services:
         arguments:
             - '@beloop.csv_transformer.user'
             - '@beloop.manager.user'
+            - '@beloop.director.course'
             - '@beloop.director.user'
