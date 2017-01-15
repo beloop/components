@@ -70,8 +70,9 @@ class UserManager
      * @param Collection $users
      */
     private function enableExistantUsers(Collection $users) {
-        $query = $this->manager->createQuery('UPDATE Beloop\Component\User\Entity\User u SET u.enabled=:enabled WHERE u.email IN (:emails)');
+        $query = $this->manager->createQuery('UPDATE Beloop\Component\User\Entity\User u SET u.enabled=:enabled, u.roles=:roles WHERE u.email IN (:emails)');
         $query->setParameter('enabled', true);
+        $query->setParameter('roles', serialize(["ROLE_USER"]));
         $query->setParameter('emails', $this->extractEmails($users)->toArray());
     }
 
@@ -104,14 +105,9 @@ class UserManager
         foreach ($nonExistantUsers as $user) {
             $user->addRole('ROLE_USER');
             $this->manager->persist($user);
-            $this->manager->flush();
-            $this->manager->clear();
-
-            $this->manager->detach($user);
-
-            gc_enable();
-            gc_collect_cycles();
         }
+
+        $this->manager->flush();
     }
 
     /**
