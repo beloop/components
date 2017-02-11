@@ -84,6 +84,14 @@ class Course implements CourseInterface, Serializable
     }
 
     /**
+     * @return mixed
+     */
+    public function getExtendedName()
+    {
+        return $this->code . ' - ' . $this->name;
+    }
+
+    /**
      * @param mixed $name
      * @return $this Self object
      */
