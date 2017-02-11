@@ -263,6 +263,22 @@ class Course implements CourseInterface, Serializable
     }
 
     /**
+     * Get course teachers
+     * @return Collection
+     */
+    public function getTeachers() {
+        $teachers = [];
+
+        foreach ($this->enrolledUsers as $user) {
+            if ($user->hasRole('ROLE_TEACHER')) {
+                $teachers[] = $user;
+            }
+        }
+
+        return $teachers;
+    }
+
+    /**
      * Course is accessible by today
      */
     public function isAvailable()
