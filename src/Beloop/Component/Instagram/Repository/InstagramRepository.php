@@ -15,6 +15,8 @@
 
 namespace Beloop\Component\Instagram\Repository;
 
+use DateTime;
+
 use Doctrine\ORM\EntityRepository;
 
 use Beloop\Component\User\Entity\Interfaces\UserInterface;
@@ -36,12 +38,17 @@ class InstagramRepository extends EntityRepository
         $qb = $this->createQueryBuilder('i');
 
         $qb
-            ->addSelect('c, u')
-            ->leftJoin('i.comments', 'c')
-            ->leftJoin('c.user', 'u')
-            ->where('i.course IN(:userCourses)')->setParameter('userCourses', $user->getCourses())
+            ->addSelect('cm, u, cu')
+            ->leftJoin('i.comments', 'cm')
+            ->leftJoin('cm.user', 'u')
+            ->leftJoin('i.course', 'cu')
+            ->where('i.course IN(:userCourses)')
+            ->andWhere('cu.endDate >= :today')
+            ->andWhere('cu.startDate <= :today')
+            ->setParameter('userCourses', $user->getCourses())
+            ->setParameter('today', new DateTime())
             ->orderBy('i.createdAt', 'DESC')
-            ->addOrderBy('c.createdAt', 'ASC')
+            ->addOrderBy('cm.createdAt', 'ASC')
         ;
 
         return $qb->getQuery()->getResult();
