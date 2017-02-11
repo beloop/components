@@ -124,6 +124,17 @@ abstract class AbstractUser implements AbstractUserInterface
     }
 
     /**
+     * User has specific role
+     * @param  string  $role Role to find
+     * @return boolean
+     */
+    public function hasRole($role) {
+        $role = strtoupper($role);
+
+        return in_array($role, $this->getRoles(), true);
+    }
+
+    /**
      * Sets First name.
      *
      * @param string $firstname Firstname
