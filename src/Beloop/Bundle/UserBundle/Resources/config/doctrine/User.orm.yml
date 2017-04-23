@@ -32,6 +32,11 @@ Beloop\Component\User\Entity\User:
         images:
             targetEntity: Beloop\Component\Instagram\Entity\Instagram
             mappedBy: user
+        enrollments:
+            targetEntity: Beloop\Component\Course\Entity\CourseEnrolledUser
+            mappedBy: user
+            orderBy:
+                enrollmentDate: DESC
 
     manyToOne:
         language:
@@ -40,13 +45,6 @@ Beloop\Component\User\Entity\User:
                 name: language_iso
                 referencedColumnName: iso
                 nullable: true
-
-    manyToMany:
-        courses:
-            targetEntity: Beloop\Component\Course\Entity\Interfaces\CourseInterface
-            mappedBy: enrolledUsers
-            orderBy:
-                startDate: DESC
 
     lifecycleCallbacks:
             preUpdate: [loadUpdateAt]

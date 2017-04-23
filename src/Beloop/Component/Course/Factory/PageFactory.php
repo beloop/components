@@ -15,7 +15,6 @@
 
 namespace Beloop\Component\Course\Factory;
 
-use DateInterval;
 use DateTime;
 
 use Doctrine\Common\Collections\ArrayCollection;

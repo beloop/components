@@ -37,13 +37,13 @@ class CourseRepository extends EntityRepository
         $qb = $this->createQueryBuilder('c');
 
         $qb
-            ->addSelect('l, u, m')
+            ->addSelect('l, e, m')
                 ->innerJoin('c.lessons', 'l')
-                ->innerJoin('c.enrolledUsers', 'u')
+                ->innerJoin('c.enrollments', 'e')
                 ->leftJoin('l.modules', 'm')
-            ->where('u.id = :user')->setParameter('user', $user)
-                ->andWhere('c.endDate >= :now')->setParameter('now', new DateTime())
-            ->orderBy('c.startDate', 'DESC')
+            ->where('e.user = :user')->setParameter('user', $user)
+                ->andWhere('e.endDate >= :now')->setParameter('now', new DateTime())
+            ->orderBy('e.enrollmentDate', 'DESC')
                 ->addOrderBy('l.position', 'ASC')
                 ->addOrderBy('m.position', 'ASC')
         ;

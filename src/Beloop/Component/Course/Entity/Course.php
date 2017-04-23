@@ -26,6 +26,7 @@ use Beloop\Component\Core\Entity\Traits\EnabledTrait;
 use Beloop\Component\Core\Entity\Traits\IdentifiableTrait;
 use Beloop\Component\Core\Entity\Traits\ImageTrait;
 use Beloop\Component\Course\Entity\Interfaces\CourseInterface;
+use Beloop\Component\Course\Entity\Interfaces\CourseEnrolledUserInterface;
 use Beloop\Component\Course\Entity\Interfaces\LessonInterface;
 use Beloop\Component\Language\Entity\Traits\LanguageTrait;
 use Beloop\Component\User\Entity\Interfaces\UserInterface;
@@ -44,16 +45,14 @@ class Course implements CourseInterface, Serializable
     protected $code;
     protected $name;
     protected $description;
-    protected $startDate;
-    protected $endDate;
     protected $demo;
 
-    protected $enrolledUsers;
+    protected $enrollments;
     protected $lessons;
 
     public function __construct()
     {
-        $this->enrolledUsers = new ArrayCollection();
+        $this->enrollments = new ArrayCollection();
         $this->lessons = new ArrayCollection();
     }
 
@@ -143,22 +142,54 @@ class Course implements CourseInterface, Serializable
         return $this->demo === true;
     }
 
+    public function isAvailableForUser(UserInterface $user) {
+      $today = new DateTime();
+      $enrollment = $this->getEnrollmentForUser($user);
+
+      return $this->isDemo() || $today >= $enrollment->getEnrollmentDate() && $today <= $enrollment->getEndDate();
+    }
+
+    public function getEnrollmentForUser(UserInterface $user) {
+      foreach ($this->enrollments as $enrollment) {
+        if ($user->getId() === $enrollment->getUser()->getId()) {
+          return $enrollment;
+        }
+      }
+    }
+
+    /**
+     * Get course start date given a user
+     * @param  UserInterface $user
+     * @return DateTime
+     */
+    public function getStartDate(UserInterface $user) {
+      return $this->getEnrollmentForUser($user)->getEnrollmentDate();
+    }
+
+    /**
+     * Get course end date given a user
+     * @param  UserInterface $user
+     * @return DateTime
+     */
+    public function getEndDate(UserInterface $user) {
+      return $this->getEnrollmentForUser($user)->getEndDate();
+    }
 
     /**
      * @return Collection
      */
-    public function getEnrolledUsers()
+    public function getEnrollments()
     {
-        return $this->enrolledUsers;
+        return $this->enrollments;
     }
 
     /**
-     * @param Collection $enrolledUsers
+     * @param Collection $enrollments
      * @return $this Self object
      */
-    public function setEnrolledUsers(Collection $enrolledUsers)
+    public function setEnrollments(Collection $enrollments)
     {
-        $this->enrolledUsers = $enrolledUsers;
+        $this->enrollments = $enrollments;
         return $this;
     }
 
@@ -168,11 +199,12 @@ class Course implements CourseInterface, Serializable
      */
     public function enrollUser(UserInterface $user)
     {
-        if (!$this->enrolledUsers->contains($user)) {
-            $this->enrolledUsers->add($user);
-        }
+        throw new Exception('Implement user enrollment.');
+        // if (!$this->enrolledUsers->contains($user)) {
+        //     $this->enrolledUsers->add($user);
+        // }
 
-        return $this;
+        // return $this;
     }
 
     /**
@@ -181,11 +213,12 @@ class Course implements CourseInterface, Serializable
      */
     public function unEnrollUser(UserInterface $user)
     {
-        $this
-            ->enrolledUsers
-            ->removeElement($user);
+        throw new Exception('Implement user un-enrollment.');
+        // $this
+        //     ->enrolledUsers
+        //     ->removeElement($user);
 
-        return $this;
+        // return $this;
     }
 
     /**
@@ -235,39 +268,16 @@ class Course implements CourseInterface, Serializable
     }
 
     /**
-     * @return DateTime
+     * Get enrolled users
+     * @return Collection
      */
-    public function getStartDate()
-    {
-        return $this->startDate;
-    }
+    public function getEnrolledUsers() {
+        $users = new ArrayCollection();
+        foreach ($this->enrollments as $enrollment) {
+            $users->add($enrollment->getUser());
+        }
 
-    /**
-     * @param DateTime $startDate
-     * @return $this Self object
-     */
-    public function setStartDate($startDate)
-    {
-        $this->startDate = $startDate;
-        return $this;
-    }
-
-    /**
-     * @return DateTime
-     */
-    public function getEndDate()
-    {
-        return $this->endDate;
-    }
-
-    /**
-     * @param DateTime $endDate
-     * @return $this Self object
-     */
-    public function setEndDate($endDate)
-    {
-        $this->endDate = $endDate;
-        return $this;
+        return $users;
     }
 
     /**
@@ -275,25 +285,14 @@ class Course implements CourseInterface, Serializable
      * @return Collection
      */
     public function getTeachers() {
-        $teachers = [];
-
-        foreach ($this->enrolledUsers as $user) {
-            if ($user->hasRole('ROLE_TEACHER')) {
-                $teachers[] = $user;
+        $teachers = new ArrayCollection();
+        foreach ($this->enrollments as $enrollment) {
+            if ($enrollment->getUser()->hasRole('ROLE_TEACHER')) {
+                $teachers->add($enrollment->getUser());
             }
         }
 
         return $teachers;
-    }
-
-    /**
-     * Course is accessible by today
-     */
-    public function isAvailable()
-    {
-        $today = new DateTime();
-
-        return $today >= $this->getStartDate() && $today <= $this->getEndDate();
     }
 
     public function serialize() {
@@ -307,7 +306,7 @@ class Course implements CourseInterface, Serializable
             'language' => $this->getLanguage()->getIso(),
             'demo' => $this->demo,
             'enabled' => $this->enabled,
-            'enrolledUsers' => count($this->enrolledUsers),
+            'enrollments' => count($this->enrollments),
             'lessons' => count($this->lessons),
         ];
     }
@@ -321,7 +320,7 @@ class Course implements CourseInterface, Serializable
     {
         if ($this->id) {
             $this->setId(null);
-            $this->enrolledUsers = new ArrayCollection();
+            $this->enrollments = new ArrayCollection();
             $this->code = 'CLONE-' . $this->code . '-' . rand();
             $this->name = 'CLONE ' . $this->name;
 

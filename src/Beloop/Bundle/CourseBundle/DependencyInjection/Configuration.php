@@ -42,6 +42,13 @@ class Configuration extends AbstractConfiguration
                             true
                         ))
                         ->append($this->addMappingNode(
+                            'course_enrolled_user',
+                            'Beloop\Component\Course\Entity\CourseEnrolledUser',
+                            '@BeloopCourseBundle/Resources/config/doctrine/CourseEnrolledUser.orm.yml',
+                            'default',
+                            true
+                        ))
+                        ->append($this->addMappingNode(
                             'lesson',
                             'Beloop\Component\Course\Entity\Lesson',
                             '@BeloopCourseBundle/Resources/config/doctrine/Lesson.orm.yml',

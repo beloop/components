@@ -15,6 +15,7 @@
 
 namespace Beloop\Component\User\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\File;
 
 use Beloop\Component\Language\Entity\Interfaces\LanguageInterface;
@@ -64,13 +65,13 @@ class User extends AbstractUser implements UserInterface
     /**
      * @var Collection
      */
-    protected $courses;
+    protected $enrollments;
 
     /**
      * @var Collection
      */
     protected $images;
-    
+
     /**
      * Set language.
      *
@@ -196,9 +197,22 @@ class User extends AbstractUser implements UserInterface
     /**
      * @return Collection
      */
+    public function getEnrollments()
+    {
+        return $this->enrollments;
+    }
+
+    /**
+     * @return Collection
+     */
     public function getCourses()
     {
-        return $this->courses;
+        $courses = new ArrayCollection();
+        foreach ($this->enrollments as $enrollment) {
+            $courses->add($enrollment->getCourse());
+        }
+
+        return $courses;
     }
 
     /**

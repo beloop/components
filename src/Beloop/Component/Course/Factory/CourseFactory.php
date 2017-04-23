@@ -15,7 +15,6 @@
 
 namespace Beloop\Component\Course\Factory;
 
-use DateInterval;
 use DateTime;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -40,7 +39,6 @@ class CourseFactory extends AbstractFactory
     public function create()
     {
         $now = new DateTime();
-        $end = (new DateTime())->add(DateInterval::createFromDateString("6 months"));
 
         /**
          * @var Course $course
@@ -50,8 +48,6 @@ class CourseFactory extends AbstractFactory
 
         $course
             ->setLessons(new ArrayCollection())
-            ->setStartDate($now)
-            ->setEndDate($end)
             ->enable()
             ->setCreatedAt($now);
 

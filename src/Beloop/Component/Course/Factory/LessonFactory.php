@@ -15,7 +15,6 @@
 
 namespace Beloop\Component\Course\Factory;
 
-use DateInterval;
 use DateTime;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -50,7 +49,7 @@ class LessonFactory extends AbstractFactory
 
         $lesson
             ->setModules(new ArrayCollection())
-            ->setStartDate($now)
+            ->setOffsetInDays(0)
             ->setPosition(1)
             ->enable()
             ->setCreatedAt($now);

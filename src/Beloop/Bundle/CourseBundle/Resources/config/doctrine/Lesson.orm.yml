@@ -24,10 +24,12 @@ Beloop\Component\Course\Entity\Lesson:
             column: description
             type: text
             nullable: false
-        startDate:
-            column: start_date
-            type: datetime
+        offsetInDays:
+            column: offset_in_days
+            type: integer
             nullable: false
+            options:
+                default: 0
         position:
             column: position
             type: integer

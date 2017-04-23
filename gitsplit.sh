@@ -35,3 +35,6 @@ for repoName in `ls -1 src/Beloop/Bundle` ; do
     # push local branch on remote
     git push $repoName subtree_${repoName}_master:master
 done
+
+# Restore master branch
+git checkout master

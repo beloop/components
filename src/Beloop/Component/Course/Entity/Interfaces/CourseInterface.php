@@ -103,42 +103,41 @@ interface CourseInterface
     public function removeLesson(LessonInterface $lesson);
 
     /**
+     * Course is accessible for given user
+     * @param UserInterface $user
+     */
+    public function isAvailableForUser(UserInterface $user);
+
+    /**
+     * Get enrollment data for a given user
+     * @param UserInterface $user
+     */
+    public function getEnrollmentForUser(UserInterface $user);
+
+    /**
+     * Get course start date given a user
+     * @param  UserInterface $user
      * @return DateTime
      */
-    public function getStartDate();
+    public function getStartDate(UserInterface $user);
 
     /**
-     * @param DateTime $startDate
-     * @return $this Self object
-     */
-    public function setStartDate($startDate);
-
-    /**
+     * Get course end date given a user
+     * @param  UserInterface $user
      * @return DateTime
      */
-    public function getEndDate();
-
-    /**
-     * @param DateTime $endDate
-     * @return $this Self object
-     */
-    public function setEndDate($endDate);
-
-    /**
-     * Course is accessible by today
-     */
-    public function isAvailable();
+    public function getEndDate(UserInterface $user);
 
     /**
      * @return Collection
      */
-    public function getEnrolledUsers();
+    public function getEnrollments();
 
     /**
-     * @param Collection $enrolledUsers
+     * @param Collection $enrollments
      * @return $this Self object
      */
-    public function setEnrolledUsers(Collection $enrolledUsers);
+    public function setEnrollments(Collection $enrollments);
 
     /**
      * @param UserInterface $user
