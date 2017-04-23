@@ -48,6 +48,7 @@ class CourseFactory extends AbstractFactory
 
         $course
             ->setLessons(new ArrayCollection())
+            ->setDemo(false)
             ->enable()
             ->setCreatedAt($now);
 

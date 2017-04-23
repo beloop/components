@@ -23,6 +23,7 @@ use Beloop\Component\Core\Entity\Traits\DateTimeTrait;
 use Beloop\Component\Core\Entity\Traits\EnabledTrait;
 use Beloop\Component\Core\Entity\Traits\IdentifiableTrait;
 use Beloop\Component\Course\Entity\Interfaces\CourseEnrolledUserInterface;
+use Beloop\Component\User\Entity\Interfaces\UserInterface;
 
 /**
  * Class CourseEnrolledUser entity.
@@ -57,6 +58,11 @@ class CourseEnrolledUser implements CourseEnrolledUserInterface, Serializable
 
     public function getUser() {
       return $this->user;
+    }
+
+    public function setUser(UserInterface $user) {
+      $this->user = $user;
+      return $this;
     }
 
     public function getCourse() {

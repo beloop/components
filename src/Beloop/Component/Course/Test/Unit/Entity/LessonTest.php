@@ -21,29 +21,38 @@ use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit_Framework_TestCase;
 
 use Beloop\Component\Course\Entity\Course;
+use Beloop\Component\Course\Entity\CourseEnrolledUser;
 use Beloop\Component\Course\Entity\Lesson;
 use Beloop\Component\Course\Entity\Page;
 use Beloop\Component\Course\Entity\Quiz;
 use Beloop\Component\Course\Entity\Video;
+use Beloop\Component\User\Entity\User;
 
 /**
  * Class LessonTest.
  */
 class LessonTest extends PHPUnit_Framework_TestCase {
     private $course;
+    private $enrolment;
     private $lesson;
+    private $user;
 
     public function setUp()
     {
+        $this->user = new User();
+        $this->user->setId(1);
+
+        $this->enrolment = new CourseEnrolledUser();
+        $this->enrolment->setUser($this->user);
+
         $this->course = $this->getMock('Beloop\Component\Course\Entity\Course', null);
         $this->course = new Course();
         $this->lesson = new Lesson();
 
-        $this->course->setStartDate(new DateTime());
-        $this->course->setEndDate((new DateTime())->add(DateInterval::createFromDateString("6 months")));
         $this->lesson->setCourse($this->course);
         $this->lesson->setModules(new ArrayCollection());
-        $this->lesson->setStartDate(new DateTime());
+
+        $this->course->setEnrollments(new ArrayCollection([ $this->enrolment ]));
     }
 
     public function testModuleCollection() {
@@ -68,21 +77,23 @@ class LessonTest extends PHPUnit_Framework_TestCase {
     public function testAvailability()
     {
         // Course and chapter start date is after today
-        $this->course->getStartDate()->add(DateInterval::createFromDateString("2 months"));
-        $this->lesson->getStartDate()->add(DateInterval::createFromDateString("2 months"));
-        $this->assertEquals(false, $this->lesson->isAvailable());
+        $this->enrolment->getEnrollmentDate()->add(DateInterval::createFromDateString("2 months"));
+        $this->lesson->setOffsetInDays(30);
+        $this->assertEquals(false, $this->lesson->isAvailableForUser($this->user));
 
         // Course is available and chapter start date is after today
-        $this->course->getStartDate()->sub(DateInterval::createFromDateString("3 months"));
-        $this->assertEquals(false, $this->lesson->isAvailable());
+        $this->enrolment->getEnrollmentDate()->sub(DateInterval::createFromDateString("3 months"));
+        $this->lesson->setOffsetInDays(120);
+        $this->assertEquals(false, $this->lesson->isAvailableForUser($this->user));
 
         // Course is available and chapter start date is before today
-        $this->lesson->getStartDate()->sub(DateInterval::createFromDateString("2 months"));
-        $this->assertEquals(true, $this->lesson->isAvailable());
+        $this->enrolment->getEnrollmentDate()->sub(DateInterval::createFromDateString("2 months"));
+        $this->lesson->setOffsetInDays(0);
+        $this->assertEquals(true, $this->lesson->isAvailableForUser($this->user));
 
         // Course is over
-        $this->course->getEndDate()->sub(DateInterval::createFromDateString("8 months"));
-        $this->assertEquals(false, $this->lesson->isAvailable());
+        $this->enrolment->getEndDate()->sub(DateInterval::createFromDateString("8 months"));
+        $this->assertEquals(false, $this->lesson->isAvailableForUser($this->user));
     }
 
     public function testSerialization()
@@ -98,6 +109,5 @@ class LessonTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals('Lesson description', $serialized['description']);
         $this->assertEquals(true, $serialized['enabled']);
         $this->assertEquals(0, $serialized['modules']);
-        $this->assertEquals($this->lesson->getStartDate()->getTimestamp(), $serialized['startDate']);
     }
 }

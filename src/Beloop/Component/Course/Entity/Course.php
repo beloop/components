@@ -119,7 +119,7 @@ class Course implements CourseInterface, Serializable
     }
 
     /**
-     * @return mixed
+     * @return boolean
      */
     public function getDemo()
     {
@@ -127,21 +127,29 @@ class Course implements CourseInterface, Serializable
     }
 
     /**
-     * @param mixed $demo
+     * @param boolean $demo
      */
     public function setDemo($demo)
     {
         $this->demo = $demo;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return boolean
      */
     public function isDemo()
     {
         return $this->demo === true;
     }
 
+    /**
+     * Checks if the course is available for the given user.
+     * The user is enrolled and enrolment period is valid.
+     *
+     * @param  UserInterface $user
+     * @return boolean
+     */
     public function isAvailableForUser(UserInterface $user) {
       $today = new DateTime();
       $enrollment = $this->getEnrollmentForUser($user);
@@ -149,6 +157,12 @@ class Course implements CourseInterface, Serializable
       return $today >= $enrollment->getEnrollmentDate() && $today <= $enrollment->getEndDate();
     }
 
+    /**
+     * Finds the enrolment for the given user in this course.
+     *
+     * @param  UserInterface $user
+     * @return CourseEnrolledUser
+     */
     public function getEnrollmentForUser(UserInterface $user) {
       foreach ($this->enrollments as $enrollment) {
         if ($user->getId() === $enrollment->getUser()->getId()) {
@@ -301,8 +315,6 @@ class Course implements CourseInterface, Serializable
             'code' => $this->code,
             'name' => $this->name,
             'description' => $this->description,
-            'startDate' => $this->startDate->getTimestamp() * 1000,
-            'endDate' => $this->endDate->getTimestamp() * 1000,
             'language' => $this->getLanguage()->getIso(),
             'demo' => $this->demo,
             'enabled' => $this->enabled,
