@@ -17,8 +17,9 @@ namespace Beloop\Component\Squarespace\Test\Unit\Entity;
 
 use DateInterval;
 use DateTime;
-use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit_Framework_TestCase;
+
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Beloop\Component\Course\Entity\Course;
 use Beloop\Component\Course\Entity\CourseEnrolledUser;
