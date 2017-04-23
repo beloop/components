@@ -146,7 +146,7 @@ class Course implements CourseInterface, Serializable
       $today = new DateTime();
       $enrollment = $this->getEnrollmentForUser($user);
 
-      return $this->isDemo() || $today >= $enrollment->getEnrollmentDate() && $today <= $enrollment->getEndDate();
+      return $today >= $enrollment->getEnrollmentDate() && $today <= $enrollment->getEndDate();
     }
 
     public function getEnrollmentForUser(UserInterface $user) {

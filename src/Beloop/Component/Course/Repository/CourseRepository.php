@@ -43,6 +43,7 @@ class CourseRepository extends EntityRepository
                 ->leftJoin('l.modules', 'm')
             ->where('e.user = :user')->setParameter('user', $user)
                 ->andWhere('e.endDate >= :now')->setParameter('now', new DateTime())
+                ->andWhere('c.demo = :false')->setParameter('false', false)
             ->orderBy('e.enrollmentDate', 'DESC')
                 ->addOrderBy('l.position', 'ASC')
                 ->addOrderBy('m.position', 'ASC')
