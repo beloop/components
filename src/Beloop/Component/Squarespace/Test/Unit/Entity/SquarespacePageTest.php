@@ -43,12 +43,12 @@ class SquarespacePageTest extends PHPUnit_Framework_TestCase
         $this->user = new User();
         $this->user->setId(1);
 
-        // $this->enrolment = new CourseEnrolledUser();
-        // $this->enrolment->setUser($this->user);
+        $this->enrolment = new CourseEnrolledUser();
+        $this->enrolment->setUser($this->user);
 
         $this->page->setLesson($this->lesson);
         $this->lesson->setCourse($this->course);
-        // $this->course->setEnrollments(new ArrayCollection([ $this->enrolment ]));
+        $this->course->setEnrollments(new ArrayCollection([ $this->enrolment ]));
     }
 
     public function testDefaultValues() {
@@ -58,23 +58,21 @@ class SquarespacePageTest extends PHPUnit_Framework_TestCase
     public function testAvailability()
     {
         // Course and chapter start date is after today
-        // $this->course->getStartDate()->add(DateInterval::createFromDateString("2 months"));
-        // $this->lesson->getStartDate()->add(DateInterval::createFromDateString("2 months"));
-        // $this->assertEquals(false, $this->page->isAvailable());
-        // $this->enrolment->getEnrollmentDate()->add(DateInterval::createFromDateString("2 months"));
-        // $this->lesson->setOffsetInDays(60);
-        // $this->assertEquals(false, $this->page->isAvailableForUser($this->user));
+        $this->enrolment->getEnrollmentDate()->add(DateInterval::createFromDateString("2 months"));
+        $this->lesson->setOffsetInDays(60);
+        $this->assertEquals(false, $this->page->isAvailableForUser($this->user));
 
         // Course is available and chapter start date is after today
-        // $this->course->getStartDate()->sub(DateInterval::createFromDateString("3 months"));
-        // $this->assertEquals(false, $this->page->isAvailable());
+        $this->enrolment->getEnrollmentDate()->add(DateInterval::createFromDateString("3 months"));
+        $this->assertEquals(false, $this->page->isAvailableForUser($this->user));
 
         // Course is available and chapter start date is before today
-        // $this->lesson->getStartDate()->sub(DateInterval::createFromDateString("2 months"));
-        // $this->assertEquals(true, $this->page->isAvailable());
+        $this->enrolment->getEnrollmentDate()->sub(DateInterval::createFromDateString("5 months"));
+        $this->lesson->setOffsetInDays(0);
+        $this->assertEquals(true, $this->page->isAvailableForUser($this->user));
 
         // Course is over
-        // $this->course->getEndDate()->sub(DateInterval::createFromDateString("8 months"));
-        // $this->assertEquals(false, $this->page->isAvailable());
+        $this->enrolment->getEndDate()->sub(DateInterval::createFromDateString("8 months"));
+        $this->assertEquals(false, $this->page->isAvailableForUser($this->user));
     }
 }
