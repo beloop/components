@@ -142,9 +142,9 @@ UPDATE course_lesson SET offset_in_days='38' WHERE id='449';
 UPDATE course_lesson SET offset_in_days='42' WHERE id='450';
 UPDATE course_lesson SET offset_in_days='45' WHERE id='451';
 
-UPDATE course SET code='professional-food-styling' WHERE id='39';
-UPDATE course SET code='estilismo-culinario-profesional' WHERE id='40';
-UPDATE course SET code='composición-percepcion-visual' WHERE id='41';
-UPDATE course SET code='composition-and-visual-perception' WHERE id='42';
-UPDATE course SET code='food-styling-photography' WHERE id='43';
-UPDATE course SET code='estilismo-fotografia-gastronomica' WHERE id='44';
+UPDATE course SET code='ENG-STYLING' WHERE id='39';
+UPDATE course SET code='ESP-STYLING' WHERE id='40';
+UPDATE course SET code='ESP-STILL' WHERE id='41';
+UPDATE course SET code='ENG-STILL' WHERE id='42';
+UPDATE course SET code='ENG-FOOD' WHERE id='43';
+UPDATE course SET code='ESP-FOOD' WHERE id='44';
