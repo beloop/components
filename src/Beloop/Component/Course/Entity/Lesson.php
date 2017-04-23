@@ -220,7 +220,8 @@ class Lesson implements LessonInterface, Serializable
 
     public function getStartDate(UserInterface $user) {
       $enrollment = $this->course->getEnrollmentForUser($user);
-      return (clone $enrollment->getEnrollmentDate())->add(new DateInterval('P' . $this->offsetInDays . 'D'));
+      $enrollmentDate = clone $enrollment->getEnrollmentDate();
+      return $enrollmentDate->add(new DateInterval('P' . $this->offsetInDays . 'D'));
     }
 
     public function serialize() {
