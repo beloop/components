@@ -81,6 +81,11 @@ class BeloopCourseExtension extends AbstractExtension implements EntitiesOverrid
             'beloop.entity.course.manager' => $config['mapping']['course']['manager'],
             'beloop.entity.course.enabled' => $config['mapping']['course']['enabled'],
 
+            'beloop.entity.course_enrolled_user.class' => $config['mapping']['course_enrolled_user']['class'],
+            'beloop.entity.course_enrolled_user.mapping_file' => $config['mapping']['course_enrolled_user']['mapping_file'],
+            'beloop.entity.course_enrolled_user.manager' => $config['mapping']['course_enrolled_user']['manager'],
+            'beloop.entity.course_enrolled_user.enabled' => $config['mapping']['course_enrolled_user']['enabled'],
+
             'beloop.entity.lesson.class' => $config['mapping']['lesson']['class'],
             'beloop.entity.lesson.mapping_file' => $config['mapping']['lesson']['mapping_file'],
             'beloop.entity.lesson.manager' => $config['mapping']['lesson']['manager'],

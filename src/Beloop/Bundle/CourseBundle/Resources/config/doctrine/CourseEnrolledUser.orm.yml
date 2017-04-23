@@ -1,0 +1,64 @@
+Beloop\Component\Course\Entity\CourseEnrolledUser:
+    type: entity
+    repositoryClass: Beloop\Component\Course\Repository\CourseEnrolledUserRepository
+    table: course_enrolled_users
+
+    id:
+        course:
+            column: course_id
+            associationKey: true
+        user:
+            column: user_id
+            associationKey: true
+
+    fields:
+        enrollmentDate:
+            column: enrollment_date
+            type: datetime
+            nullable: true
+        endDate:
+            column: end_date
+            type: datetime
+            nullable: true
+        enabled:
+            column: enabled
+            type: boolean
+            nullable: false
+            options:
+                default: true
+        createdAt:
+            column: created_at
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+        updatedAt:
+            column: updated_at
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+
+    manyToOne:
+        course:
+            targetEntity: Beloop\Component\Course\Entity\Course
+            inversedBy: enrollments
+            joinColumn:
+                name: course_id
+                referencedColumnName: id
+                nullable: false
+                onDelete: "CASCADE"
+                onUpdate: "CASCADE"
+        user:
+            targetEntity: Beloop\Component\User\Entity\User
+            inversedBy: enrollments
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+                nullable: false
+                onDelete: "CASCADE"
+                onUpdate: "CASCADE"
+
+    lifecycleCallbacks:
+        preUpdate: [loadUpdateAt]
+        prePersist: [loadUpdateAt]

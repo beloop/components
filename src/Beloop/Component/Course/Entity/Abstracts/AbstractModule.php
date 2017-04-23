@@ -23,6 +23,7 @@ use Beloop\Component\Core\Entity\Traits\IdentifiableTrait;
 use Beloop\Component\Core\Entity\Traits\PositionTrait;
 use Beloop\Component\Course\Entity\Interfaces\LessonInterface;
 use Beloop\Component\Course\Entity\Interfaces\ModuleInterface;
+use Beloop\Component\User\Entity\Interfaces\UserInterface;
 
 /**
  * Class Module
@@ -38,7 +39,7 @@ abstract class AbstractModule implements ModuleInterface
     private $icon;
 
     private $lesson;
-    
+
     /**
      * @return mixed
      */
@@ -96,11 +97,8 @@ abstract class AbstractModule implements ModuleInterface
     /**
      * Module is accessible by today
      */
-    public function isAvailable()
-    {
-        $today = new DateTime();
-
-        return $this->lesson->isAvailable();
+    public function isAvailableForUser(UserInterface $user) {
+      return $this->lesson->isAvailableForUser($user);
     }
 
     /**

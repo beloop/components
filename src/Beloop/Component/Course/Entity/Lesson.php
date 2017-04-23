@@ -15,8 +15,9 @@
 
 namespace Beloop\Component\Course\Entity;
 
-use \DateTime;
-use \Serializable;
+use DateInterval;
+use DateTime;
+use Serializable;
 
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -30,6 +31,8 @@ use Beloop\Component\Course\Entity\Abstracts\Module;
 use Beloop\Component\Course\Entity\Interfaces\CourseInterface;
 use Beloop\Component\Course\Entity\Interfaces\LessonInterface;
 use Beloop\Component\Course\Entity\Interfaces\ModuleInterface;
+
+use Beloop\Component\User\Entity\Interfaces\UserInterface;
 
 /**
  * Course lesson representation
@@ -45,7 +48,8 @@ class Lesson implements LessonInterface, Serializable
     protected $slug;
     protected $description;
     protected $modules;
-    protected $startDate;
+    protected $offsetInDays;
+    protected $demo;
 
     protected $course;
 
@@ -148,24 +152,6 @@ class Lesson implements LessonInterface, Serializable
     }
 
     /**
-     * @return DateTime
-     */
-    public function getStartDate()
-    {
-        return $this->startDate;
-    }
-
-    /**
-     * @param DateTime $startDate
-     * @return $this Self object
-     */
-    public function setStartDate($startDate)
-    {
-        $this->startDate = $startDate;
-        return $this;
-    }
-
-    /**
      * @return mixed
      */
     public function getCourse()
@@ -184,13 +170,58 @@ class Lesson implements LessonInterface, Serializable
     }
 
     /**
-     * Lesson is accessible by today
+     * @return mixed
      */
-    public function isAvailable()
+    public function getOffsetInDays()
     {
-        $today = new DateTime();
+        return $this->offsetInDays;
+    }
 
-        return $this->course->isAvailable() && $today >= $this->getStartDate();
+    /**
+     * @param int $days
+     * @return $this Self object
+     */
+    public function setOffsetInDays($days)
+    {
+        $this->offsetInDays = $days;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDemo()
+    {
+        return $this->demo;
+    }
+
+    /**
+     * @param mixed $demo
+     */
+    public function setDemo($demo)
+    {
+        $this->demo = $demo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function isDemo()
+    {
+        return $this->demo === true;
+    }
+
+    public function isAvailableForUser(UserInterface $user) {
+      $today = new DateTime();
+      $courseIsAvailable = $this->course->isAvailableForUser($user);
+
+      return $this->isDemo() || ($courseIsAvailable && $this->getStartDate($user) <= $today);
+    }
+
+    public function getStartDate(UserInterface $user) {
+      $enrollment = $this->course->getEnrollmentForUser($user);
+      $enrollmentDate = clone $enrollment->getEnrollmentDate();
+      return $enrollmentDate->add(new DateInterval('P' . $this->offsetInDays . 'D'));
     }
 
     public function serialize() {
@@ -199,7 +230,7 @@ class Lesson implements LessonInterface, Serializable
             'name' => $this->name,
             'slug' => $this->slug,
             'description' => $this->description,
-            'startDate' => $this->startDate->getTimestamp(),
+            'offsetInDays' => $this->offsetInDays,
             'enabled' => count($this->enabled),
             'modules' => count($this->modules),
             'courseId' => $this->course->getId(),

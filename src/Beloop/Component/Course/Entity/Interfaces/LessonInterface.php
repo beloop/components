@@ -21,6 +21,7 @@ use Beloop\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Beloop\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Beloop\Component\Core\Entity\Interfaces\EnabledInterface;
 use Beloop\Component\Core\Entity\Interfaces\PositionInterface;
+use Beloop\Component\User\Entity\Interfaces\UserInterface;
 
 /**
  * Interface LessonInterface
@@ -89,18 +90,33 @@ interface LessonInterface
     public function removeModule(ModuleInterface $module);
 
     /**
-     * @return DateTime
+     * @return mixed
      */
-    public function getStartDate();
+    public function getOffsetInDays();
 
     /**
-     * @param DateTime $startDate
+     * @param int $days
      * @return $this Self object
      */
-    public function setStartDate($startDate);
+    public function setOffsetInDays($days);
+
+    /**
+     * @return mixed
+     */
+    public function getDemo();
+
+    /**
+     * @param mixed $demo
+     */
+    public function setDemo($demo);
+
+    /**
+     * @return mixed
+     */
+    public function isDemo();
 
     /**
      * Lesson is accessible by today
      */
-    public function isAvailable();
+    public function isAvailableForUser(UserInterface $user);
 }

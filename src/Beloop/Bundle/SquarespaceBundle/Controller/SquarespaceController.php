@@ -70,7 +70,7 @@ class SquarespaceController extends Controller
                 throw $this->createNotFoundException('The course does not exist');
             }
 
-            if (!$page->isAvailable()) {
+            if (!$page->isAvailableForUser($user)) {
                 throw $this->createNotFoundException('The course does not exist');
             }
         }
@@ -131,7 +131,7 @@ class SquarespaceController extends Controller
                 throw $this->createNotFoundException('The course does not exist');
             }
 
-            if (!$page->isAvailable()) {
+            if (!$page->isAvailableForUser($user)) {
                 throw $this->createNotFoundException('The course does not exist');
             }
         }

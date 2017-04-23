@@ -19,6 +19,7 @@ use Beloop\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Beloop\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Beloop\Component\Core\Entity\Interfaces\EnabledInterface;
 use Beloop\Component\Core\Entity\Interfaces\PositionInterface;
+use Beloop\Component\User\Entity\Interfaces\UserInterface;
 
 interface ModuleInterface
     extends
@@ -31,7 +32,7 @@ interface ModuleInterface
      * @return mixed
      */
     public function getType();
-    
+
     /**
      * @return mixed
      */
@@ -67,8 +68,10 @@ interface ModuleInterface
 
     /**
      * Module is accessible by today
+     * @param UserInterface $user
+     * @return boolean
      */
-    public function isAvailable();
+    public function isAvailableForUser(UserInterface $user);
 
     /**
      * @return CourseInterface

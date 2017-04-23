@@ -38,6 +38,7 @@ class MappingCompilerPass extends AbstractBeloopMappingCompilerPass
                 $container,
                 [
                     'course',
+                    'course_enrolled_user',
                     'lesson',
                     'abstract_module',
                     'page',

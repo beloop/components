@@ -22,8 +22,10 @@ use PHPUnit_Framework_TestCase;
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Beloop\Component\Course\Entity\Course;
+use Beloop\Component\Course\Entity\CourseEnrolledUser;
 use Beloop\Component\Course\Entity\Lesson;
 use Beloop\Component\Language\Entity\Language;
+use Beloop\Component\User\Entity\User;
 
 /**
  * Class CourseTest.
@@ -31,17 +33,24 @@ use Beloop\Component\Language\Entity\Language;
 class CourseTest extends PHPUnit_Framework_TestCase
 {
     private $course;
+    private $enrolment;
+    private $user;
 
     public function setUp()
     {
         $language = new Language();
         $language->setIso('es');
 
+        $this->user = new User();
+        $this->user->setId(1);
+
+        $this->enrolment = new CourseEnrolledUser();
+        $this->enrolment->setUser($this->user);
+
         $this->course = new Course();
         $this->course->setLessons(new ArrayCollection());
-        $this->course->setStartDate(new DateTime());
-        $this->course->setEndDate((new DateTime())->add(DateInterval::createFromDateString("6 months")));
         $this->course->setLanguage($language);
+        $this->course->setEnrollments(new ArrayCollection([ $this->enrolment ]));
     }
 
     public function testLessonCollection() {
@@ -50,29 +59,29 @@ class CourseTest extends PHPUnit_Framework_TestCase
         $chapter = new Lesson();
         $this->course->addLesson($chapter);
         $this->assertEquals(1, $this->course->getLessons()->count());
-        
+
         $this->course->addLesson($chapter);
         $this->assertEquals(1, $this->course->getLessons()->count());
-        
+
         $this->course->removeLesson($chapter);
         $this->assertEquals(0, $this->course->getLessons()->count());
 
         $this->assertEquals($this->course, $chapter->getCourse());
     }
-    
+
     public function testAvailability()
     {
-        // Start date is after today
-        $this->course->getStartDate()->add(DateInterval::createFromDateString("2 months"));
-        $this->assertEquals(false, $this->course->isAvailable());
+        // Enrolment date is after today
+        $this->enrolment->getEnrollmentDate()->add(DateInterval::createFromDateString("2 months"));
+        $this->assertEquals(false, $this->course->isAvailableForUser($this->user));
 
-        // Start date is before today and end date is after today
-        $this->course->getStartDate()->sub(DateInterval::createFromDateString("3 months"));
-        $this->assertEquals(true, $this->course->isAvailable());
+        // Enrolment date is before today and end date is after today
+        $this->enrolment->getEnrollmentDate()->sub(DateInterval::createFromDateString("3 months"));
+        $this->assertEquals(true, $this->course->isAvailableForUser($this->user));
 
-        // Start date and end date are before today
-        $this->course->getEndDate()->sub(DateInterval::createFromDateString("8 months"));
-        $this->assertEquals(false, $this->course->isAvailable());
+        // Enrolment date and end date are before today
+        $this->enrolment->getEndDate()->sub(DateInterval::createFromDateString("8 months"));
+        $this->assertEquals(false, $this->course->isAvailableForUser($this->user));
     }
 
     public function testSerialization()
@@ -95,9 +104,7 @@ class CourseTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('es', $serialized['language']);
         $this->assertEquals(true, $serialized['demo']);
         $this->assertEquals(true, $serialized['enabled']);
-        $this->assertEquals(0, $serialized['enrolledUsers']);
+        $this->assertEquals(1, $serialized['enrollments']);
         $this->assertEquals(0, $serialized['lessons']);
-        $this->assertEquals($this->course->getStartDate()->getTimestamp() * 1000, $serialized['startDate']);
-        $this->assertEquals($this->course->getEndDate()->getTimestamp() * 1000, $serialized['endDate']);
     }
 }

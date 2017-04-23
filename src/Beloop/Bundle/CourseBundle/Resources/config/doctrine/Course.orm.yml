@@ -30,14 +30,6 @@ Beloop\Component\Course\Entity\Course:
             type: string
             length: 255
             nullable: true
-        startDate:
-            column: start_date
-            type: datetime
-            nullable: false
-        endDate:
-            column: end_date
-            type: datetime
-            nullable: false
         demo:
             column: demo
             type: boolean
@@ -64,22 +56,13 @@ Beloop\Component\Course\Entity\Course:
                 name: language_iso
                 referencedColumnName: iso
 
-    manyToMany:
-        enrolledUsers:
-            targetEntity: Beloop\Component\User\Entity\User
-            joinTable:
-                name: course_enrolled_users
-                joinColumns:
-                    course_id:
-                      referencedColumnName: id
-                inverseJoinColumns:
-                    user_id:
-                      referencedColumnName: id
-            inversedBy: courses
-
     oneToMany:
         lessons:
             targetEntity: Beloop\Component\Course\Entity\Lesson
+            mappedBy: course
+            cascade: [ persist ]
+        enrollments:
+            targetEntity: Beloop\Component\Course\Entity\CourseEnrolledUser
             mappedBy: course
             cascade: [ persist ]
 

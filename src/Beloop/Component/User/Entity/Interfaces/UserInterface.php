@@ -110,5 +110,15 @@ interface UserInterface extends AbstractUserInterface
     /**
      * @return Collection
      */
+    public function getEnrollments();
+
+    /**
+     * @return Collection
+     */
     public function getCourses();
+
+    /**
+     * @return Collection
+     */
+    public function getActiveCourses();
 }

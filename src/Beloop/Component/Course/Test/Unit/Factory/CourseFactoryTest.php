@@ -25,7 +25,7 @@ class CourseFactoryTest extends AbstractFactoryTest
     {
         $this->course = $this->createInstance();
     }
-    
+
     /**
      * Return the factory namespace.
      *
@@ -48,8 +48,7 @@ class CourseFactoryTest extends AbstractFactoryTest
 
     public function testDefaultValues() {
         $this->assertEquals(true, $this->course->isEnabled());
-
-        $interval = $this->course->getEndDate()->diff($this->course->getStartDate());
-        $this->assertEquals(6, $interval->format('%m'));
+        $this->assertEquals(false, $this->course->isDemo());
+        $this->assertEmpty($this->course->getEnrollments());
     }
 }

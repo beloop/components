@@ -17,17 +17,22 @@ namespace Beloop\Component\Squarespace\Test\Unit\Entity;
 
 use DateInterval;
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit_Framework_TestCase;
 
 use Beloop\Component\Course\Entity\Course;
+use Beloop\Component\Course\Entity\CourseEnrolledUser;
 use Beloop\Component\Course\Entity\Lesson;
 use Beloop\Component\Squarespace\Entity\SquarespacePage;
+use Beloop\Component\User\Entity\User;
 
 class SquarespacePageTest extends PHPUnit_Framework_TestCase
 {
     private $course;
+    private $enrolment;
     private $lesson;
     private $page;
+    private $user;
 
     public function setUp()
     {
@@ -35,12 +40,15 @@ class SquarespacePageTest extends PHPUnit_Framework_TestCase
         $this->lesson = new Lesson();
         $this->page = new SquarespacePage();
 
-        $this->course->setStartDate(new DateTime());
-        $this->course->setEndDate(new DateTime());
-        $this->course->getEndDate()->add(DateInterval::createFromDateString("2 months"));
-        $this->lesson->setStartDate(new DateTime());
+        $this->user = new User();
+        $this->user->setId(1);
+
+        // $this->enrolment = new CourseEnrolledUser();
+        // $this->enrolment->setUser($this->user);
+
         $this->page->setLesson($this->lesson);
         $this->lesson->setCourse($this->course);
+        // $this->course->setEnrollments(new ArrayCollection([ $this->enrolment ]));
     }
 
     public function testDefaultValues() {
@@ -50,20 +58,23 @@ class SquarespacePageTest extends PHPUnit_Framework_TestCase
     public function testAvailability()
     {
         // Course and chapter start date is after today
-        $this->course->getStartDate()->add(DateInterval::createFromDateString("2 months"));
-        $this->lesson->getStartDate()->add(DateInterval::createFromDateString("2 months"));
-        $this->assertEquals(false, $this->page->isAvailable());
+        // $this->course->getStartDate()->add(DateInterval::createFromDateString("2 months"));
+        // $this->lesson->getStartDate()->add(DateInterval::createFromDateString("2 months"));
+        // $this->assertEquals(false, $this->page->isAvailable());
+        // $this->enrolment->getEnrollmentDate()->add(DateInterval::createFromDateString("2 months"));
+        // $this->lesson->setOffsetInDays(60);
+        // $this->assertEquals(false, $this->page->isAvailableForUser($this->user));
 
         // Course is available and chapter start date is after today
-        $this->course->getStartDate()->sub(DateInterval::createFromDateString("3 months"));
-        $this->assertEquals(false, $this->page->isAvailable());
+        // $this->course->getStartDate()->sub(DateInterval::createFromDateString("3 months"));
+        // $this->assertEquals(false, $this->page->isAvailable());
 
         // Course is available and chapter start date is before today
-        $this->lesson->getStartDate()->sub(DateInterval::createFromDateString("2 months"));
-        $this->assertEquals(true, $this->page->isAvailable());
+        // $this->lesson->getStartDate()->sub(DateInterval::createFromDateString("2 months"));
+        // $this->assertEquals(true, $this->page->isAvailable());
 
         // Course is over
-        $this->course->getEndDate()->sub(DateInterval::createFromDateString("8 months"));
-        $this->assertEquals(false, $this->page->isAvailable());
+        // $this->course->getEndDate()->sub(DateInterval::createFromDateString("8 months"));
+        // $this->assertEquals(false, $this->page->isAvailable());
     }
 }
