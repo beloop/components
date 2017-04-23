@@ -39,17 +39,13 @@ class InstagramRepository extends EntityRepository
 
         $qb
             ->addSelect('cm, u, cu')
-            ->leftJoin('i.comments', 'cm')
-            ->leftJoin('cm.user', 'u')
-            ->leftJoin('i.course', 'cu')
-            ->leftJoin('cu.enrollments', 'e')
+              ->leftJoin('i.comments', 'cm')
+              ->leftJoin('cm.user', 'u')
+              ->leftJoin('i.course', 'cu')
             ->where('i.course IN(:userCourses)')
-            ->andWhere('e.enrollmentDate <= :today')
-            ->andWhere('e.endDate >= :today')
-            ->setParameter('userCourses', $user->getCourses())
-            ->setParameter('today', new DateTime())
+              ->setParameter('userCourses', $user->getActiveCourses())
             ->orderBy('i.createdAt', 'DESC')
-            ->addOrderBy('cm.createdAt', 'ASC')
+              ->addOrderBy('cm.createdAt', 'ASC')
         ;
 
         return $qb->getQuery()->getResult();

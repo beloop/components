@@ -101,6 +101,21 @@ interface LessonInterface
     public function setOffsetInDays($days);
 
     /**
+     * @return mixed
+     */
+    public function getDemo();
+
+    /**
+     * @param mixed $demo
+     */
+    public function setDemo($demo);
+
+    /**
+     * @return mixed
+     */
+    public function isDemo();
+
+    /**
      * Lesson is accessible by today
      */
     public function isAvailableForUser(UserInterface $user);

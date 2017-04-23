@@ -49,6 +49,7 @@ class Lesson implements LessonInterface, Serializable
     protected $description;
     protected $modules;
     protected $offsetInDays;
+    protected $demo;
 
     protected $course;
 
@@ -186,11 +187,35 @@ class Lesson implements LessonInterface, Serializable
         return $this;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getDemo()
+    {
+        return $this->demo;
+    }
+
+    /**
+     * @param mixed $demo
+     */
+    public function setDemo($demo)
+    {
+        $this->demo = $demo;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function isDemo()
+    {
+        return $this->demo === true;
+    }
+
     public function isAvailableForUser(UserInterface $user) {
       $today = new DateTime();
       $courseIsAvailable = $this->course->isAvailableForUser($user);
 
-      return $courseIsAvailable && $this->getStartDate($user) <= $today;
+      return $this->isDemo() || ($courseIsAvailable && $this->getStartDate($user) <= $today);
     }
 
     public function getStartDate(UserInterface $user) {

@@ -15,6 +15,8 @@
 
 namespace Beloop\Component\User\Entity;
 
+use DateTime;
+
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\File;
 
@@ -210,6 +212,22 @@ class User extends AbstractUser implements UserInterface
         $courses = new ArrayCollection();
         foreach ($this->enrollments as $enrollment) {
             $courses->add($enrollment->getCourse());
+        }
+
+        return $courses;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getActiveCourses()
+    {
+        $today = new DateTime();
+        $courses = new ArrayCollection();
+        foreach ($this->enrollments as $enrollment) {
+            if ($today >= $enrollment->getEnrollmentDate() && $today <= $enrollment->getEndDate()) {
+                $courses->add($enrollment->getCourse());
+            }
         }
 
         return $courses;
