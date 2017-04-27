@@ -80,7 +80,7 @@ class CourseTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(true, $this->course->isAvailableForUser($this->user));
 
         // Enrolment date and end date are before today
-        $this->enrolment->getEndDate()->sub(DateInterval::createFromDateString("8 months"));
+        $this->enrolment->getEndDate()->sub(DateInterval::createFromDateString("14 months"));
         $this->assertEquals(false, $this->course->isAvailableForUser($this->user));
     }
 

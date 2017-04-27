@@ -92,7 +92,7 @@ class LessonTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals(true, $this->lesson->isAvailableForUser($this->user));
 
         // Course is over
-        $this->enrolment->getEndDate()->sub(DateInterval::createFromDateString("8 months"));
+        $this->enrolment->getEndDate()->sub(DateInterval::createFromDateString("14 months"));
         $this->assertEquals(false, $this->lesson->isAvailableForUser($this->user));
     }
 
