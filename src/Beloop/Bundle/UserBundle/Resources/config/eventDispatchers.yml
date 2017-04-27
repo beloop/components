@@ -10,3 +10,7 @@ services:
     beloop.event_dispatcher.password:
         class: Beloop\Component\User\EventDispatcher\PasswordEventDispatcher
         parent: beloop.event_dispatcher.abstract
+
+    beloop.event_dispatcher.enrolment:
+        class: Beloop\Component\User\EventDispatcher\EnrolmentEventDispatcher
+        parent: beloop.event_dispatcher.abstract

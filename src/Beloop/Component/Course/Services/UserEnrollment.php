@@ -19,6 +19,7 @@ use Beloop\Component\Core\Services\ObjectDirector;
 use Beloop\Component\Course\Entity\Interfaces\CourseInterface;
 use Beloop\Component\Course\Factory\CourseEnrolledUserFactory;
 use Beloop\Component\User\Entity\Interfaces\UserInterface;
+use Beloop\Component\User\EventDispatcher\Interfaces\EnrolmentEventDispatcherInterface;
 use Beloop\Component\User\Services\UserManager;
 use Beloop\Component\User\Transformer\ExtractUsersFromCSV;
 
@@ -51,19 +52,23 @@ class UserEnrollment
      * @param ExtractUsersFromCSV $transformer
      * @param UserManager $userManager
      * @param ObjectDirector $courseDirector
+     * @param CourseEnrolledUserFactory $enrollmentFactory
+     * @param EnrolmentEventDispatcherInterface $enrolmentEventDispatcher
      */
     public function __construct(
         ExtractUsersFromCSV $transformer,
         UserManager $userManager,
         ObjectDirector $courseDirector,
         ObjectDirector $userDirector,
-        CourseEnrolledUserFactory $enrollmentFactory
+        CourseEnrolledUserFactory $enrollmentFactory,
+        EnrolmentEventDispatcherInterface $enrolmentEventDispatcher
     ) {
         $this->transformer = $transformer;
         $this->userManager = $userManager;
         $this->courseDirector = $courseDirector;
         $this->userDirector = $userDirector;
         $this->enrollmentFactory = $enrollmentFactory;
+        $this->enrolmentEventDispatcher = $enrolmentEventDispatcher;
     }
 
     /**
@@ -90,6 +95,13 @@ class UserEnrollment
             $enrollment->setUser($user);
             $enrollment->setCourse($course);
             $course->enrollUser($enrollment);
+
+            $this
+              ->enrolmentEventDispatcher
+              ->dispatchOnEnrolmentEvent(
+                  $user,
+                  $course
+              );
         }
 
         $this->courseDirector->save($course);

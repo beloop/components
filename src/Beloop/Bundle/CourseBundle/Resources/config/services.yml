@@ -11,3 +11,4 @@ services:
             - '@beloop.director.course'
             - '@beloop.director.user'
             - '@beloop.factory.course_enrolled_user'
+            - '@beloop.event_dispatcher.enrolment'

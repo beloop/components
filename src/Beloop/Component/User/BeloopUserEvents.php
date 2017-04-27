@@ -43,4 +43,12 @@ final class BeloopUserEvents
      * event.class : UserRegisterEvent
      */
     const USER_REGISTER = 'user.register';
+
+    /**
+     * This event is fired when a user is enroled in a course.
+     *
+     * event.name : user.enrolment
+     * event.class : EnrolmentEvent
+     */
+    const COURSE_ENROLMENT = 'user.enrolment';
 }
