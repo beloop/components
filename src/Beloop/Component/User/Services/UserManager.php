@@ -90,14 +90,14 @@ class UserManager
 
         // Create an array of emails
         $existantEmails = array_map(function($user) {
-            return $user->getEmail();
+            return strtolower($user->getEmail());
         }, $existantUsers);
 
         unset($existantUsers);
 
         // Get not existant users ready to import
         $nonExistantUsers = $users->filter(function($user) use ($existantEmails){
-            return !in_array($user->getEmail(), $existantEmails);
+            return !in_array(strtolower($user->getEmail()), $existantEmails);
         });
 
         unset($existantEmails);
@@ -117,6 +117,6 @@ class UserManager
      * @return Collection
      */
     private function extractEmails(Collection $users) {
-        return $users->map(function($user) { return $user->getEmail(); });
+        return $users->map(function($user) { return strtolower($user->getEmail()); });
     }
 }
