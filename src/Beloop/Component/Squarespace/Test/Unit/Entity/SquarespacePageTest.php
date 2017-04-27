@@ -73,7 +73,7 @@ class SquarespacePageTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(true, $this->page->isAvailableForUser($this->user));
 
         // Course is over
-        $this->enrolment->getEndDate()->sub(DateInterval::createFromDateString("8 months"));
+        $this->enrolment->getEndDate()->sub(DateInterval::createFromDateString("14 months"));
         $this->assertEquals(false, $this->page->isAvailableForUser($this->user));
     }
 }
