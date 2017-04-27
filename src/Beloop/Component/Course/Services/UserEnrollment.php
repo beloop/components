@@ -17,6 +17,7 @@ namespace Beloop\Component\Course\Services;
 
 use Beloop\Component\Core\Services\ObjectDirector;
 use Beloop\Component\Course\Entity\Interfaces\CourseInterface;
+use Beloop\Component\Course\Factory\CourseEnrolledUserFactory;
 use Beloop\Component\User\Entity\Interfaces\UserInterface;
 use Beloop\Component\User\Services\UserManager;
 use Beloop\Component\User\Transformer\ExtractUsersFromCSV;
@@ -42,6 +43,11 @@ class UserEnrollment
     private $courseDirector;
 
     /**
+     * @var CourseEnrolledUserFactory
+     */
+    private $enrollmentFactory;
+
+    /**
      * @param ExtractUsersFromCSV $transformer
      * @param UserManager $userManager
      * @param ObjectDirector $courseDirector
@@ -50,12 +56,14 @@ class UserEnrollment
         ExtractUsersFromCSV $transformer,
         UserManager $userManager,
         ObjectDirector $courseDirector,
-        ObjectDirector $userDirector
+        ObjectDirector $userDirector,
+        CourseEnrolledUserFactory $enrollmentFactory
     ) {
         $this->transformer = $transformer;
         $this->userManager = $userManager;
         $this->courseDirector = $courseDirector;
         $this->userDirector = $userDirector;
+        $this->enrollmentFactory = $enrollmentFactory;
     }
 
     /**
@@ -77,7 +85,11 @@ class UserEnrollment
             $user->setLanguage($course->getLanguage());
             $user->addRole('ROLE_USER');
             $this->userDirector->save($user);
-            $course->enrollUser($user);
+
+            $enrollment = $this->enrollmentFactory->create();
+            $enrollment->setUser($user);
+            $enrollment->setCourse($course);
+            $course->enrollUser($enrollment);
         }
 
         $this->courseDirector->save($course);

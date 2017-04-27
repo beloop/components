@@ -10,3 +10,4 @@ services:
             - '@beloop.manager.user'
             - '@beloop.director.course'
             - '@beloop.director.user'
+            - '@beloop.factory.course_enrolled_user'

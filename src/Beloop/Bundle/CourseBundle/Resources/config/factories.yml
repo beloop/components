@@ -12,12 +12,26 @@ services:
         calls:
             - [setEntityNamespace, ["%beloop.entity.course.class%"]]
 
+    #
+    # Factory for entity lesson
+    #
     beloop.factory.lesson:
         class: Beloop\Component\Course\Factory\LessonFactory
         calls:
             - [setEntityNamespace, ["%beloop.entity.lesson.class%"]]
 
+    #
+    # Factory for entity page
+    #
     beloop.factory.page:
         class: Beloop\Component\Course\Factory\PageFactory
         calls:
             - [setEntityNamespace, ["%beloop.entity.page.class%"]]
+
+    #
+    # Factory for entity course enrolled user
+    #
+    beloop.factory.course_enrolled_user:
+        class: Beloop\Component\Course\Factory\CourseEnrolledUserFactory
+        calls:
+            - [setEntityNamespace, ["%beloop.entity.course_enrolled_user.class%"]]

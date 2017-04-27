@@ -211,21 +211,20 @@ class Course implements CourseInterface, Serializable
      * @param UserInterface $user
      * @return $this Self object
      */
-    public function enrollUser(UserInterface $user)
+    public function enrollUser(CourseEnrolledUserInterface $enrollment)
     {
-        throw new Exception('Implement user enrollment.');
-        // if (!$this->enrolledUsers->contains($user)) {
-        //     $this->enrolledUsers->add($user);
-        // }
+        if (!$this->getEnrolledUsers()->contains($enrollment->getUser())) {
+            $this->enrollments->add($enrollment);
+        }
 
-        // return $this;
+        return $this;
     }
 
     /**
      * @param UserInterface $user
      * @return $this Self object
      */
-    public function unEnrollUser(UserInterface $user)
+    public function unEnrollUser(CourseEnrolledUserInterface $enrollment)
     {
         throw new Exception('Implement user un-enrollment.');
         // $this

@@ -23,6 +23,7 @@ use Beloop\Component\Core\Entity\Traits\DateTimeTrait;
 use Beloop\Component\Core\Entity\Traits\EnabledTrait;
 use Beloop\Component\Core\Entity\Traits\IdentifiableTrait;
 use Beloop\Component\Course\Entity\Interfaces\CourseEnrolledUserInterface;
+use Beloop\Component\Course\Entity\Interfaces\CourseInterface;
 use Beloop\Component\User\Entity\Interfaces\UserInterface;
 
 /**
@@ -45,7 +46,7 @@ class CourseEnrolledUser implements CourseEnrolledUserInterface, Serializable
     public function __construct()
     {
         $this->enrollmentDate = new DateTime();
-        $this->endDate = (new DateTime())->add(DateInterval::createFromDateString("6 months"));
+        $this->endDate = (new DateTime())->add(DateInterval::createFromDateString("12 months"));
     }
 
     public function getEnrollmentDate() {
@@ -67,6 +68,11 @@ class CourseEnrolledUser implements CourseEnrolledUserInterface, Serializable
 
     public function getCourse() {
       return $this->course;
+    }
+
+    public function setCourse(CourseInterface $course) {
+      $this->course = $course;
+      return $this;
     }
 
     public function serialize() {

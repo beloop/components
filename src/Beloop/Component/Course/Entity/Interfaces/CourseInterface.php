@@ -20,6 +20,7 @@ use Doctrine\Common\Collections\Collection;
 use Beloop\Component\Core\Entity\Interfaces\IdentifiableInterface;
 use Beloop\Component\Core\Entity\Interfaces\DateTimeInterface;
 use Beloop\Component\Core\Entity\Interfaces\EnabledInterface;
+use Beloop\Component\Course\Entity\Interfaces\CourseEnrolledUserInterface;
 use Beloop\Component\User\Entity\Interfaces\UserInterface;
 
 /**
@@ -143,11 +144,11 @@ interface CourseInterface
      * @param UserInterface $user
      * @return $this Self object
      */
-    public function enrollUser(UserInterface $user);
+    public function enrollUser(CourseEnrolledUserInterface $user);
 
     /**
      * @param UserInterface $user
      * @return $this Self object
      */
-    public function unEnrollUser(UserInterface $user);
+    public function unEnrollUser(CourseEnrolledUserInterface $user);
 }
