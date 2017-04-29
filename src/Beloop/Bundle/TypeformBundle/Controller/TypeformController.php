@@ -121,7 +121,7 @@ class TypeformController extends Controller
                 throw $this->createNotFoundException('The course does not exist');
             }
 
-            if (!$quiz->isAvailable()) {
+            if (!$quiz->isAvailableForUser($user)) {
                 throw $this->createNotFoundException('The course does not exist');
             }
         }
