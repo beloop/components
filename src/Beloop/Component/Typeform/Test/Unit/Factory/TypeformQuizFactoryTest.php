@@ -15,35 +15,19 @@
 
 namespace Beloop\Component\Typeform\Test\Unit\Factory;
 
-use Beloop\Component\Core\Test\Unit\Factory\Abstracts\AbstractFactoryTest;
+use PHPUnit\Framework\TestCase;
 
-class TypeformQuizFactoryTest extends AbstractFactoryTest
+use Beloop\Component\Typeform\Factory\TypeformQuizFactory;
+
+class TypeformQuizFactoryTest extends TestCase
 {
     private $quiz;
 
-    public function setUp()
+    public function setUp(): void
     {
-        $this->quiz = $this->createInstance();
-    }
-    
-    /**
-     * Return the factory namespace.
-     *
-     * @return string Factory namespace
-     */
-    public function getFactoryNamespace()
-    {
-        return 'Beloop\Component\Typeform\Factory\TypeformQuizFactory';
-    }
-
-    /**
-     * Return the entity namespace.
-     *
-     * @return string Entity namespace
-     */
-    public function getEntityNamespace()
-    {
-        return 'Beloop\Component\Typeform\Entity\TypeformQuiz';
+        $factory = new TypeformQuizFactory();
+        $factory->setEntityNamespace('Beloop\Component\Typeform\Entity\TypeformQuiz');
+        $this->quiz = $factory->create();
     }
 
     public function testDefaultValues() {

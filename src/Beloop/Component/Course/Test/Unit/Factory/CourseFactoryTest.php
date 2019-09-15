@@ -15,35 +15,19 @@
 
 namespace Beloop\Component\Course\Test\Unit\Factory;
 
-use Beloop\Component\Core\Test\Unit\Factory\Abstracts\AbstractFactoryTest;
+use PHPUnit\Framework\TestCase;
 
-class CourseFactoryTest extends AbstractFactoryTest
+use Beloop\Component\Course\Factory\CourseFactory;
+
+class CourseFactoryTest extends TestCase
 {
     private $course;
 
-    public function setUp()
+    public function setUp(): void
     {
-        $this->course = $this->createInstance();
-    }
-
-    /**
-     * Return the factory namespace.
-     *
-     * @return string Factory namespace
-     */
-    public function getFactoryNamespace()
-    {
-        return 'Beloop\Component\Course\Factory\CourseFactory';
-    }
-
-    /**
-     * Return the entity namespace.
-     *
-     * @return string Entity namespace
-     */
-    public function getEntityNamespace()
-    {
-        return 'Beloop\Component\Course\Entity\Course';
+        $factory = new CourseFactory();
+        $factory->setEntityNamespace('Beloop\Component\Course\Entity\Course');
+        $this->course = $factory->create();
     }
 
     public function testDefaultValues() {

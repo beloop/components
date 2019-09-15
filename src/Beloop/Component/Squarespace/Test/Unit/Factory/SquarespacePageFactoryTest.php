@@ -15,35 +15,19 @@
 
 namespace Beloop\Component\Squarespace\Test\Unit\Factory;
 
-use Beloop\Component\Core\Test\Unit\Factory\Abstracts\AbstractFactoryTest;
+use PHPUnit\Framework\TestCase;
 
-class SquarespacePageFactoryTest extends AbstractFactoryTest
+use Beloop\Component\Squarespace\Factory\SquarespacePageFactory;
+
+class SquarespacePageFactoryTest extends TestCase
 {
     private $page;
 
-    public function setUp()
+    public function setUp(): void
     {
-        $this->page = $this->createInstance();
-    }
-    
-    /**
-     * Return the factory namespace.
-     *
-     * @return string Factory namespace
-     */
-    public function getFactoryNamespace()
-    {
-        return 'Beloop\Component\Squarespace\Factory\SquarespacePageFactory';
-    }
-
-    /**
-     * Return the entity namespace.
-     *
-     * @return string Entity namespace
-     */
-    public function getEntityNamespace()
-    {
-        return 'Beloop\Component\Squarespace\Entity\SquarespacePage';
+        $factory = new SquarespacePageFactory();
+        $factory->setEntityNamespace('Beloop\Component\Squarespace\Entity\SquarespacePage');
+        $this->page = $factory->create();
     }
 
     public function testDefaultValues() {

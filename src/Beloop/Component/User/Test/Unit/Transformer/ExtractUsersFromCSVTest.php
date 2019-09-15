@@ -15,7 +15,7 @@
 
 namespace Beloop\Component\User\Test\Unit\Transformer;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 use Beloop\Component\Core\Generator\RandomGenerator;
 use Beloop\Component\User\Factory\UserFactory;
@@ -24,12 +24,12 @@ use Beloop\Component\User\Transformer\ExtractUsersFromCSV;
 /**
  * Class ExtractUsersFromCSVTest
  */
-class ExtractUsersFromCSVTest extends PHPUnit_Framework_TestCase
+class ExtractUsersFromCSVTest extends TestCase
 {
     private $transformer;
     private $userFactory;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->userFactory = new UserFactory();
         $this->userFactory->setEntityNamespace('Beloop\Component\User\Entity\User');

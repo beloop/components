@@ -231,7 +231,7 @@ class Lesson implements LessonInterface, Serializable
             'slug' => $this->slug,
             'description' => $this->description,
             'offsetInDays' => $this->offsetInDays,
-            'enabled' => count($this->enabled),
+            'enabled' => $this->enabled,
             'modules' => count($this->modules),
             'courseId' => $this->course->getId(),
         ];

@@ -17,7 +17,7 @@ namespace Beloop\Component\Squarespace\Test\Unit\Entity;
 
 use DateInterval;
 use DateTime;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -27,7 +27,7 @@ use Beloop\Component\Course\Entity\Lesson;
 use Beloop\Component\Squarespace\Entity\SquarespacePage;
 use Beloop\Component\User\Entity\User;
 
-class SquarespacePageTest extends PHPUnit_Framework_TestCase
+class SquarespacePageTest extends TestCase
 {
     private $course;
     private $enrolment;
@@ -35,7 +35,7 @@ class SquarespacePageTest extends PHPUnit_Framework_TestCase
     private $page;
     private $user;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->course = new Course();
         $this->lesson = new Lesson();

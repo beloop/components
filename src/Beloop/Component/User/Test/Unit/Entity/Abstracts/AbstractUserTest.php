@@ -15,14 +15,14 @@
 
 namespace Beloop\Component\User\Test\Unit\Entity\Abstracts;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 use Beloop\Component\User\Exception\InvalidPasswordException;
 
 /**
  * Class AbstractUserTest.
  */
-class AbstractUserTest extends PHPUnit_Framework_TestCase
+class AbstractUserTest extends TestCase
 {
     /**
      * Test set password method.
@@ -52,6 +52,11 @@ class AbstractUserTest extends PHPUnit_Framework_TestCase
         $user->setPassword('  1  ');
         $user->setPassword('1234');
         $user->setPassword('blabla');
+
+        $this->assertEquals(
+            'blabla',
+            $user->getPassword()
+        );
     }
 
     /**
@@ -63,12 +68,15 @@ class AbstractUserTest extends PHPUnit_Framework_TestCase
     {
         $user = $this->getMockForAbstractClass('Beloop\Component\User\Entity\Abstracts\AbstractUser');
         $user->setPassword('00000');
-        
+
         try {
             $user->setPassword($value);
             $this->fail('AbstractUser::setPassword($password) should contain a null value or a string');
         } catch (InvalidPasswordException $e) {
-            //Silent pass
+            $this->assertEquals(
+                'The password is not a valid string',
+                $e->getMessage()
+            );
         }
     }
 
