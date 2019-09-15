@@ -41,9 +41,9 @@
     "beloop/user": "self.version"
   },
   "require-dev": {
-    "fabpot/php-cs-fixer": "1.11",
+    "friendsofphp/php-cs-fixer": "2.15.3",
     "mmoreram/php-formatter": "1.1.0",
-    "phpunit/phpunit": "4.8.19"
+    "phpunit/phpunit": "8.3.5"
   },
   "autoload": {
     "exclude-from-classmap": [

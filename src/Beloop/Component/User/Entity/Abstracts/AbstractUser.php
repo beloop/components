@@ -290,7 +290,7 @@ abstract class AbstractUser implements AbstractUserInterface
         }
 
         if (!is_string($password) || trim($password) == '') {
-            throw new InvalidPasswordException();
+            throw new InvalidPasswordException('The password is not a valid string');
         }
 
         $this->password = $password;

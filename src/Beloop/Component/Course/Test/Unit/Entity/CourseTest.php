@@ -17,7 +17,7 @@ namespace Beloop\Component\Course\Test\Unit\Entity;
 
 use DateInterval;
 use DateTime;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -30,13 +30,13 @@ use Beloop\Component\User\Entity\User;
 /**
  * Class CourseTest.
  */
-class CourseTest extends PHPUnit_Framework_TestCase
+class CourseTest extends TestCase
 {
     private $course;
     private $enrolment;
     private $user;
 
-    public function setUp()
+    public function setUp(): void
     {
         $language = new Language();
         $language->setIso('es');

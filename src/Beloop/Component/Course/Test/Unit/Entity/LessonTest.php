@@ -18,7 +18,7 @@ namespace Beloop\Component\Course\Test\Unit\Entity;
 use DateInterval;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 use Beloop\Component\Course\Entity\Course;
 use Beloop\Component\Course\Entity\CourseEnrolledUser;
@@ -31,13 +31,13 @@ use Beloop\Component\User\Entity\User;
 /**
  * Class LessonTest.
  */
-class LessonTest extends PHPUnit_Framework_TestCase {
+class LessonTest extends TestCase {
     private $course;
     private $enrolment;
     private $lesson;
     private $user;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->user = new User();
         $this->user->setId(1);
@@ -45,7 +45,7 @@ class LessonTest extends PHPUnit_Framework_TestCase {
         $this->enrolment = new CourseEnrolledUser();
         $this->enrolment->setUser($this->user);
 
-        $this->course = $this->getMock('Beloop\Component\Course\Entity\Course', null);
+        // $this->course = $this->createMock('Beloop\Component\Course\Entity\Course', null);
         $this->course = new Course();
         $this->lesson = new Lesson();
 
