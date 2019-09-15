@@ -15,7 +15,7 @@ for repoName in `ls -1 src/Beloop/Component` ; do
     git remote remove $repoName
 
     # add remote identified by $repoName
-    git remote add $repoName https://$GH_TOKEN@github.com/beloop/$repoName.git
+    git remote add $repoName git@github.com:beloop/$repoName.git
 
     # push local branch on remote
     git push $repoName subtree_${repoName}_master:master
@@ -30,7 +30,7 @@ for repoName in `ls -1 src/Beloop/Bundle` ; do
     git remote remove $repoName
 
     # add remote identified by $repoName
-    git remote add $repoName https://$GH_TOKEN@github.com/beloop/$repoName.git
+    git remote add $repoName git@github.com:beloop/$repoName.git
 
     # push local branch on remote
     git push $repoName subtree_${repoName}_master:master
