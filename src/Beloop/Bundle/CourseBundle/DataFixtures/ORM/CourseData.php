@@ -42,6 +42,11 @@ class CourseData extends AbstractFixture implements OrderedFixtureInterface
         $courseDirector = $this->getDirector('course');
 
         /**
+         * @var ObjectDirector userDirector
+         */
+        $userEnrollment = $this->getFactory('course_enrolled_user');
+
+        /**
          * Course.
          */
         $course1 = $courseDirector
@@ -49,19 +54,46 @@ class CourseData extends AbstractFixture implements OrderedFixtureInterface
             ->setCode('FOOD-EN-20160401')
             ->setName('Food Styling & Photography')
             ->setDescription('<p>Food Styling & Photography course description</p>')
-            ->setLanguage($this->getReference('language-en'))
-            ->setStartDate(new DateTime())
-            ->setEndDate((new DateTime())->add(DateInterval::createFromDateString("6 months")));
+            ->setLanguage($this->getReference('language-en'));
 
         /**
          * Enroll some users
          */
-        $course1->enrollUser($this->getReference('admin'));
-        $course1->enrollUser($this->getReference('teacher'));
+        $enrollment11 = $userEnrollment
+            ->create()
+            ->setUser($this->getReference('admin'))
+            ->setCourse($course1);
+        $course1->enrollUser($enrollment11);
 
-        for ($i = 1; $i <= 4; $i++) {
-            $course1->enrollUser($this->getReference('user' . $i));
-        }
+        $enrollment12 = $userEnrollment
+            ->create()
+            ->setUser($this->getReference('teacher'))
+            ->setCourse($course1);
+        $course1->enrollUser($enrollment12);
+
+        $enrollment13 = $userEnrollment
+            ->create()
+            ->setUser($this->getReference('user1'))
+            ->setCourse($course1);
+        $course1->enrollUser($enrollment13);
+
+        $enrollment14 = $userEnrollment
+            ->create()
+            ->setUser($this->getReference('user2'))
+            ->setCourse($course1);
+        $course1->enrollUser($enrollment14);
+
+        $enrollment15 = $userEnrollment
+            ->create()
+            ->setUser($this->getReference('user3'))
+            ->setCourse($course1);
+        $course1->enrollUser($enrollment15);
+
+        $enrollment16 = $userEnrollment
+            ->create()
+            ->setUser($this->getReference('user4'))
+            ->setCourse($course1);
+        $course1->enrollUser($enrollment16);
 
         $courseDirector->save($course1);
         $this->addReference('course-1', $course1);
@@ -74,19 +106,46 @@ class CourseData extends AbstractFixture implements OrderedFixtureInterface
             ->setCode('FOOD-ES-20160401')
             ->setName('Estilismo y Fotografía Gastronómica')
             ->setDescription('<p>Estilismo y Fotografía Gastronómica descripción del curso</p>')
-            ->setLanguage($this->getReference('language-es'))
-            ->setStartDate(new DateTime())
-            ->setEndDate((new DateTime())->add(DateInterval::createFromDateString("6 months")));
+            ->setLanguage($this->getReference('language-es'));
 
         /**
          * Enroll some users
          */
-        $course2->enrollUser($this->getReference('admin'));
-        $course2->enrollUser($this->getReference('teacher'));
+        $enrollment21 = $userEnrollment
+            ->create()
+            ->setUser($this->getReference('admin'))
+            ->setCourse($course2);
+        $course2->enrollUser($enrollment21);
 
-        for ($i = 3; $i <= 7; $i++) {
-            $course2->enrollUser($this->getReference('user' . $i));
-        }
+        $enrollment22 = $userEnrollment
+            ->create()
+            ->setUser($this->getReference('teacher'))
+            ->setCourse($course2);
+        $course2->enrollUser($enrollment22);
+
+        $enrollment23 = $userEnrollment
+            ->create()
+            ->setUser($this->getReference('user4'))
+            ->setCourse($course2);
+        $course2->enrollUser($enrollment23);
+
+        $enrollment24 = $userEnrollment
+            ->create()
+            ->setUser($this->getReference('user5'))
+            ->setCourse($course2);
+        $course2->enrollUser($enrollment24);
+
+        $enrollment25 = $userEnrollment
+            ->create()
+            ->setUser($this->getReference('user6'))
+            ->setCourse($course2);
+        $course2->enrollUser($enrollment25);
+
+        $enrollment26 = $userEnrollment
+            ->create()
+            ->setUser($this->getReference('user7'))
+            ->setCourse($course2);
+        $course2->enrollUser($enrollment26);
 
         $courseDirector->save($course2);
         $this->addReference('course-2', $course2);
@@ -99,19 +158,52 @@ class CourseData extends AbstractFixture implements OrderedFixtureInterface
             ->setCode('STILL-EN-20160401')
             ->setName('Composition & Visual Perception')
             ->setDescription('<p>Composition & Visual Perception course description</p>')
-            ->setLanguage($this->getReference('language-en'))
-            ->setStartDate((new DateTime())->add(DateInterval::createFromDateString("1 month")))
-            ->setEndDate((new DateTime())->add(DateInterval::createFromDateString("7 months")));
+            ->setLanguage($this->getReference('language-en'));
 
         /**
          * Enroll some users
          */
-        $course3->enrollUser($this->getReference('admin'));
-        $course3->enrollUser($this->getReference('teacher'));
+        $enrollment31 = $userEnrollment
+            ->create()
+            ->setUser($this->getReference('admin'))
+            ->setCourse($course3);
+        $course3->enrollUser($enrollment31);
 
-        for ($i = 6; $i <= 10; $i++) {
-            $course3->enrollUser($this->getReference('user' . $i));
-        }
+        $enrollment32 = $userEnrollment
+            ->create()
+            ->setUser($this->getReference('teacher'))
+            ->setCourse($course3);
+        $course3->enrollUser($enrollment32);
+
+        $enrollment33 = $userEnrollment
+            ->create()
+            ->setUser($this->getReference('user6'))
+            ->setCourse($course3);
+        $course3->enrollUser($enrollment33);
+
+        $enrollment34 = $userEnrollment
+            ->create()
+            ->setUser($this->getReference('user7'))
+            ->setCourse($course3);
+        $course3->enrollUser($enrollment34);
+
+        $enrollment35 = $userEnrollment
+            ->create()
+            ->setUser($this->getReference('user8'))
+            ->setCourse($course3);
+        $course3->enrollUser($enrollment35);
+
+        $enrollment36 = $userEnrollment
+            ->create()
+            ->setUser($this->getReference('user9'))
+            ->setCourse($course3);
+        $course3->enrollUser($enrollment36);
+
+        $enrollment37 = $userEnrollment
+            ->create()
+            ->setUser($this->getReference('user10'))
+            ->setCourse($course3);
+        $course3->enrollUser($enrollment37);
 
         $courseDirector->save($course3);
         $this->addReference('course-3', $course3);
@@ -124,12 +216,19 @@ class CourseData extends AbstractFixture implements OrderedFixtureInterface
             ->setCode('STILL-ES-20160401')
             ->setName('Composición y Percepción Visual')
             ->setDescription('<p>Composición y Percepción Visual</p>')
-            ->setLanguage($this->getReference('language-es'))
-            ->setStartDate((new DateTime())->add(DateInterval::createFromDateString("1 month")))
-            ->setEndDate((new DateTime())->add(DateInterval::createFromDateString("7 months")));
+            ->setLanguage($this->getReference('language-es'));
 
-        $course4->enrollUser($this->getReference('admin'));
-        $course4->enrollUser($this->getReference('teacher'));
+        $enrollment41 = $userEnrollment
+            ->create()
+            ->setUser($this->getReference('admin'))
+            ->setCourse($course4);
+        $course4->enrollUser($enrollment41);
+
+        $enrollment42 = $userEnrollment
+            ->create()
+            ->setUser($this->getReference('teacher'))
+            ->setCourse($course4);
+        $course4->enrollUser($enrollment42);
 
         $courseDirector->save($course4);
         $this->addReference('course-4', $course4);

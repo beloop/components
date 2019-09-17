@@ -50,8 +50,7 @@ class LessonData extends AbstractFixture implements OrderedFixtureInterface
             ->setName('Photography Basics')
             ->setSlug('photography-basics')
             ->setDescription('<p>Photography Basics lesson description</p>')
-            ->setPosition(1)
-            ->setStartDate(new DateTime());
+            ->setPosition(1);
 
         $lessonDirector->save($lesson1);
         $this->addReference('lesson-1', $lesson1);
@@ -65,8 +64,7 @@ class LessonData extends AbstractFixture implements OrderedFixtureInterface
             ->setName('Food Styling Basics')
             ->setSlug('food-styling-basics')
             ->setDescription('<p>Food Styling Basics lesson description</p>')
-            ->setPosition(2)
-            ->setStartDate((new DateTime())->add(DateInterval::createFromDateString("2 weeks")));
+            ->setPosition(2);
 
         $lessonDirector->save($lesson2);
         $this->addReference('lesson-2', $lesson2);

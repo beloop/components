@@ -51,6 +51,7 @@ class LessonFactory extends AbstractFactory
             ->setModules(new ArrayCollection())
             ->setOffsetInDays(0)
             ->setPosition(1)
+            ->setDemo(false)
             ->enable()
             ->setCreatedAt($now);
 

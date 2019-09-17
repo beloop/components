@@ -201,6 +201,7 @@ class Lesson implements LessonInterface, Serializable
     public function setDemo($demo)
     {
         $this->demo = $demo;
+        return $this;
     }
 
     /**
