@@ -21,7 +21,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-use Mmoreram\ControllerExtraBundle\Annotation\Entity as EntityAnnotation;
+use Mmoreram\ControllerExtraBundle\Annotation\LoadEntity;
 
 use Beloop\Component\Squarespace\Entity\SquarespacePage;
 
@@ -41,9 +41,9 @@ class SquarespaceController extends Controller
      *
      * @Template
      *
-     * @EntityAnnotation(
-     *      class = {
-     *          "factory" = "beloop.factory.squarespace_page",
+     * @LoadEntity(
+     *      factory = {
+     *          "class" = "beloop.factory.squarespace_page",
      *          "method" = "create",
      *          "static" = false
      *      },
@@ -102,9 +102,9 @@ class SquarespaceController extends Controller
      *      methods = {"GET"}
      * )
      *
-     * @EntityAnnotation(
-     *      class = {
-     *          "factory" = "beloop.factory.squarespace_page",
+     * @LoadEntity(
+     *      factory = {
+     *          "class" = "beloop.factory.squarespace_page",
      *          "method" = "create",
      *          "static" = false
      *      },

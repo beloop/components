@@ -21,7 +21,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
-use Mmoreram\ControllerExtraBundle\Annotation\Entity as EntityAnnotation;
+use Mmoreram\ControllerExtraBundle\Annotation\LoadEntity;
 
 use Beloop\Component\Typeform\Entity\TypeformQuiz;
 
@@ -41,9 +41,9 @@ class TypeformController extends Controller
      *
      * @Template
      *
-     * @EntityAnnotation(
-     *      class = {
-     *          "factory" = "beloop.factory.typeform_quiz",
+     * @LoadEntity(
+     *      factory = {
+     *          "class" = "beloop.factory.typeform_quiz",
      *          "method" = "create",
      *          "static" = false
      *      },
@@ -95,9 +95,9 @@ class TypeformController extends Controller
      *      methods = {"GET"}
      * )
      *
-     * @EntityAnnotation(
-     *      class = {
-     *          "factory" = "beloop.factory.typeform_quiz",
+     * @LoadEntity(
+     *      factory = {
+     *          "class" = "beloop.factory.typeform_quiz",
      *          "method" = "create",
      *          "static" = false
      *      },
