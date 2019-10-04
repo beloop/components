@@ -25,7 +25,7 @@
     "symfony/dependency-injection": "^3.0",
     "symfony/http-kernel": "^3.0",
     "mmoreram/simple-doctrine-mapping": "^1.0",
-    "mmoreram/symfony-bundle-dependencies": "^1.1.1",
+    "mmoreram/symfony-bundle-dependencies": "^2.0",
 
     "beloop/core-bundle": "^1.0",
     "beloop/course-bundle": "^1.0",
