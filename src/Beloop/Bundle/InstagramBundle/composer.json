@@ -16,13 +16,13 @@
     }
   ],
   "require": {
-    "php": "^5.5|^7.0",
+    "php": "^7.2",
     "doctrine/common": "^2.5",
     "doctrine/orm": "^2.5",
 
-    "beloop/core": "^0.5",
-    "beloop/instagram": "^0.5",
-    "beloop/user": "^0.5"
+    "beloop/core": "^1.0",
+    "beloop/instagram": "^1.0",
+    "beloop/user": "^1.0"
   },
   "require-dev": {
     "phpunit/phpunit": "8.3.5"
@@ -37,7 +37,7 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "0.5-dev"
+      "dev-master": "1.0-dev"
     }
   }
 }
