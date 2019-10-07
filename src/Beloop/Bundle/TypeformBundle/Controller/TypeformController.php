@@ -42,6 +42,7 @@ class TypeformController extends Controller
      * @Template
      *
      * @LoadEntity(
+     *      namespace = "beloop.entity.typeform_quiz.class",
      *      factory = {
      *          "class" = "beloop.factory.typeform_quiz",
      *          "method" = "create",
@@ -96,6 +97,7 @@ class TypeformController extends Controller
      * )
      *
      * @LoadEntity(
+     *      namespace = "beloop.entity.typeform_quiz.class",
      *      factory = {
      *          "class" = "beloop.factory.typeform_quiz",
      *          "method" = "create",

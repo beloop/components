@@ -42,6 +42,7 @@ class SquarespaceController extends Controller
      * @Template
      *
      * @LoadEntity(
+     *      namespace = "beloop.entity.squarespace_page.class",
      *      factory = {
      *          "class" = "beloop.factory.squarespace_page",
      *          "method" = "create",
@@ -103,6 +104,7 @@ class SquarespaceController extends Controller
      * )
      *
      * @LoadEntity(
+     *      namespace = "beloop.entity.squarespace_page.class",
      *      factory = {
      *          "class" = "beloop.factory.squarespace_page",
      *          "method" = "create",
