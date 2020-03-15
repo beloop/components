@@ -126,7 +126,7 @@ class PasswordManager
             ->router
             ->generate($recoverPasswordUrlName, [
                 $hashField => $recoveryHash,
-            ], true);
+            ], UrlGeneratorInterface::ABSOLUTE_URL);
 
         $this
             ->passwordEventDispatcher
